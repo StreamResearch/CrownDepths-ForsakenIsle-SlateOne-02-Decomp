@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 2,
+  "gameId": "kings-field",
+  "title": "King's Field",
+  "platform": "ps1",
+  "pipelineFamily": "native_ghidra_c",
+  "serialOrHash": "SLUS-00158",
+  "abiProfile": "ps1-psyq-mipsel",
+  "currentDecompTier": "D4",
+  "goalDecompTier": "D4",
+  "currentRecompTier": "R3",
+  "goalRecompTier": "R3",
+  "workspaceFile": "KingsField-PlayStation.code-workspace",
+  "recompProjectPath": "../../Personal/KingsFieldRecomp",
+  "deferredStandalonePath": "../Corpus/standalone",
+  "customUnpackerScript": "Dev/scripts/psx_kf_unpack.py",
+  "binaries": [
+    {
+      "name": "SLUS_001.58",
+      "role": "primary",
+      "baseAddress": "0x80010000"
+    },
+    {
+      "name": "OPEN.EXE",
+      "role": "module",
+      "baseAddress": "0x80011000"
+    },
+    {
+      "name": "GAME.EXE",
+      "role": "module",
+      "baseAddress": "0x80011000"
+    },
+    {
+      "name": "END.EXE",
+      "role": "module",
+      "baseAddress": "0x80011000"
+    }
+  ],
+  "metrics": {
+    "binariesCount": 4,
+    "functionsTotal": 1757,
+    "functionsSdk": 125,
+    "functionsGame": 1632,
+    "functionsNamed": 1632,
+    "failedFunctions": 0,
+    "globalsTotal": 1549,
+    "globalsMapped": 1549,
+    "domainsCount": 5,
+    "readableFiles": 268,
+    "workspaceReady": true
+  },
+  "gates": {
+    "D0": {
+      "passed": true,
+      "verifiedAtUtc": "2026-11-13T08:09:56Z"
+    },
+    "D1": {
+      "passed": true,
+      "verifiedAtUtc": "2026-11-14T07:09:18.254Z"
+    },
+    "D2": {
+      "passed": true,
+      "verifiedAtUtc": "2026-11-14T07:40:06.494Z"
+    },
+    "D3": {
+      "passed": true,
+      "verifiedAtUtc": "2026-11-14T07:40:06.494Z"
+    },
+    "D4": {
+      "passed": true,
+      "verifiedAtUtc": "2026-11-14T08:16:49.623Z"
+    },
+    "R0": {
+      "passed": false,
+      "verifiedAtUtc": null
+    },
+    "R1": {
+      "passed": true,
+      "verifiedAtUtc": "2026-11-13T08:09:56Z"
+    },
+    "R2": {
+      "passed": true,
+      "verifiedAtUtc": "2026-11-13T08:09:56Z"
+    },
+    "R3": {
+      "passed": true,
+      "verifiedAtUtc": "2026-11-14T08:16:53Z"
+    },
+    "R4": {
+      "passed": false,
+      "verifiedAtUtc": null
+    },
+    "R5": {
+      "passed": false,
+      "verifiedAtUtc": null
+    },
+    "D5": {
+      "passed": false,
+      "verifiedAtUtc": null
+    },
+    "S4": {
+      "passed": true,
+      "verifiedAtUtc": "2026-11-14T08:16:49.623Z"
+    },
+    "S0": {
+      "passed": true,
+      "verifiedAtUtc": "2026-11-14T08:16:15.702Z"
+    },
+    "S1": {
+      "passed": true,
+      "verifiedAtUtc": "2026-11-14T08:16:15.702Z"
+    },
+    "S2": {
+      "passed": true,
+      "verifiedAtUtc": "2026-11-14T08:16:15.702Z"
+    },
+    "S3": {
+      "passed": true,
+      "verifiedAtUtc": "2026-11-14T08:16:15.702Z"
+    },
+    "S5": {
+      "passed": false,
+      "verifiedAtUtc": null
+    }
+  },
+  "updatedAtUtc": "2026-11-14T08:16:49.623Z",
+  "manifestType": "research-repo",
+  "researchAxis": "hybrid",
+  "currentStudyTier": "S4",
+  "goalStudyTier": "S4",
+  "downstreamProjects": [
+    "../../Personal/KingsFieldRecomp"
+  ],
+  "upstreamResearchPath": "../../Personal/R&D/decomps/ps1/kings-field",
+  "$schema": "https://schemas.local/manifest.v2.json",
+  "appId": "kings-field-play-station",
+  "version": "0.1.0",
+  "researchId": "kings-field-play-station",
+  "graduatedFromPath": "../../Personal/R&D/decomps/ps1/kings-field",
+  "corpusRoot": "Corpus"
+}

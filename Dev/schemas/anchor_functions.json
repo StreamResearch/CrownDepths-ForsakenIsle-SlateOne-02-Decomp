@@ -1,0 +1,42 @@
+[
+  {
+    "program": "SLUS_001.58",
+    "address": "0x80010038",
+    "ghidra_name": "main",
+    "name": "kf_slus_main_exec_loop",
+    "return_type": "void",
+    "params": [],
+    "domain": "core",
+    "summary": "Resident PS1 overlay loader loop: configures 2MB RAM via SetMem(2), resets ISO9660 FS, loads OPEN.EXE/GAME.EXE/END.EXE into EXEC header 0x80010274 by selector DAT_800102f0, clears s_addr/s_size, enters critical section, executes child overlay, and repeats."
+  },
+  {
+    "program": "SLUS_001.58",
+    "address": "0x80010128",
+    "ghidra_name": "start",
+    "name": "kf_slus_crt0_start",
+    "return_type": "void",
+    "params": [],
+    "domain": "core",
+    "summary": "SN Systems CRT0 entry (__SN_ENTRY_POINT): zeroes resident .bss 0x80010270..0x800102b4, saves BIOS return address into DAT_80010270, initializes main heap at 0x800102b8 (size 0x1e7d4c), and invokes resident main loader loop."
+  },
+  {
+    "program": "SLUS_001.58",
+    "address": "0x800101e4",
+    "ghidra_name": "FUN_800101e4",
+    "name": "kf_slus_enter_critical_section",
+    "return_type": "void",
+    "params": [],
+    "domain": "core",
+    "summary": "PS1 BIOS EnterCriticalSection syscall wrapper (a0=1, syscall 0) disabling interrupts before handing control to loaded child executable via Exec()."
+  },
+  {
+    "program": "SLUS_001.58",
+    "address": "0x80010244",
+    "ghidra_name": "FUN_80010244",
+    "name": "kf_slus_bios_96_remove",
+    "return_type": "void",
+    "params": [],
+    "domain": "core",
+    "summary": "PS1 BIOS A0h:72h _96_remove stub tearing down the resident CD-ROM ISO9660 filesystem handler before cleanly re-initializing CD reading or executing an overlay."
+  }
+]

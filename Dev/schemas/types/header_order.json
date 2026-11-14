@@ -1,0 +1,6 @@
+[
+  "primitives_and_sdk.h",
+  "kf_containers_and_io.h",
+  "kf_world_and_render.h",
+  "kf_actor_combat_ui.h"
+]

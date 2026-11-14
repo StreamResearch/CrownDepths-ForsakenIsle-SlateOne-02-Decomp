@@ -1,0 +1,6203 @@
+[
+  {
+    "program": "END.EXE",
+    "address": "0x800119a4",
+    "ghidra_name": "FUN_800119a4",
+    "name": "kf_end_main",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 10,
+    "summary": "END.EXE top-level entry loop initializing systems and playing ending STR movies."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80011a68",
+    "ghidra_name": "FUN_80011a68",
+    "name": "kf_end_init_graphics",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 6,
+    "summary": "Initializes PS1-SDK GPU/GTE with white clear color and 320x240 double-buffered display/draw environments."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80011ba8",
+    "ghidra_name": "FUN_80011ba8",
+    "name": "kf_end_init_sound",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 9,
+    "summary": "Initializes libsnd audio and sets master and CD serial audio volume for ending playback."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80011bf4",
+    "ghidra_name": "FUN_80011bf4",
+    "name": "kf_end_begin_frame",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Swaps active ending display buffer, clears 1024-entry ordering table, and resets packet cursor."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80011c54",
+    "ghidra_name": "FUN_80011c54",
+    "name": "kf_end_end_frame",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 7,
+    "summary": "Waits for DrawSync/VSync, swaps active DRAWENV/DISPENV pair, and submits ending ordering table."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80011cac",
+    "ghidra_name": "FUN_80011cac",
+    "name": "kf_end_pre_init_noop",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Empty pre-initialization stub called at startup of kf_end_main."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80011cb4",
+    "ghidra_name": "start",
+    "name": "kf_end_entry_point",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 11,
+    "summary": "C runtime entry point (start) dispatching directly into kf_end_main."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80011cc4",
+    "ghidra_name": "FUN_80011cc4",
+    "name": "kf_end_play_ending_movie",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ending_id",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 9,
+    "summary": "Opens \\OP\\ED0.S;1 or \\OP\\ED1.S;1 on CD-ROM and decodes/displays ending STR movie frames."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80011ea0",
+    "ghidra_name": "FUN_80011ea0",
+    "name": "kf_end_init_str_decoder_state",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Initializes double-buffered MDEC/VLC buffers and 320x240 video upload RECT geometry."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80011f5c",
+    "ghidra_name": "FUN_80011f5c",
+    "name": "kf_end_start_str_stream",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cdl_loc",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 8,
+    "summary": "Resets MDEC hardware, attaches DMA output callback, configures StSetRing/Stream, and starts CdRead2."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80011fd0",
+    "ghidra_name": "FUN_80011fd0",
+    "name": "kf_end_mdec_out_callback",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "MDEC DMA completion ISR uploading decoded vertical video strip to VRAM and advancing next slice."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800120dc",
+    "ghidra_name": "FUN_800120dc",
+    "name": "kf_end_decode_next_str_frame",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 3,
+    "summary": "Polls next complete ending STR frame from CD ring, decodes DCT macroblocks, and frees ring."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80012170",
+    "ghidra_name": "FUN_80012170",
+    "name": "kf_end_wait_str_ring_frame",
+    "return_type": "s32 *",
+    "params": [],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Polls StGetNext up to 0x800000 tries, validates frame size, and flags playback end at frame ceiling."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001221c",
+    "ghidra_name": "FUN_8001221c",
+    "name": "kf_end_wait_str_vram_upload",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "str_state",
+        "type": "s32 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Waits for kf_end_mdec_out_callback VRAM slice upload completion flag with bounded timeout."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80012290",
+    "ghidra_name": "FUN_80012290",
+    "name": "kf_end_seek_and_play_cd_stream",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cdl_loc",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 7,
+    "summary": "Issues CdlSeekL command and starts double-speed real-time CD streaming via CdRead2."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800122d8",
+    "ghidra_name": "FUN_800122d8",
+    "name": "kf_end_sbrk3",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "increment",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Extends or allocates raw bytes from the SN heap3 arena top pointer within configured heap bounds."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800123cc",
+    "ghidra_name": "FUN_800123cc",
+    "name": "kf_end_realloc3_try_resize",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "block",
+        "type": "void *"
+      },
+      {
+        "name": "new_size",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Attempts in-place growth/shrink or coalescing resize of an allocated SN malloc3 heap block."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80012574",
+    "ghidra_name": "FUN_80012574",
+    "name": "kf_end_init_heap3",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "heap_base",
+        "type": "void *"
+      },
+      {
+        "name": "heap_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Initializes SN malloc3 heap arena start, limit, and remaining free size globals."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800125b4",
+    "ghidra_name": "FUN_800125b4",
+    "name": "kf_end_malloc3",
+    "return_type": "void *",
+    "params": [
+      {
+        "name": "size",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Allocates word-aligned memory block from SN malloc3 free list, extending arena with sbrk3 if needed."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800127e8",
+    "ghidra_name": "FUN_800127e8",
+    "name": "kf_end_free3",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "block",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "No-op SN heap3 release stub retained by PS1-SDK malloc3 linkage in END.EXE."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800127fc",
+    "ghidra_name": "FUN_800127fc",
+    "name": "kf_end_realloc3",
+    "return_type": "u8 *",
+    "params": [
+      {
+        "name": "block",
+        "type": "u8 *"
+      },
+      {
+        "name": "new_size",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Reallocates SN malloc3 block in-place when possible or copies contents into newly allocated block."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80012890",
+    "ghidra_name": "FUN_80012890",
+    "name": "kf_end_calloc3",
+    "return_type": "u8 *",
+    "params": [
+      {
+        "name": "count",
+        "type": "u32"
+      },
+      {
+        "name": "elem_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Allocates zero-initialized array from SN malloc3 heap and clears bytes with bzero."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800128e4",
+    "ghidra_name": "FUN_800128e4",
+    "name": "kf_end_exit_critical_section",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Invokes PS1 BIOS ExitCriticalSection syscall(0) wrapper to re-enable interrupts."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80012924",
+    "ghidra_name": "FUN_80012924",
+    "name": "kf_end_dec_dct_reset",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "Resets MDEC hardware state and callbacks via ResetCallback and low-level MDEC reset."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80012968",
+    "ghidra_name": "FUN_80012968",
+    "name": "kf_end_dec_dct_vlc",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "bs_in",
+        "type": "u16 *"
+      },
+      {
+        "name": "dct_out",
+        "type": "u16 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Decodes PlayStation STR bitstream into MDEC run-level data, dispatching v1/v2 or v3 Huffman decoder."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800129a8",
+    "ghidra_name": "FUN_800129a8",
+    "name": "kf_end_dec_dct_in",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dct_buf",
+        "type": "u32 *"
+      },
+      {
+        "name": "mode",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Patches MDEC command header RGB24/STP mode bits and initiates MDEC input DMA transfer."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80012a24",
+    "ghidra_name": "FUN_80012a24",
+    "name": "kf_end_dec_dct_out",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "out_buf",
+        "type": "u32"
+      },
+      {
+        "name": "word_count",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Starts MDEC output DMA transfer of decoded pixel slices into specified RAM buffer."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80012a44",
+    "ghidra_name": "FUN_80012a44",
+    "name": "kf_end_dec_dct_in_sync",
+    "return_type": "s32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Waits for pending MDEC input DMA transfer completion with hardware timeout check."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80012a64",
+    "ghidra_name": "FUN_80012a64",
+    "name": "kf_end_dec_dct_out_sync",
+    "return_type": "s32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 3,
+    "summary": "Waits for pending MDEC output DMA transfer completion with hardware timeout check."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80012a84",
+    "ghidra_name": "FUN_80012a84",
+    "name": "kf_end_mdec_reset_hw",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Clears MDEC in/out DMA channels and uploads hardware quantization/IDCT tables when mode is zero."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80012b90",
+    "ghidra_name": "FUN_80012b90",
+    "name": "kf_end_mdec_dma_in",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dct_words",
+        "type": "u32 *"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Waits for prior MDEC input DMA and launches CH0 DMA transfer feeding MDEC command and macroblocks."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80012c2c",
+    "ghidra_name": "FUN_80012c2c",
+    "name": "kf_end_mdec_dma_out",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "out_addr",
+        "type": "u32"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 3,
+    "summary": "Waits for prior MDEC output DMA and launches CH1 DMA transfer draining decoded pixels."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80012cc0",
+    "ghidra_name": "FUN_80012cc0",
+    "name": "kf_end_mdec_in_sync",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Polls DMA CH0 enable bit until MDEC input completes or invokes timeout diagnostics."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80012d58",
+    "ghidra_name": "FUN_80012d58",
+    "name": "kf_end_mdec_out_sync",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Polls DMA CH1 enable bit until MDEC output completes or invokes timeout diagnostics."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80012e08",
+    "ghidra_name": "FUN_80012e08",
+    "name": "kf_end_mdec_print_status",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Prints MDEC DMA channel activity, addresses, FIFO flags, and pixel format status over stdout."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80012ed8",
+    "ghidra_name": "FUN_80012ed8",
+    "name": "kf_end_mdec_timeout_handler",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "op_label",
+        "type": "char *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Logs MDEC timeout diagnostic message, dumps hardware status, and performs warm MDEC reset."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80012f24",
+    "ghidra_name": "FUN_80012f24",
+    "name": "kf_end_mdec_vlc_decode_v1_v2",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "bs_in",
+        "type": "u16 *"
+      },
+      {
+        "name": "dct_out",
+        "type": "u16 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Decodes STR version 1 and 2 bitstream Huffman AC/DC coefficients into MDEC input buffer."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80013174",
+    "ghidra_name": "FUN_80013174",
+    "name": "kf_end_mdec_vlc_decode_v3",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "bs_in",
+        "type": "u16 *"
+      },
+      {
+        "name": "dct_out",
+        "type": "u16 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Decodes STR version 3 Huffman-compressed bitstream coefficients into MDEC input buffer."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001355c",
+    "ghidra_name": "FUN_8001355c",
+    "name": "kf_end_mdec_vlc_decode_dc_coeff",
+    "return_type": "s32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Reads variable-length Huffman DC coefficient word using MDEC v3 lookup tables."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001376c",
+    "ghidra_name": "FUN_8001376c",
+    "name": "kf_end_gpu_write_gp1_cmd",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "gp1_cmd",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Masks 24-bit GPU status control command and dispatches via low-level GPU_cw BIOS call."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80013794",
+    "ghidra_name": "FUN_80013794",
+    "name": "kf_end_reset_graph",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "Resets GPU command queue and hardware registers, hooking GPU IRQ callback according to reset mode."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80013968",
+    "ghidra_name": "FUN_80013968",
+    "name": "kf_end_set_graph_reverse",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "reverse_flag",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Sets GPU display horizontal-reverse mode flag and updates GP1 display parameters."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80013a30",
+    "ghidra_name": "FUN_80013a30",
+    "name": "kf_end_set_graph_debug",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "debug_level",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Configures libgpu debug verbosity level and prints current graph type/reverse state when non-zero."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80013a94",
+    "ghidra_name": "FUN_80013a94",
+    "name": "kf_end_get_graph_type",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Returns detected PlayStation GPU revision type flag from libgpu state."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80013acc",
+    "ghidra_name": "FUN_80013acc",
+    "name": "kf_end_set_disp_mask",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "enable",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Enables or blanks PlayStation video display output via GP1(03h) command."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80013b0c",
+    "ghidra_name": "FUN_80013b0c",
+    "name": "kf_end_draw_sync",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Synchronizes GPU command queue and DMA completion, returning remaining queue depth or completion."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80013b3c",
+    "ghidra_name": "FUN_80013b3c",
+    "name": "kf_end_clear_image",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "rect",
+        "type": "void *"
+      },
+      {
+        "name": "r",
+        "type": "u32"
+      },
+      {
+        "name": "g",
+        "type": "u32"
+      },
+      {
+        "name": "b",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Enqueues asynchronous VRAM rectangle fill command using specified 24-bit RGB color."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80013b8c",
+    "ghidra_name": "FUN_80013b8c",
+    "name": "kf_end_load_image",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "rect",
+        "type": "void *"
+      },
+      {
+        "name": "pix_data",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Enqueues asynchronous CPU-to-VRAM pixel DMA upload for specified VRAM rectangle."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80013bc8",
+    "ghidra_name": "FUN_80013bc8",
+    "name": "kf_end_store_image",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "rect",
+        "type": "void *"
+      },
+      {
+        "name": "pix_out",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Enqueues asynchronous VRAM-to-CPU pixel DMA readback for specified VRAM rectangle."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80013c04",
+    "ghidra_name": "FUN_80013c04",
+    "name": "kf_end_move_image",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "src_rect",
+        "type": "void *"
+      },
+      {
+        "name": "dst_x",
+        "type": "u32"
+      },
+      {
+        "name": "dst_y",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Constructs GP0(80h) VRAM-to-VRAM copy primitive and submits it to GPU command queue."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80013c70",
+    "ghidra_name": "FUN_80013c70",
+    "name": "kf_end_clear_otag",
+    "return_type": "u32 *",
+    "params": [
+      {
+        "name": "ot",
+        "type": "u32 *"
+      },
+      {
+        "name": "count",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Initializes forward-linked ordering table array with end-of-table terminator."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80013ccc",
+    "ghidra_name": "FUN_80013ccc",
+    "name": "kf_end_clear_otag_r",
+    "return_type": "u32 *",
+    "params": [
+      {
+        "name": "ot",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Dispatches reverse ordering table clear through GPU hardware vtable slot +0x2c."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80013cfc",
+    "ghidra_name": "FUN_80013cfc",
+    "name": "kf_end_draw_prim",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "prim",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Validates primitive when debug enabled, waits for GPU idle, and writes packet words via PIO."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80013d80",
+    "ghidra_name": "FUN_80013d80",
+    "name": "kf_end_draw_otag",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ot_head",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 6,
+    "summary": "Enqueues ordering table DMA chain for GPU execution or falls back to CPU trace in debug level 2."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80013dd8",
+    "ghidra_name": "FUN_80013dd8",
+    "name": "kf_end_put_draw_env",
+    "return_type": "u32 *",
+    "params": [
+      {
+        "name": "draw_env",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "Builds GP0 draw-environment packet inside DRAWENV, submits it to GPU queue, and caches active state."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80013ef8",
+    "ghidra_name": "FUN_80013ef8",
+    "name": "kf_end_put_disp_env",
+    "return_type": "u16 *",
+    "params": [
+      {
+        "name": "disp_env",
+        "type": "u16 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Applies DISPENV display area, screen range, interlace, and 24-bit flags to GPU GP1 registers."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800142d8",
+    "ghidra_name": "FUN_800142d8",
+    "name": "kf_end_set_draw_tex_window",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dr_mode",
+        "type": "s32"
+      },
+      {
+        "name": "tw_rect",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Packs GP0(E2h) texture window masking command from rectangle struct into draw mode buffer."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80014310",
+    "ghidra_name": "FUN_80014310",
+    "name": "kf_end_set_draw_area",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dr_area",
+        "type": "s32"
+      },
+      {
+        "name": "clip_rect",
+        "type": "s16 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Packs GP0(E3h/E4h) drawing clip rectangle top-left and bottom-right GPU commands."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80014380",
+    "ghidra_name": "FUN_80014380",
+    "name": "kf_end_set_draw_offset",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dr_offset",
+        "type": "s32"
+      },
+      {
+        "name": "offset_xy",
+        "type": "u16 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Packs GP0(E5h) 2D drawing X/Y origin offset GPU command."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800143e8",
+    "ghidra_name": "FUN_800143e8",
+    "name": "kf_end_set_draw_mode",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dr_mode",
+        "type": "s32"
+      },
+      {
+        "name": "dfe",
+        "type": "u32"
+      },
+      {
+        "name": "dtd",
+        "type": "u32"
+      },
+      {
+        "name": "tpage",
+        "type": "u32"
+      },
+      {
+        "name": "tw_rect",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Packs GP0(E1h) draw mode and GP0(E2h) texture window commands into DR_MODE packet."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001443c",
+    "ghidra_name": "FUN_8001443c",
+    "name": "kf_end_build_draw_env_packets",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dr_env_pkt",
+        "type": "s32"
+      },
+      {
+        "name": "draw_env",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Compiles DRAWENV clip, offset, texture page, texture window, and clear fill into GPU DMA packet."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800146e0",
+    "ghidra_name": "FUN_800146e0",
+    "name": "kf_end_pack_gpu_draw_mode_cmd",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "dfe",
+        "type": "s32"
+      },
+      {
+        "name": "dtd",
+        "type": "s32"
+      },
+      {
+        "name": "tpage",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Encodes GP0(E1h) draw-mode control word with dither, display-area draw, and GPU-version tpage bits."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80014730",
+    "ghidra_name": "FUN_80014730",
+    "name": "kf_end_pack_gpu_clip_tl_cmd",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "x",
+        "type": "s16"
+      },
+      {
+        "name": "y",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Clamps coordinates to VRAM bounds and encodes GP0(E3h) drawing area top-left command."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80014800",
+    "ghidra_name": "FUN_80014800",
+    "name": "kf_end_pack_gpu_clip_br_cmd",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "x",
+        "type": "s16"
+      },
+      {
+        "name": "y",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Clamps coordinates to VRAM bounds and encodes GP0(E4h) drawing area bottom-right command."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800148d0",
+    "ghidra_name": "FUN_800148d0",
+    "name": "kf_end_pack_gpu_offset_cmd",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "x",
+        "type": "u32"
+      },
+      {
+        "name": "y",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Encodes signed X/Y screen drawing offset into GP0(E5h) GPU command word."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001490c",
+    "ghidra_name": "FUN_8001490c",
+    "name": "kf_end_pack_gpu_tex_window_cmd",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "tw_bytes",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Encodes 8-pixel-step texture window mask and offset fields into GP0(E2h) GPU command."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80014990",
+    "ghidra_name": "FUN_80014990",
+    "name": "kf_end_calc_disp_vram_x",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "disp_env",
+        "type": "s16 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Computes VRAM display start X coordinate accounting for GPU type and horizontal reverse flag."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80014a80",
+    "ghidra_name": "FUN_80014a80",
+    "name": "kf_end_dma_clear_otag",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "ot",
+        "type": "s32"
+      },
+      {
+        "name": "count",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Launches PlayStation DMA Channel 6 (OTC) reverse linked-list clear with timeout check."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80014b68",
+    "ghidra_name": "FUN_80014b68",
+    "name": "kf_end_cb_clear_image_vram",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "rect_words",
+        "type": "u32 *"
+      },
+      {
+        "name": "rgb24",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "GPU queue callback submitting GP0(02h) fast VRAM rectangle fill or clipped fallback quad."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80014db0",
+    "ghidra_name": "FUN_80014db0",
+    "name": "kf_end_cb_load_image_vram",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "rect_ptr",
+        "type": "s32"
+      },
+      {
+        "name": "pix_src",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "GPU queue callback initiating DMA Channel 2 upload of rectangular texture pixels into VRAM."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015060",
+    "ghidra_name": "FUN_80015060",
+    "name": "kf_end_cb_store_image_vram",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "rect_ptr",
+        "type": "s32"
+      },
+      {
+        "name": "pix_dst",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "GPU queue callback initiating DMA Channel 2 readback of rectangular VRAM pixels into RAM."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001532c",
+    "ghidra_name": "FUN_8001532c",
+    "name": "kf_end_gpu_write_gp1_cached",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "gp1_cmd",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Writes GP1 control command register to GPU hardware."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015364",
+    "ghidra_name": "FUN_80015364",
+    "name": "kf_end_gpu_read_gp1_cached",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "reg_idx",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Reads cached GPU display configuration shadow word tagged with register index."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015384",
+    "ghidra_name": "FUN_80015384",
+    "name": "kf_end_gpu_pio_write_prim_words",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "words",
+        "type": "u32 *"
+      },
+      {
+        "name": "word_count",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Switches GPU to CPU-in mode (GP1 04h) and streams primitive words directly to GP0 FIFO."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800153d0",
+    "ghidra_name": "FUN_800153d0",
+    "name": "kf_end_gpu_dma_send_otag",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ot_addr",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Switches GPU to DMA-out mode and starts DMA Channel 2 linked-list transfer of ordering table."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015420",
+    "ghidra_name": "FUN_80015420",
+    "name": "kf_end_gpu_read_gp0_info",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "info_idx",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Queries GP1(10h) GPU internal information register and returns masked 24-bit result."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015454",
+    "ghidra_name": "FUN_80015454",
+    "name": "kf_end_gpu_queue_add_prim",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      },
+      {
+        "name": "arg0",
+        "type": "void *"
+      },
+      {
+        "name": "arg2",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Enqueues zero-copy GPU command entry with no inline payload copy."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015478",
+    "ghidra_name": "FUN_80015478",
+    "name": "kf_end_gpu_queue_enqueue",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      },
+      {
+        "name": "arg0",
+        "type": "void *"
+      },
+      {
+        "name": "copy_bytes",
+        "type": "s32"
+      },
+      {
+        "name": "arg2",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 3,
+    "summary": "Inserts command entry into 64-slot GPU ring queue, flushing head when queue is nearly full."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015664",
+    "ghidra_name": "FUN_80015664",
+    "name": "kf_end_gpu_queue_flush_next",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "GPU IRQ callback draining ready ring-queue items and executing next queued DMA/VRAM operation."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001593c",
+    "ghidra_name": "FUN_8001593c",
+    "name": "kf_end_gpu_reset_hw_and_queue",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "reset_mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Clears 64-slot GPU command queue and issues hardware/DMA reset sequence on GPU."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015a8c",
+    "ghidra_name": "FUN_80015a8c",
+    "name": "kf_end_gpu_draw_sync",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 3,
+    "summary": "Polls until GPU command ring, DMA CH2, and GPU busy flags all drain or return non-blocking depth."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015c10",
+    "ghidra_name": "FUN_80015c10",
+    "name": "kf_end_gpu_reset_timeout",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Sets GPU watchdog deadline to current VSync counter plus 240 frames."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015c30",
+    "ghidra_name": "FUN_80015c30",
+    "name": "kf_end_gpu_check_timeout",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Checks GPU watchdog deadline; prints queue/DMA state and resets GPU hardware on timeout."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015ccc",
+    "ghidra_name": "FUN_80015ccc",
+    "name": "kf_end_gpu_memcpy_bytes",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dst",
+        "type": "u8 *"
+      },
+      {
+        "name": "src",
+        "type": "u8 *"
+      },
+      {
+        "name": "len",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Local byte-copy helper compiled inside libgpu queue object."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015cfc",
+    "ghidra_name": "FUN_80015cfc",
+    "name": "kf_end_gpu_memset_bytes",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dst",
+        "type": "u8 *"
+      },
+      {
+        "name": "val",
+        "type": "u8"
+      },
+      {
+        "name": "len",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Local byte-fill helper compiled inside libgpu queue object."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015d34",
+    "ghidra_name": "FUN_80015d34",
+    "name": "kf_end_load_tpage",
+    "return_type": "u16",
+    "params": [
+      {
+        "name": "pix",
+        "type": "void *"
+      },
+      {
+        "name": "tp",
+        "type": "s32"
+      },
+      {
+        "name": "abr",
+        "type": "u32"
+      },
+      {
+        "name": "x",
+        "type": "u32"
+      },
+      {
+        "name": "y",
+        "type": "u32"
+      },
+      {
+        "name": "w",
+        "type": "s32"
+      },
+      {
+        "name": "h",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "Uploads texture image to VRAM according to pixel bit-depth and returns encoded tpage ID."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015e1c",
+    "ghidra_name": "FUN_80015e1c",
+    "name": "kf_end_load_clut",
+    "return_type": "u16",
+    "params": [
+      {
+        "name": "clut_pix",
+        "type": "void *"
+      },
+      {
+        "name": "x",
+        "type": "u32"
+      },
+      {
+        "name": "y",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "Uploads 256-entry CLUT row to VRAM at (x, y) and returns encoded 16-bit CLUT handle."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015e80",
+    "ghidra_name": "FUN_80015e80",
+    "name": "kf_end_set_def_draw_env",
+    "return_type": "u16 *",
+    "params": [
+      {
+        "name": "draw_env",
+        "type": "u16 *"
+      },
+      {
+        "name": "x",
+        "type": "u16"
+      },
+      {
+        "name": "y",
+        "type": "u16"
+      },
+      {
+        "name": "w",
+        "type": "u16"
+      },
+      {
+        "name": "h",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Populates DRAWENV structure defaults for target VRAM framebuffer region."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015f0c",
+    "ghidra_name": "FUN_80015f0c",
+    "name": "kf_end_set_def_disp_env",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "disp_env",
+        "type": "u16 *"
+      },
+      {
+        "name": "x",
+        "type": "u16"
+      },
+      {
+        "name": "y",
+        "type": "u16"
+      },
+      {
+        "name": "w",
+        "type": "u16"
+      },
+      {
+        "name": "h",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Populates DISPENV structure defaults for target VRAM scanout region."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015f48",
+    "ghidra_name": "FUN_80015f48",
+    "name": "kf_end_get_tpage",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "tp",
+        "type": "u32"
+      },
+      {
+        "name": "abr",
+        "type": "u32"
+      },
+      {
+        "name": "x",
+        "type": "u32"
+      },
+      {
+        "name": "y",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Encodes texture bit-depth, semi-transparency mode, and VRAM page X/Y into 16-bit tpage ID."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015fdc",
+    "ghidra_name": "FUN_80015fdc",
+    "name": "kf_end_get_clut",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "x",
+        "type": "s32"
+      },
+      {
+        "name": "y",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Encodes VRAM palette X/Y coordinates into 16-bit GPU CLUT attribute word."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80015ff4",
+    "ghidra_name": "FUN_80015ff4",
+    "name": "kf_end_dump_tpage",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "tpage",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Prints decoded texture page bit-depth, blend mode, and VRAM coordinates via printf."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80016084",
+    "ghidra_name": "FUN_80016084",
+    "name": "kf_end_dump_clut",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "clut",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Prints decoded CLUT VRAM X/Y coordinates via printf."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001641c",
+    "ghidra_name": "FUN_8001641c",
+    "name": "kf_end_dump_draw_env",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "draw_env",
+        "type": "s16 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Prints DRAWENV clip, offset, texture window, dither/draw flags, and tpage settings."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80016560",
+    "ghidra_name": "FUN_80016560",
+    "name": "kf_end_dump_disp_env",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "disp_env",
+        "type": "s16 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Prints DISPENV VRAM source rect, CRT screen rect, interlace, and RGB24 flags."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80016610",
+    "ghidra_name": "FUN_80016610",
+    "name": "kf_end_get_prim_type_name",
+    "return_type": "u8 *",
+    "params": [
+      {
+        "name": "prim_code",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Looks up human-readable GPU primitive mnemonic string from command opcode byte."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001667c",
+    "ghidra_name": "FUN_8001667c",
+    "name": "kf_end_get_prim_type_len",
+    "return_type": "u8",
+    "params": [
+      {
+        "name": "prim_code",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Looks up expected GPU primitive payload word length from command opcode byte."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800166d8",
+    "ghidra_name": "FUN_800166d8",
+    "name": "kf_end_cpu_draw_otag",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ot",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "Debug fallback traversing ordering table linked list and submitting each primitive via DrawPrim."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80016780",
+    "ghidra_name": "FUN_80016780",
+    "name": "kf_end_dump_otag",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ot",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Walks ordering table linked list and logs primitive addresses, types, and errors."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800168c8",
+    "ghidra_name": "FUN_800168c8",
+    "name": "kf_end_check_prim_valid",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "caller_name",
+        "type": "char *"
+      },
+      {
+        "name": "prim_addr",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Validates GPU primitive packet length matches opcode byte; logs diagnostic on mismatch."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80016aa0",
+    "ghidra_name": "FUN_80016aa0",
+    "name": "kf_end_set_geom_offset",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ofx",
+        "type": "s32"
+      },
+      {
+        "name": "ofy",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Writes 16.16 fixed-point screen center projection offsets into GTE OFX and OFY registers."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80016ab8",
+    "ghidra_name": "FUN_80016ab8",
+    "name": "kf_end_set_geom_screen",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "h_dist",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Writes projection plane distance H into GTE H register."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80016bfc",
+    "ghidra_name": "FUN_80016bfc",
+    "name": "kf_end_init_geom",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Enables COP2 in CPU Status register and initializes default GTE projection and fog constants."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001735c",
+    "ghidra_name": "FUN_8001735c",
+    "name": "kf_end_cd_init",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 6,
+    "summary": "Retries CD-ROM hardware reset up to 5 times and installs default BIOS event delivery callbacks."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800173e8",
+    "ghidra_name": "FUN_800173e8",
+    "name": "kf_end_cd_init_and_patch",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 6,
+    "summary": "Patches PlayStation BIOS CD tables, resets CD-ROM drive, and hooks default sync/ready/data callbacks."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80017460",
+    "ghidra_name": "FUN_80017460",
+    "name": "kf_end_cd_default_sync_event_cb",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Default CdSyncCallback delivering PS1 BIOS event 0xf0000003 class 0x20."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80017488",
+    "ghidra_name": "FUN_80017488",
+    "name": "kf_end_cd_default_ready_event_cb",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Default CdReadyCallback delivering PS1 BIOS event 0xf0000003 class 0x40."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800174b0",
+    "ghidra_name": "FUN_800174b0",
+    "name": "kf_end_cd_default_data_event_cb",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Default CdDataCallback delivering PS1 BIOS event 0xf0000003 class 0x40."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800174e8",
+    "ghidra_name": "FUN_800174e8",
+    "name": "kf_end_cd_reset_wrapper",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 6,
+    "summary": "Top-level CdReset wrapper forwarding reset mode into cd_hw_init."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80017508",
+    "ghidra_name": "FUN_80017508",
+    "name": "kf_end_cd_sync",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      },
+      {
+        "name": "result",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Waits or polls CD command completion status and copies 8-byte CD response buffer."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80017528",
+    "ghidra_name": "FUN_80017528",
+    "name": "kf_end_cd_ready",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      },
+      {
+        "name": "result",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Waits or polls CD sector data-ready interrupt status and copies 8-byte response buffer."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80017548",
+    "ghidra_name": "FUN_80017548",
+    "name": "kf_end_cd_data_sync",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Waits or polls remaining CD DMA sector transfer count until zero or timeout."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800175f0",
+    "ghidra_name": "FUN_800175f0",
+    "name": "kf_end_cd_sync_callback",
+    "return_type": "void *",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Installs user CdSyncCallback function pointer and returns previous handler."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80017608",
+    "ghidra_name": "FUN_80017608",
+    "name": "kf_end_cd_ready_callback",
+    "return_type": "void *",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Installs user CdReadyCallback function pointer and returns previous handler."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80017620",
+    "ghidra_name": "FUN_80017620",
+    "name": "kf_end_cd_data_callback",
+    "return_type": "void *",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Installs user CdDataCallback function pointer and returns previous handler."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80017638",
+    "ghidra_name": "FUN_80017638",
+    "name": "kf_end_cd_control_exec",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "cmd",
+        "type": "u8"
+      },
+      {
+        "name": "param",
+        "type": "void *"
+      },
+      {
+        "name": "result",
+        "type": "u8 *"
+      },
+      {
+        "name": "nowait",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Retries issuing CD-ROM command with temporary callback suspension until ack or retry exhaustion."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80017758",
+    "ghidra_name": "FUN_80017758",
+    "name": "kf_end_cd_control",
+    "return_type": "bool",
+    "params": [
+      {
+        "name": "cmd",
+        "type": "u8"
+      },
+      {
+        "name": "param",
+        "type": "void *"
+      },
+      {
+        "name": "result",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "Sends blocking/ack-waited CD-ROM control command and returns non-zero on success."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001777c",
+    "ghidra_name": "FUN_8001777c",
+    "name": "kf_end_cd_control_f",
+    "return_type": "bool",
+    "params": [
+      {
+        "name": "cmd",
+        "type": "u8"
+      },
+      {
+        "name": "param",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "Issues non-blocking fast CD-ROM control command without waiting for completion ack."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800177a4",
+    "ghidra_name": "FUN_800177a4",
+    "name": "kf_end_cd_control_b",
+    "return_type": "bool",
+    "params": [
+      {
+        "name": "cmd",
+        "type": "u8"
+      },
+      {
+        "name": "param",
+        "type": "void *"
+      },
+      {
+        "name": "result",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "Issues CD-ROM control command and blocks in CdSync(0) until CdlComplete."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80017810",
+    "ghidra_name": "FUN_80017810",
+    "name": "kf_end_cd_read",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "sectors",
+        "type": "s32"
+      },
+      {
+        "name": "buf",
+        "type": "void *"
+      },
+      {
+        "name": "mode",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "Configures CD sector mode/stride (0x800/0x924/0x918 bytes) and starts sector DMA read loop."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800178e4",
+    "ghidra_name": "FUN_800178e4",
+    "name": "kf_end_cd_flush",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "Flushes pending CD-ROM command state via CdlInit/reset FIFO command."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80017904",
+    "ghidra_name": "FUN_80017904",
+    "name": "kf_end_cd_read2",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "mode",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 6,
+    "summary": "Sets CD-ROM mode, hooks streaming ring callbacks when stream bit 0x100 set, and starts CdlReadS."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80017974",
+    "ghidra_name": "FUN_80017974",
+    "name": "kf_end_cd_int_to_pos",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "lba",
+        "type": "s32"
+      },
+      {
+        "name": "pos_bcd",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Converts linear sector LBA index (+150 pregap) to BCD minute/second/sector CdlLOC struct."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80017b48",
+    "ghidra_name": "FUN_80017b48",
+    "name": "kf_end_cd_memcpy8",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dst",
+        "type": "u8 *"
+      },
+      {
+        "name": "src",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Copies 8-byte CD-ROM status response payload when destination pointer is non-null."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80017b78",
+    "ghidra_name": "FUN_80017b78",
+    "name": "kf_end_cd_reset_timeout",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Sets CD-ROM watchdog deadline to current VSync counter plus 480 frames."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80017b98",
+    "ghidra_name": "FUN_80017b98",
+    "name": "kf_end_cd_check_timeout",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Checks CD-ROM watchdog deadline and prints Sync/Ready diagnostics on timeout."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80017c30",
+    "ghidra_name": "FUN_80017c30",
+    "name": "kf_end_cd_poll_irq_in_loop",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Polls CD interrupt status when CheckCallback reports software callback mode active."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80017d0c",
+    "ghidra_name": "FUN_80017d0c",
+    "name": "kf_end_cd_intr_dispatch",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Drains pending CDROM interrupts and invokes registered CdReadyCallback and CdSyncCallback."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80017dd4",
+    "ghidra_name": "FUN_80017dd4",
+    "name": "kf_end_cd_intr_handler",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Reads CDROM REG3/FIFO response bytes, classifies INT1..INT5 status, and updates sync/ready states."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80018198",
+    "ghidra_name": "FUN_80018198",
+    "name": "kf_end_cd_wait_sync",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "non_blocking",
+        "type": "s32"
+      },
+      {
+        "name": "result",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 3,
+    "summary": "Waits for CdlComplete/CdlDiskError or returns 0 immediately in non-blocking mode."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80018248",
+    "ghidra_name": "FUN_80018248",
+    "name": "kf_end_cd_wait_ready",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "non_blocking",
+        "type": "s32"
+      },
+      {
+        "name": "result",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 3,
+    "summary": "Waits for CD data-ready status or clears and returns immediately in non-blocking mode."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800182d4",
+    "ghidra_name": "FUN_800182d4",
+    "name": "kf_end_cd_send_hw_cmd",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "cmd",
+        "type": "u8"
+      },
+      {
+        "name": "param",
+        "type": "u8 *"
+      },
+      {
+        "name": "result",
+        "type": "void *"
+      },
+      {
+        "name": "nowait",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 3,
+    "summary": "Writes command parameters to CDROM FIFO, triggers controller opcode, and optionally awaits INT2."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80018560",
+    "ghidra_name": "FUN_80018560",
+    "name": "kf_end_cd_reset_fifo_and_mute",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "params",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Waits for CD sync idle and sends CD-ROM hardware register 3 control flags 0x20."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80018610",
+    "ghidra_name": "FUN_80018610",
+    "name": "kf_end_cd_hw_init",
+    "return_type": "s32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "Initializes CD-ROM IRQ/SPU CD volume registers, resets drive, and configures CdlNop/Setmode."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80018710",
+    "ghidra_name": "FUN_80018710",
+    "name": "kf_end_cd_start_sector_dma",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "dest_addr",
+        "type": "u32"
+      },
+      {
+        "name": "sector_count",
+        "type": "s32"
+      },
+      {
+        "name": "words_per_sector",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Arms CdReadyCallback chain and launches first CD sector DMA read."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80018834",
+    "ghidra_name": "FUN_80018834",
+    "name": "kf_end_cd_data_sync_wait",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "non_blocking",
+        "type": "s32"
+      },
+      {
+        "name": "result",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Spins until remaining sector count drains or disk error/timeout occurs."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800188f0",
+    "ghidra_name": "FUN_800188f0",
+    "name": "kf_end_cd_sector_ready_cb",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "intr_status",
+        "type": "s32"
+      },
+      {
+        "name": "result",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "CdReady ISR callback triggering sequential sector DMA reads and final CdDataCallback."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80018a0c",
+    "ghidra_name": "FUN_80018a0c",
+    "name": "kf_end_cd_dma_read_sector",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "dest_addr",
+        "type": "u32"
+      },
+      {
+        "name": "words_per_sector",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Programs CDROM_DELAY and DMA Channel 3 to transfer one sector from CD FIFO into RAM."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80018b50",
+    "ghidra_name": "FUN_80018b50",
+    "name": "kf_end_st_set_ring",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ring_buf",
+        "type": "void *"
+      },
+      {
+        "name": "ring_sectors",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Binds STR streaming ring buffer base address and sector count, clearing all slot headers."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80018bb0",
+    "ghidra_name": "FUN_80018bb0",
+    "name": "kf_end_st_clear_ring",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Resets active STR ring read/write indices and zeroes all ring sector status entries."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80018bf8",
+    "ghidra_name": "FUN_80018bf8",
+    "name": "kf_end_st_unset_ring",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Detaches CD DMA and Ready streaming callbacks inside a critical section."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80018c30",
+    "ghidra_name": "FUN_80018c30",
+    "name": "kf_end_st_dma_complete_cb",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "CD DMA completion callback finalizing completed STR ring slots and invoking user decode notify."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80018c98",
+    "ghidra_name": "FUN_80018c98",
+    "name": "kf_end_st_set_stream",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "mode_flag",
+        "type": "u32"
+      },
+      {
+        "name": "start_frame",
+        "type": "u32"
+      },
+      {
+        "name": "end_frame",
+        "type": "u32"
+      },
+      {
+        "name": "dma_done_cb",
+        "type": "void *"
+      },
+      {
+        "name": "sector_done_cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Configures live CD STR stream filtering, frame bounds, and ring completion callbacks."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80018cfc",
+    "ghidra_name": "FUN_80018cfc",
+    "name": "kf_end_st_set_emulate",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ram_stream_addr",
+        "type": "u32"
+      },
+      {
+        "name": "start_frame",
+        "type": "u32"
+      },
+      {
+        "name": "end_frame",
+        "type": "u32"
+      },
+      {
+        "name": "unused",
+        "type": "u32"
+      },
+      {
+        "name": "dma_done_cb",
+        "type": "void *"
+      },
+      {
+        "name": "sector_done_cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Configures RAM-emulated STR stream playback source and completion callbacks."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80018d6c",
+    "ghidra_name": "FUN_80018d6c",
+    "name": "kf_end_st_free_ring",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "frame_addr",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Marks all CD ring slots occupied by a decoded STR frame as free for overwrite."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80018e38",
+    "ghidra_name": "FUN_80018e38",
+    "name": "kf_end_st_reset_ring_slots",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "start_idx",
+        "type": "s32"
+      },
+      {
+        "name": "slot_count",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Clears status headers for consecutive STR ring slots."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80018e74",
+    "ghidra_name": "FUN_80018e74",
+    "name": "kf_end_st_get_next",
+    "return_type": "bool",
+    "params": [
+      {
+        "name": "frame_addr_out",
+        "type": "s32 *"
+      },
+      {
+        "name": "frame_header_out",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Returns pointer and metadata header for next completely assembled STR frame in CD ring."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80018f28",
+    "ghidra_name": "FUN_80018f28",
+    "name": "kf_end_st_set_mask",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "enable",
+        "type": "u32"
+      },
+      {
+        "name": "start_frame",
+        "type": "u32"
+      },
+      {
+        "name": "end_frame",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Sets STR stream frame mask flag and frame range limits."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80018f48",
+    "ghidra_name": "FUN_80018f48",
+    "name": "kf_end_st_ring_sector_intr",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "CD Ready interrupt handler validating 0x0160 STR chunks and DMA-assembling multi-sector frames."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800198fc",
+    "ghidra_name": "FUN_800198fc",
+    "name": "kf_end_dma_start_channel",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ch",
+        "type": "u32"
+      },
+      {
+        "name": "madr",
+        "type": "u32"
+      },
+      {
+        "name": "bcr",
+        "type": "u32"
+      },
+      {
+        "name": "chcr",
+        "type": "u32"
+      },
+      {
+        "name": "dpcr_mask",
+        "type": "u32"
+      },
+      {
+        "name": "use_dicr",
+        "type": "s32"
+      },
+      {
+        "name": "dicr_flag",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Low-level PS1 DMA channel launcher checking channel busy status and arming DPCR/DICR."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80019a88",
+    "ghidra_name": "FUN_80019a88",
+    "name": "kf_end_cd_copy_dwords",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dst",
+        "type": "u32 *"
+      },
+      {
+        "name": "src",
+        "type": "u32 *"
+      },
+      {
+        "name": "word_count",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Copies 32-bit words between buffers for RAM-emulated STR ring reads."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80019adc",
+    "ghidra_name": "FUN_80019adc",
+    "name": "kf_end_enter_critical_section",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Invokes PS1 BIOS EnterCriticalSection syscall(0) wrapper to mask interrupts."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80019af4",
+    "ghidra_name": "FUN_80019af4",
+    "name": "kf_end_cd_install_bios_hooks",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Patches BIOS A(0) function vectors at 0xa00003e0..0x48c with libcd helper wrappers."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80019b74",
+    "ghidra_name": "FUN_80019b74",
+    "name": "kf_end_cd_bios_seek_l",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cdl_loc",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 6,
+    "summary": "BIOS CD hook issuing blocking CdlSeekL (0x15) command."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80019b9c",
+    "ghidra_name": "FUN_80019b9c",
+    "name": "kf_end_cd_bios_pause",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 6,
+    "summary": "BIOS CD hook issuing blocking CdlPause (0x08) command."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80019bc4",
+    "ghidra_name": "FUN_80019bc4",
+    "name": "kf_end_cd_bios_nop",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "result",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 6,
+    "summary": "BIOS CD hook issuing blocking CdlNop (0x01) status query."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80019c00",
+    "ghidra_name": "FUN_80019c00",
+    "name": "kf_end_cd_bios_read_sync",
+    "return_type": "bool",
+    "params": [],
+    "domain": "module_end",
+    "wave": 6,
+    "summary": "BIOS CD hook initiating single-sector read and polling CdDataSync until idle."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80019c34",
+    "ghidra_name": "FUN_80019c34",
+    "name": "kf_end_cd_bios_call_a0",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Dispatches PlayStation BIOS A(0) table syscall vector."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80019c44",
+    "ghidra_name": "FUN_80019c44",
+    "name": "kf_end_cd_search_file",
+    "return_type": "u32 *",
+    "params": [
+      {
+        "name": "file_out",
+        "type": "u32 *"
+      },
+      {
+        "name": "path",
+        "type": "char *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 8,
+    "summary": "Resolves ISO9660 backslash path on disc and populates CdlFILE location and byte size."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80019f28",
+    "ghidra_name": "FUN_80019f28",
+    "name": "kf_end_cd_cmp_filename12",
+    "return_type": "bool",
+    "params": [
+      {
+        "name": "a",
+        "type": "char *"
+      },
+      {
+        "name": "b",
+        "type": "char *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Compares 12-character uppercase 8.3 ISO9660 directory entry filenames."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80019f48",
+    "ghidra_name": "FUN_80019f48",
+    "name": "kf_end_cd_new_media",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 7,
+    "summary": "Reads ISO9660 Primary Volume Descriptor, verifies CD001 signature, and caches path table."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a250",
+    "ghidra_name": "FUN_8001a250",
+    "name": "kf_end_cd_find_dir_in_path_table",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "parent_dir_id",
+        "type": "s32"
+      },
+      {
+        "name": "dir_name",
+        "type": "char *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Scans cached ISO9660 path table entries matching parent directory ID and directory name."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a308",
+    "ghidra_name": "FUN_8001a308",
+    "name": "kf_end_cd_cache_dir_files",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "dir_id",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 7,
+    "summary": "Reads ISO9660 directory extent sector and caches filenames, BCD locations, and byte sizes."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a5d8",
+    "ghidra_name": "FUN_8001a5d8",
+    "name": "kf_end_cd_memcpy_bytes",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dst",
+        "type": "u8 *"
+      },
+      {
+        "name": "src",
+        "type": "u8 *"
+      },
+      {
+        "name": "len",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Local byte-copy helper compiled inside libcd ISO9660 filesystem unit."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a608",
+    "ghidra_name": "FUN_8001a608",
+    "name": "kf_end_cd_read_sectors_sync",
+    "return_type": "bool",
+    "params": [
+      {
+        "name": "sectors",
+        "type": "s32"
+      },
+      {
+        "name": "lba",
+        "type": "s32"
+      },
+      {
+        "name": "dst_buf",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 6,
+    "summary": "Seeks to LBA sector via CdlSetloc and synchronously reads ISO9660 metadata sectors."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a698",
+    "ghidra_name": "FUN_8001a698",
+    "name": "kf_end_set_dma_mdec_in_callback",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Registers DMA Channel 0 (MDEC input) completion callback via DMACallback."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a6bc",
+    "ghidra_name": "FUN_8001a6bc",
+    "name": "kf_end_set_dma_mdec_out_callback",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Registers DMA Channel 1 (MDEC output) completion callback via DMACallback."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a6e0",
+    "ghidra_name": "FUN_8001a6e0",
+    "name": "kf_end_set_dma_cdrom_callback",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Registers DMA Channel 3 (CD-ROM) completion callback via DMACallback."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a704",
+    "ghidra_name": "FUN_8001a704",
+    "name": "kf_end_set_dma_spu_callback",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Registers DMA Channel 4 (SPU) completion callback via DMACallback."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a728",
+    "ghidra_name": "FUN_8001a728",
+    "name": "kf_end_set_dma_pio_callback",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Registers DMA Channel 5 (PIO) completion callback via DMACallback."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a74c",
+    "ghidra_name": "FUN_8001a74c",
+    "name": "kf_end_set_gpu_irq_callback",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Registers GPU IRQ slot 2 interrupt handler via InterruptCallback."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a770",
+    "ghidra_name": "FUN_8001a770",
+    "name": "kf_end_set_spu_irq_callback",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Registers SPU IRQ slot 9 interrupt handler via InterruptCallback."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a794",
+    "ghidra_name": "FUN_8001a794",
+    "name": "kf_end_set_sio_irq_callback",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Registers SIO/Controller IRQ slot 10 interrupt handler via InterruptCallback."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a7b8",
+    "ghidra_name": "FUN_8001a7b8",
+    "name": "kf_end_start_vsync_irq",
+    "return_type": "void *",
+    "params": [],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Configures HBlank timer, enables VSync IRQ 0 handler, and returns VSyncCallback setter pointer."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a834",
+    "ghidra_name": "FUN_8001a834",
+    "name": "kf_end_stop_vsync_irq",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Detaches VSync IRQ 0 handler and clears active VSync callback state."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a894",
+    "ghidra_name": "FUN_8001a894",
+    "name": "kf_end_invoke_vsync_callback",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Invokes registered user VSync interrupt callback function pointer if non-null."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a8b8",
+    "ghidra_name": "FUN_8001a8b8",
+    "name": "kf_end_vsync_callback_impl",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "cb",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 3,
+    "summary": "Stores new VSync user callback pointer (starting VSync IRQ if needed) and returns previous pointer."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a938",
+    "ghidra_name": "FUN_8001a938",
+    "name": "kf_end_pad_init",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "mode",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "Resets callback subsystem and initializes BIOS controller pad polling via PAD_init2."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a990",
+    "ghidra_name": "FUN_8001a990",
+    "name": "kf_end_pad_read",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "port_mask",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Polls PlayStation BIOS PAD_dr and returns inverted bitmask of pressed controller buttons."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001a9b8",
+    "ghidra_name": "FUN_8001a9b8",
+    "name": "kf_end_pad_stop",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Stops PlayStation controller BIOS driver polling via StopPAD2."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001aa08",
+    "ghidra_name": "FUN_8001aa08",
+    "name": "kf_end_reset_callback",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Initializes libetc IRQ/DMA callback tables via internal ResetCallback handler."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001aa38",
+    "ghidra_name": "FUN_8001aa38",
+    "name": "kf_end_interrupt_callback",
+    "return_type": "void *",
+    "params": [
+      {
+        "name": "irq",
+        "type": "s32"
+      },
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Dispatches InterruptCallback registration into active callback dispatcher."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001aa68",
+    "ghidra_name": "FUN_8001aa68",
+    "name": "kf_end_dma_callback",
+    "return_type": "void *",
+    "params": [
+      {
+        "name": "dma_ch",
+        "type": "s32"
+      },
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Invokes active DMA callback registration vector from callback vtable."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001aa98",
+    "ghidra_name": "FUN_8001aa98",
+    "name": "kf_end_vsync_callback_entry",
+    "return_type": "void *",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Entry prelude jumping through VSync callback vtable vector for kf_end_vsync_callback."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001aaa0",
+    "ghidra_name": "FUN_8001aaa0",
+    "name": "kf_end_vsync_callback",
+    "return_type": "void *",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Invokes active VSync callback registration vector from callback vtable slot +0x14."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001aad0",
+    "ghidra_name": "FUN_8001aad0",
+    "name": "kf_end_stop_callback",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Invokes active StopCallback vector from callback vtable slot +0x10 to shut down IRQs."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001aaf8",
+    "ghidra_name": "FUN_8001aaf8",
+    "name": "kf_end_check_callback",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Returns active software interrupt callback state flag from libetc dispatcher."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001ab08",
+    "ghidra_name": "FUN_8001ab08",
+    "name": "kf_end_init_irq_dispatcher",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 3,
+    "summary": "Installs BIOS HookEntryInt interrupt dispatcher, initializes VSync/DMA chains, and clears I_MASK."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001ad28",
+    "ghidra_name": "FUN_8001ad28",
+    "name": "kf_end_register_irq_handler",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "irq",
+        "type": "u32"
+      },
+      {
+        "name": "cb",
+        "type": "s32"
+      },
+      {
+        "name": "unused2",
+        "type": "u32"
+      },
+      {
+        "name": "prev_out",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Binds or clears hardware interrupt callback handler for IRQ 0..10 and updates I_MASK."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001add4",
+    "ghidra_name": "FUN_8001add4",
+    "name": "kf_end_teardown_irq_dispatcher",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 3,
+    "summary": "Masks all hardware IRQs and tears down DMA and VSync callback dispatchers."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001aeb0",
+    "ghidra_name": "FUN_8001aeb0",
+    "name": "kf_end_init_dma_dispatcher",
+    "return_type": "u8 *",
+    "params": [],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Clears DMA callback array, hooks IRQ 3 DMA master handler, and returns DMA callback register fn."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001af14",
+    "ghidra_name": "FUN_8001af14",
+    "name": "kf_end_stop_dma_dispatcher",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Detaches IRQ 3 DMA master handler and clears DMA channel callbacks."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001af74",
+    "ghidra_name": "FUN_8001af74",
+    "name": "kf_end_dma_irq_dispatch",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Services DICR DMA channel completion flags and invokes per-channel callbacks."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001b154",
+    "ghidra_name": "FUN_8001b154",
+    "name": "kf_end_vsync",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Waits for N VSync frames or returns HBlank counter / elapsed VSync tick depending on mode."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001b258",
+    "ghidra_name": "FUN_8001b258",
+    "name": "kf_end_vsync_wait_target",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "target_tick",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Spins until global VSync tick counter reaches target value or logs VSync timeout."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001b2e0",
+    "ghidra_name": "FUN_8001b2e0",
+    "name": "kf_end_ss_init_internal",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "hot_start",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 7,
+    "summary": "Initializes SPU (cold or hot), clears 24 hardware voice states, and initializes libsnd runtime."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001b3f4",
+    "ghidra_name": "FUN_8001b3f4",
+    "name": "kf_end_ss_init",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 8,
+    "summary": "Cold-initializes PlayStation SPU and libsnd audio synthesizer."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001b414",
+    "ghidra_name": "FUN_8001b414",
+    "name": "kf_end_ss_init_hot",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 8,
+    "summary": "Warm-initializes libsnd audio synthesizer while preserving existing SPU RAM state."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001b434",
+    "ghidra_name": "FUN_8001b434",
+    "name": "kf_end_ss_set_table_size",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "table_buf",
+        "type": "s32"
+      },
+      {
+        "name": "max_seqs",
+        "type": "s16"
+      },
+      {
+        "name": "max_tracks",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Configures caller-supplied libsnd SEQ/SEP track state buffer and maximum concurrency counts."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001b698",
+    "ghidra_name": "FUN_8001b698",
+    "name": "kf_end_ss_timer_delay_spin",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Short hardware settle spin loop used during sound root-counter timer configuration."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001b6b4",
+    "ghidra_name": "FUN_8001b6b4",
+    "name": "kf_end_ss_start_tick_timer",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "force_timer",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Starts libsnd sequence tick driver using VSync callback or hardware root counter event."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001b94c",
+    "ghidra_name": "FUN_8001b94c",
+    "name": "kf_end_ss_start2",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Starts libsnd audio processing engine with timer mode override enabled."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001b96c",
+    "ghidra_name": "FUN_8001b96c",
+    "name": "kf_end_ss_start",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Starts libsnd audio processing engine using configured tick mode."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001b994",
+    "ghidra_name": "FUN_8001b994",
+    "name": "kf_end_ss_end",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Disables and closes libsnd root-counter event timer inside a critical section."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001b9f4",
+    "ghidra_name": "FUN_8001b9f4",
+    "name": "kf_end_ss_quit",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Shuts down underlying SPU driver state via SpuQuit."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001ba34",
+    "ghidra_name": "FUN_8001ba34",
+    "name": "kf_end_ss_set_rcnt",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "spec",
+        "type": "u32"
+      },
+      {
+        "name": "target",
+        "type": "u16"
+      },
+      {
+        "name": "mode",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Programs hardware root counter 0..2 target and mode control register."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001bb08",
+    "ghidra_name": "FUN_8001bb08",
+    "name": "kf_end_ss_start_rcnt",
+    "return_type": "bool",
+    "params": [
+      {
+        "name": "spec",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Unmasks hardware root counter IRQ bit in PS1 I_MASK register."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001bb70",
+    "ghidra_name": "FUN_8001bb70",
+    "name": "kf_end_ss_stop_rcnt",
+    "return_type": "bool",
+    "params": [
+      {
+        "name": "spec",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Stops specified hardware root counter channel."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001bbc4",
+    "ghidra_name": "FUN_8001bbc4",
+    "name": "kf_end_ss_set_mvol",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "vol_left",
+        "type": "s16"
+      },
+      {
+        "name": "vol_right",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Sets SPU master stereo output volume scaled from 0..127 libsnd range."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001bc1c",
+    "ghidra_name": "FUN_8001bc1c",
+    "name": "kf_end_ss_set_serial_vol",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "serial_ch",
+        "type": "s8"
+      },
+      {
+        "name": "vol_left",
+        "type": "s16"
+      },
+      {
+        "name": "vol_right",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Configures SPU CD-DA (channel 0) or External audio input stereo mix volume."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001bdd0",
+    "ghidra_name": "FUN_8001bdd0",
+    "name": "kf_end_ss_alloc_spu_voice",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "priority",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Finds free or lowest-priority SPU voice slot across 24 hardware channels."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001c028",
+    "ghidra_name": "FUN_8001c028",
+    "name": "kf_end_ss_voice_calc_seq_vol_pan_head",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "unused",
+        "type": "u32"
+      },
+      {
+        "name": "voice_vol",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "First half of SEQ voice stereo volume/pan calculation falling through into SPU mask apply tail."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001c16c",
+    "ghidra_name": "FUN_8001c16c",
+    "name": "kf_end_ss_voice_calc_seq_vol_pan_tail",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "unused",
+        "type": "u32"
+      },
+      {
+        "name": "pan_left",
+        "type": "s32"
+      },
+      {
+        "name": "pan_right",
+        "type": "u32"
+      },
+      {
+        "name": "voice_slot",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Continuation tail of SEQ voice pan attenuation writing SPU shadow volume and key-on masks."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001c458",
+    "ghidra_name": "FUN_8001c458",
+    "name": "kf_end_ss_voice_key_off_current",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Clears current libsnd voice state and flags its SPU hardware channel for key-off."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001c528",
+    "ghidra_name": "FUN_8001c528",
+    "name": "kf_end_ss_voice_find_program_tones",
+    "return_type": "u8",
+    "params": [
+      {
+        "name": "tone_idx_out",
+        "type": "u8 *"
+      },
+      {
+        "name": "note_out",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Finds all tones in current VAB program whose min/max note key range covers active note."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001c5d8",
+    "ghidra_name": "FUN_8001c5d8",
+    "name": "kf_end_ss_voice_load_tone_regs",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Populates SPU voice register shadow fields (ADSR, SPU start addr, pitch, loop) from tone."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001c808",
+    "ghidra_name": "FUN_8001c808",
+    "name": "kf_end_ss_voice_apply_note_vol_pan_head",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "First half of note volume/pan calculation writing SPU control mode and voice shadow volume."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001c90c",
+    "ghidra_name": "FUN_8001c90c",
+    "name": "kf_end_ss_voice_apply_note_vol_pan_tail",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "spu_ctrl",
+        "type": "u16"
+      },
+      {
+        "name": "pan_left",
+        "type": "s32"
+      },
+      {
+        "name": "unused",
+        "type": "u32"
+      },
+      {
+        "name": "pan_right",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Continuation tail applying voice noise-mode bits and updating libsnd key-on/off shadow masks."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001cba4",
+    "ghidra_name": "FUN_8001cba4",
+    "name": "kf_end_ss_voice_set_spu_vol",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u32"
+      },
+      {
+        "name": "vol_left",
+        "type": "u16"
+      },
+      {
+        "name": "vol_right",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Writes left/right volume directly into libsnd voice shadow registers and noise mask."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001cbf8",
+    "ghidra_name": "FUN_8001cbf8",
+    "name": "kf_end_ss_voice_trigger_noise",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u32"
+      },
+      {
+        "name": "unused1",
+        "type": "u32"
+      },
+      {
+        "name": "unused2",
+        "type": "u32"
+      },
+      {
+        "name": "noise_ch",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Marks voice channel active in noise mode and raises key-on bitmask."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001ccd4",
+    "ghidra_name": "FUN_8001ccd4",
+    "name": "kf_end_ss_voice_clear_state",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Marks specified libsnd voice slot inactive and clears noise bitmask registers."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001cd18",
+    "ghidra_name": "FUN_8001cd18",
+    "name": "kf_end_ss_calc_voice_pitch_default",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Calculates SPU 14-bit pitch register value from current note, base note, and fine tuning."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001cdd4",
+    "ghidra_name": "FUN_8001cdd4",
+    "name": "kf_end_ss_calc_voice_pitch",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "note",
+        "type": "s32"
+      },
+      {
+        "name": "fine_delta",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Calculates SPU pitch value for given MIDI note and fine detune offset."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001ced8",
+    "ghidra_name": "FUN_8001ced8",
+    "name": "kf_end_ss_voice_set_pitch_bend",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u32"
+      },
+      {
+        "name": "bend",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Updates SPU voice pitch register applying pitch-bend wheel sensitivity range."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001d0bc",
+    "ghidra_name": "FUN_8001d0bc",
+    "name": "kf_end_ss_voice_debug_hook_a_noop",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Empty three-arg debug telemetry hook inside libsnd voice allocator."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001d0c4",
+    "ghidra_name": "FUN_8001d0c4",
+    "name": "kf_end_ss_voice_debug_hook_b_noop",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Empty single-arg debug telemetry hook inside libsnd voice allocator."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001d0d4",
+    "ghidra_name": "FUN_8001d0d4",
+    "name": "kf_end_ss_voice_debug_hook_a",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "arg0",
+        "type": "s16"
+      },
+      {
+        "name": "arg1",
+        "type": "s16"
+      },
+      {
+        "name": "arg2",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Wrapper invoking ss_voice_debug_hook_a_noop with signed 16-bit parameters."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001d108",
+    "ghidra_name": "FUN_8001d108",
+    "name": "kf_end_ss_voice_debug_hook_b",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "arg0",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Wrapper invoking ss_voice_debug_hook_b_noop with signed 16-bit parameter."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001d12c",
+    "ghidra_name": "FUN_8001d12c",
+    "name": "kf_end_ss_init_sound_driver",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "voice_count",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Initializes SPU malloc pool, zeros 24 voice shadow structs, and flushes initial SPU registers."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001d438",
+    "ghidra_name": "FUN_8001d438",
+    "name": "kf_end_ss_ut_key_on_raw",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "pitch",
+        "type": "u16"
+      },
+      {
+        "name": "vol_l",
+        "type": "u16"
+      },
+      {
+        "name": "vol_r",
+        "type": "u16"
+      },
+      {
+        "name": "unused",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Allocates priority-255 SPU voice and applies raw volume and pitch register values."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001d4d0",
+    "ghidra_name": "FUN_8001d4d0",
+    "name": "kf_end_ss_ut_all_key_off",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Keys off every active hardware SPU voice slot tracked by libsnd."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001d55c",
+    "ghidra_name": "FUN_8001d55c",
+    "name": "kf_end_ss_ut_key_on_default",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "pitch",
+        "type": "u16"
+      },
+      {
+        "name": "vol_l",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Triggers raw voice with default stereo volume and pitch parameters."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001d588",
+    "ghidra_name": "FUN_8001d588",
+    "name": "kf_end_ss_seq_set_channel_pitch_bend",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "ch_id",
+        "type": "u16"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "bend",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Applies MIDI pitch bend delta across all active SPU voices matching sequence channel."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001d848",
+    "ghidra_name": "FUN_8001d848",
+    "name": "kf_end_ss_flush_spu_voice_regs",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Commits dirty SPU voice registers and triggers queued key-on/key-off hardware masks."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001db44",
+    "ghidra_name": "FUN_8001db44",
+    "name": "kf_end_ss_seq_note_on",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "ch_id",
+        "type": "u16"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "note",
+        "type": "u16"
+      },
+      {
+        "name": "vel",
+        "type": "s16"
+      },
+      {
+        "name": "pan",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Triggers sequence note-on across matching program tones or routes zero-velocity to note-off."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001df4c",
+    "ghidra_name": "FUN_8001df4c",
+    "name": "kf_end_ss_seq_note_off",
+    "return_type": "char",
+    "params": [
+      {
+        "name": "ch_id",
+        "type": "s16"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "note",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Releases active SPU voices matching sequence channel, VAB program, and MIDI note."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001e0a0",
+    "ghidra_name": "FUN_8001e0a0",
+    "name": "kf_end_ss_ut_key_on",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "note",
+        "type": "u16"
+      },
+      {
+        "name": "unused",
+        "type": "u32"
+      },
+      {
+        "name": "vol_l",
+        "type": "u16"
+      },
+      {
+        "name": "vol_r",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 3,
+    "summary": "Converts stereo volume into magnitude and pan, triggering SFX note on channel 0x20."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001e190",
+    "ghidra_name": "FUN_8001e190",
+    "name": "kf_end_ss_ut_key_off",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "note",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Stops SFX voices triggered on channel 0x20 matching VAB, program, and note."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001e1cc",
+    "ghidra_name": "FUN_8001e1cc",
+    "name": "kf_end_ss_set_channel_vol",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "ch_id",
+        "type": "u32"
+      },
+      {
+        "name": "vol_l",
+        "type": "s16"
+      },
+      {
+        "name": "vol_r",
+        "type": "s16"
+      },
+      {
+        "name": "recalc",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Updates stored stereo volume for SEQ/SFX channel and optionally updates live voice volumes."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001e388",
+    "ghidra_name": "FUN_8001e388",
+    "name": "kf_end_ss_get_channel_vol",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "ch_id",
+        "type": "u32"
+      },
+      {
+        "name": "vol_l_out",
+        "type": "u16 *"
+      },
+      {
+        "name": "vol_r_out",
+        "type": "u16 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Retrieves stored left/right volume values for specified SEQ/SFX channel ID."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001e4ac",
+    "ghidra_name": "FUN_8001e4ac",
+    "name": "kf_end_ss_stop_channel_voices_entry",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ch_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Entry prelude loading active voice count before falling into ss_stop_channel_voices."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001e4b4",
+    "ghidra_name": "FUN_8001e4b4",
+    "name": "kf_end_ss_stop_channel_voices",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ch_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Keys off all currently playing SPU voices belonging to specified SEQ/SEP channel ID."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001e540",
+    "ghidra_name": "FUN_8001e540",
+    "name": "kf_end_ss_ut_set_prog_mvol",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "mvol",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Selects VAB/program and returns master volume attribute."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001e5b0",
+    "ghidra_name": "FUN_8001e5b0",
+    "name": "kf_end_ss_get_prog_mvol",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Selects VAB/program and returns program master volume field."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001e600",
+    "ghidra_name": "FUN_8001e600",
+    "name": "kf_end_ss_ut_set_prog_mpan",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "mpan",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Selects VAB/program and returns program master pan field."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001e670",
+    "ghidra_name": "FUN_8001e670",
+    "name": "kf_end_ss_get_prog_mpan",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Selects VAB/program and returns program master pan attribute."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001e6c0",
+    "ghidra_name": "FUN_8001e6c0",
+    "name": "kf_end_ss_ut_key_on_v",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "u16"
+      },
+      {
+        "name": "tone",
+        "type": "u8"
+      },
+      {
+        "name": "note",
+        "type": "s16"
+      },
+      {
+        "name": "fine",
+        "type": "s16"
+      },
+      {
+        "name": "vol_l",
+        "type": "s16"
+      },
+      {
+        "name": "vol_r",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Allocates a free SPU voice and plays a specific VAB tone/note as stereo SFX."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001eae8",
+    "ghidra_name": "FUN_8001eae8",
+    "name": "kf_end_ss_ut_key_off_v",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u16"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "tone",
+        "type": "s16"
+      },
+      {
+        "name": "note",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Keys off a specific SPU voice slot if its VAB/program/tone/note match caller params."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001ec0c",
+    "ghidra_name": "FUN_8001ec0c",
+    "name": "kf_end_ss_ut_key_on_voice_slot",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u16"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "u16"
+      },
+      {
+        "name": "tone",
+        "type": "u8"
+      },
+      {
+        "name": "note",
+        "type": "s16"
+      },
+      {
+        "name": "fine",
+        "type": "s16"
+      },
+      {
+        "name": "vol_l",
+        "type": "s16"
+      },
+      {
+        "name": "vol_r",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Plays specified VAB tone/note on an explicit SPU voice channel < 24."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001f004",
+    "ghidra_name": "FUN_8001f004",
+    "name": "kf_end_ss_ut_key_off_voice_slot",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Directly keys off explicit hardware SPU voice channel < 24."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001f070",
+    "ghidra_name": "FUN_8001f070",
+    "name": "kf_end_ss_ut_pitch_bend",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "unused0",
+        "type": "u32"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "unused3",
+        "type": "u32"
+      },
+      {
+        "name": "bend",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Applies pitch bend across active channel-0x20 voices matching VAB and program."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001f0ac",
+    "ghidra_name": "FUN_8001f0ac",
+    "name": "kf_end_ss_ut_change_pitch",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u16"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "note",
+        "type": "s16"
+      },
+      {
+        "name": "unused",
+        "type": "u32"
+      },
+      {
+        "name": "new_note",
+        "type": "s16"
+      },
+      {
+        "name": "new_fine",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Updates live pitch of playing SPU voice slot using new MIDI note and fine detune."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001f204",
+    "ghidra_name": "FUN_8001f204",
+    "name": "kf_end_ss_ut_change_adsr",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u16"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "note",
+        "type": "s16"
+      },
+      {
+        "name": "adsr1",
+        "type": "u16"
+      },
+      {
+        "name": "adsr2",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Updates hardware ADSR1/ADSR2 envelope words on a matching live SPU voice."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001f350",
+    "ghidra_name": "FUN_8001f350",
+    "name": "kf_end_ss_ut_unsupported_stub",
+    "return_type": "s32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Unimplemented libsnd utility stub returning error sentinel -1."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001f468",
+    "ghidra_name": "FUN_8001f468",
+    "name": "kf_end_ss_ut_set_vvol",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u16"
+      },
+      {
+        "name": "vol_l",
+        "type": "s16"
+      },
+      {
+        "name": "vol_r",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Sets left/right SPU output volume on live hardware voice channel < 24."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001f540",
+    "ghidra_name": "FUN_8001f540",
+    "name": "kf_end_ss_reset_all_voices",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Clears and keys off all 24 SPU voice tracking slots."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001f688",
+    "ghidra_name": "FUN_8001f688",
+    "name": "kf_end_ss_select_vab_prog",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "u16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Validates VAB slot state and binds active program/tone/header pointers."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001f75c",
+    "ghidra_name": "FUN_8001f75c",
+    "name": "kf_end_ss_seq_called_t_by_t_entry",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Primary entry prelude falling directly into SsSeqCalledTbyT frame tick processor."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001f764",
+    "ghidra_name": "FUN_8001f764",
+    "name": "kf_end_ss_seq_called_t_by_t",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 14,
+    "summary": "libsnd per-tick dispatcher flushing SPU voices and stepping active SEQ/SEP fades, pauses, and MIDI events."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001f994",
+    "ghidra_name": "FUN_8001f994",
+    "name": "kf_end_ss_seq_update_vol_fade",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "u16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Interpolates sequence track volume fade-out or ramp step per tick."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001fe08",
+    "ghidra_name": "FUN_8001fe08",
+    "name": "kf_end_ss_seq_update_pause_state",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s32"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Applies deferred pause transition state flags on sequence track."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001fe68",
+    "ghidra_name": "FUN_8001fe68",
+    "name": "kf_end_ss_seq_advance_tick",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 13,
+    "summary": "Steps active sequence track MIDI event queue for one audio tick."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001fe94",
+    "ghidra_name": "FUN_8001fe94",
+    "name": "kf_end_ss_seq_step_track_events",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s32"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 12,
+    "summary": "Advances delta-time countdown and dispatches ready MIDI events in sequence track."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8001ff9c",
+    "ghidra_name": "FUN_8001ff9c",
+    "name": "kf_end_ss_seq_dispatch_midi_event",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 11,
+    "summary": "Parses MIDI status/running-status byte and dispatches Note, CC, Program, Pitch, or Meta event."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80020234",
+    "ghidra_name": "FUN_80020234",
+    "name": "kf_end_ss_seq_handle_note_event",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "note",
+        "type": "u8"
+      },
+      {
+        "name": "vel",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 3,
+    "summary": "Handles MIDI Note On / Note Off sequence event for active channel."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80020334",
+    "ghidra_name": "FUN_80020334",
+    "name": "kf_end_ss_seq_handle_program_change",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Updates active MIDI channel program index and reads next VLQ delta."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800203a4",
+    "ghidra_name": "FUN_800203a4",
+    "name": "kf_end_ss_seq_handle_control_change",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "u16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "cc_num",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 10,
+    "summary": "Processes MIDI CC events (bank, mod, vol, pan, expression, damper, NRPN/RPN, Data Entry)."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8002067c",
+    "ghidra_name": "FUN_8002067c",
+    "name": "kf_end_ss_seq_cc_bank_lsb",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "u16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "val",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Handles MIDI CC 1 modulation/tone modifier and advances sequence delta."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8002079c",
+    "ghidra_name": "FUN_8002079c",
+    "name": "kf_end_ss_seq_cc_portamento_time",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "u16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "val",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Handles MIDI CC 5 parameter update and advances sequence delta."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800208bc",
+    "ghidra_name": "FUN_800208bc",
+    "name": "kf_end_ss_seq_cc_portamento_switch",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "u16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "val",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Handles MIDI CC 0x41 tone/voice modifier and advances sequence delta."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80020a5c",
+    "ghidra_name": "FUN_80020a5c",
+    "name": "kf_end_ss_seq_cc_all_notes_reverb_off",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 6,
+    "summary": "Handles MIDI CC reverb/all-off control change and advances sequence delta."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80020b14",
+    "ghidra_name": "FUN_80020b14",
+    "name": "kf_end_ss_seq_cc_nrpn_lsb",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "u16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "val",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Sets active NRPN parameter index LSB for sequence track Data Entry commands."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80020c38",
+    "ghidra_name": "FUN_80020c38",
+    "name": "kf_end_ss_seq_cc_nrpn_msb",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "val",
+        "type": "s8"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Sets active NRPN parameter MSB/mode (0x14 / 0x1e) for sequence track Data Entry."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80020d60",
+    "ghidra_name": "FUN_80020d60",
+    "name": "kf_end_ss_seq_cc_rpn_lsb",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "val",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Handles MIDI CC 0x64 RPN LSB and advances sequence delta."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80020dd0",
+    "ghidra_name": "FUN_80020dd0",
+    "name": "kf_end_ss_seq_cc_rpn_msb",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "val",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Handles MIDI CC 0x65 RPN MSB and advances sequence delta."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80020e40",
+    "ghidra_name": "FUN_80020e40",
+    "name": "kf_end_ss_seq_cc_data_entry",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "data_val",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 9,
+    "summary": "Processes MIDI CC 6 Data Entry for libsnd NRPN subcommands (loops, VAB tone edits, reverb)."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80021400",
+    "ghidra_name": "FUN_80021400",
+    "name": "kf_end_ss_seq_nrpn_ut_dispatch",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "tone",
+        "type": "s16"
+      },
+      {
+        "name": "subcmd",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 8,
+    "summary": "Dispatches libsnd NRPN Data Entry commands 0..0x16 to mutate VAB tone attributes or reverb."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80021758",
+    "ghidra_name": "FUN_80021758",
+    "name": "kf_end_ss_seq_handle_pitch_bend",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Handles MIDI 0xE0 pitch-bend event for active sequence track."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800217fc",
+    "ghidra_name": "FUN_800217fc",
+    "name": "kf_end_ss_seq_handle_meta_event",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "meta_type",
+        "type": "s8"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Handles MIDI 0xFF meta events (0x2f end-of-track loop/stop and 0x51 tempo changes)."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80021b54",
+    "ghidra_name": "FUN_80021b54",
+    "name": "kf_end_ss_seq_read_vlq_delta",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s32"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Decodes variable-length quantity (VLQ) MIDI delta timestamp from sequence stream."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80021c08",
+    "ghidra_name": "FUN_80021c08",
+    "name": "kf_end_ss_ut_reverb_on",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "Enables hardware SPU reverb effect processing via SpuSetReverb(1)."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80021c28",
+    "ghidra_name": "FUN_80021c28",
+    "name": "kf_end_ss_ut_reverb_off",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "Disables hardware SPU reverb effect processing via SpuSetReverb(0)."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80021c48",
+    "ghidra_name": "FUN_80021c48",
+    "name": "kf_end_ss_ut_set_reverb_type",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "reverb_type",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 7,
+    "summary": "Selects hardware SPU reverb preset mode 0..9 via SpuSetReverbModeParam."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80021cb8",
+    "ghidra_name": "FUN_80021cb8",
+    "name": "kf_end_ss_ut_set_reverb_depth",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "depth_left",
+        "type": "s16"
+      },
+      {
+        "name": "depth_right",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 7,
+    "summary": "Scales 0..127 reverb depth into 16-bit SPU reverb mix depth registers."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80021d74",
+    "ghidra_name": "FUN_80021d74",
+    "name": "kf_end_ss_ut_set_reverb_feedback",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "feedback",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 7,
+    "summary": "Configures SPU reverb feedback parameter via SpuSetReverbModeParam."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80021db4",
+    "ghidra_name": "FUN_80021db4",
+    "name": "kf_end_ss_ut_set_reverb_delay",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "delay",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 7,
+    "summary": "Configures SPU reverb delay parameter via SpuSetReverbModeParam."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80021df4",
+    "ghidra_name": "FUN_80021df4",
+    "name": "kf_end_ss_seq_stop_sub_track",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Resets sequence track stereo volume and terminates playback cleanly."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80021f24",
+    "ghidra_name": "FUN_80021f24",
+    "name": "kf_end_ss_tone_attr_unpack",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "adsr1",
+        "type": "u32"
+      },
+      {
+        "name": "adsr2",
+        "type": "u32"
+      },
+      {
+        "name": "tone_attr",
+        "type": "u16 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Unpacks hardware SPU ADSR1/ADSR2 bitfields into decoded ToneAtr fields."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80021f80",
+    "ghidra_name": "FUN_80021f80",
+    "name": "kf_end_ss_tone_attr_pack",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "tone_attr",
+        "type": "u16 *"
+      },
+      {
+        "name": "adsr1_out",
+        "type": "u16 *"
+      },
+      {
+        "name": "adsr2_out",
+        "type": "u16 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Packs ToneAtr envelope fields back into hardware SPU ADSR1/ADSR2 16-bit registers."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8002200c",
+    "ghidra_name": "FUN_8002200c",
+    "name": "kf_end_ss_vab_get_tone_attr",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "tone",
+        "type": "s32"
+      },
+      {
+        "name": "attr_out",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Copies unpacked VAB ToneAtr structure into caller buffer."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80022248",
+    "ghidra_name": "FUN_80022248",
+    "name": "kf_end_ss_vab_set_tone_attr",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "tone",
+        "type": "s32"
+      },
+      {
+        "name": "attr_in",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Writes caller ToneAtr fields back into active VAB tone table."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80022410",
+    "ghidra_name": "FUN_80022410",
+    "name": "kf_end_ss_set_sustain_pedal_on",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Sets libsnd global sustain pedal / hold flag state to active (2)."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80022424",
+    "ghidra_name": "FUN_80022424",
+    "name": "kf_end_ss_seq_update_crescendo_fade",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "u16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Interpolates sequence track volume crescendo ramp step per tick."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80022898",
+    "ghidra_name": "FUN_80022898",
+    "name": "kf_end_ss_seq_stop",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Stops active single-track SEQ playback and keys off its voices."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8002292c",
+    "ghidra_name": "FUN_8002292c",
+    "name": "kf_end_ss_sep_stop",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "sep_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Stops active SEP container sub-track playback and keys off its voices."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800229e8",
+    "ghidra_name": "FUN_800229e8",
+    "name": "kf_end_ss_seq_stop_track",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Stops sequence track playback, resets channel states, and keys off active track voices."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80022af0",
+    "ghidra_name": "FUN_80022af0",
+    "name": "kf_end_ss_vab_get_prog_attr",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "prog_attr_out",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Copies VAB ProgAtr metadata record into caller buffer."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80022bf8",
+    "ghidra_name": "FUN_80022bf8",
+    "name": "kf_end_ss_set_sustain_pedal_off",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Clears libsnd global sustain pedal / hold flag state to zero."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80022c08",
+    "ghidra_name": "FUN_80022c08",
+    "name": "kf_end_ss_seq_clear_play_flags",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Stops track voices and clears sequence track running status flags."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80022cf0",
+    "ghidra_name": "FUN_80022cf0",
+    "name": "kf_end_ss_seq_update_tempo",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s32"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Interpolates gradual sequence tempo acceleration or deceleration ramp."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80022ec8",
+    "ghidra_name": "FUN_80022ec8",
+    "name": "kf_end_spu_set_common_mix_flags",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "target",
+        "type": "s8"
+      },
+      {
+        "name": "reverb_flag",
+        "type": "s8"
+      },
+      {
+        "name": "enable",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Configures SPU common CD/External audio enable and reverb routing bits via ioctl 0x100."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80022f68",
+    "ghidra_name": "FUN_80022f68",
+    "name": "kf_end_spu_init_core",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "hot_start",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "Initializes SPU callbacks, resets SPU hardware/voices, starts IRQ event, and clears reverb flags."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80023048",
+    "ghidra_name": "FUN_80023048",
+    "name": "kf_end_spu_init",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 6,
+    "summary": "Cold-initializes PlayStation SPU hardware and all 24 voice registers."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80023068",
+    "ghidra_name": "FUN_80023068",
+    "name": "kf_end_spu_init_hot",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 6,
+    "summary": "Warm-initializes PlayStation SPU hardware without resetting SPU RAM contents."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80023088",
+    "ghidra_name": "FUN_80023088",
+    "name": "kf_end_spu_start",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 3,
+    "summary": "Hooks SPU DMA Channel 4 callback and opens/enables SPU transfer completion event."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80023104",
+    "ghidra_name": "FUN_80023104",
+    "name": "kf_end_spu_quit_entry",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Entry guard falling into kf_end_spu_quit to disable SPU DMA IRQ and event."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8002310c",
+    "ghidra_name": "FUN_8002310c",
+    "name": "kf_end_spu_quit",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 3,
+    "summary": "Disables SPU DMA callback and closes SPU BIOS completion event inside critical section."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80023174",
+    "ghidra_name": "FUN_80023174",
+    "name": "kf_end_spu_hw_wait_spin",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Hardware timing spin delay (240 iterations) after SPU register writes."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800231d4",
+    "ghidra_name": "FUN_800231d4",
+    "name": "kf_end_spu_reset_hw_and_voices",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "hot_start",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Resets SPU control register, mutes master/reverb outputs, and keys off voices."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80023434",
+    "ghidra_name": "FUN_80023434",
+    "name": "kf_end_spu_disable_dma_irq_cb",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Clears SPU DMA completion user callback and detaches DMA Channel 4 callback."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8002345c",
+    "ghidra_name": "FUN_8002345c",
+    "name": "kf_end_spu_enable_dma_irq_cb",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Attaches SPU DMA Channel 4 completion handler and returns device descriptor 3."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80023484",
+    "ghidra_name": "FUN_80023484",
+    "name": "kf_end_spu_set_dma_delay_read",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Configures SPU bus delay timing register for SPU-to-RAM DMA readback."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800234b4",
+    "ghidra_name": "FUN_800234b4",
+    "name": "kf_end_spu_set_dma_delay_write",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Configures SPU bus delay timing register for RAM-to-SPU DMA writes."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800234e4",
+    "ghidra_name": "FUN_800234e4",
+    "name": "kf_end_spu_write_dispatch",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "src_addr",
+        "type": "u32"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Selects SPU DMA write or manual PIO transfer depending on configured transfer mode."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8002354c",
+    "ghidra_name": "FUN_8002354c",
+    "name": "kf_end_spu_pio_write_ram",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "src_words",
+        "type": "u16 *"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Transfers data from main RAM to SPU RAM manually via hardware FIFO and polling."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8002374c",
+    "ghidra_name": "FUN_8002374c",
+    "name": "kf_end_spu_read",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "dst_addr",
+        "type": "u32"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Reads data from configured SPU RAM start address into main RAM via DMA Channel 4."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8002377c",
+    "ghidra_name": "FUN_8002377c",
+    "name": "kf_end_spu_dma_irq_handler",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "SPU DMA Channel 4 completion handler delivering event or calling user transfer callback."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80023800",
+    "ghidra_name": "FUN_80023800",
+    "name": "kf_end_spu_dma_write_ram",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "src_addr",
+        "type": "u32"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Configures SPU transfer mode and launches DMA Channel 4 upload into SPU RAM."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80023934",
+    "ghidra_name": "FUN_80023934",
+    "name": "kf_end_spu_dma_read_entry",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dst_addr",
+        "type": "u32"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Entry prelude setting SPU read transfer mode before starting Channel 4 DMA read."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8002393c",
+    "ghidra_name": "FUN_8002393c",
+    "name": "kf_end_spu_dma_read_ram",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dst_addr",
+        "type": "u32"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Configures SPU bus read timing and triggers DMA Channel 4 download into main RAM."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80023a44",
+    "ghidra_name": "FUN_80023a44",
+    "name": "kf_end_spu_dma_read_at_addr",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dst_addr",
+        "type": "u32"
+      },
+      {
+        "name": "spu_addr_div8",
+        "type": "u16"
+      },
+      {
+        "name": "block_count",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Programs SPU transfer address and initiates 64-byte block DMA read from SPU RAM."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80023b04",
+    "ghidra_name": "FUN_80023b04",
+    "name": "kf_end_spu_device_ioctl",
+    "return_type": "bool",
+    "params": [
+      {
+        "name": "fd",
+        "type": "u32"
+      },
+      {
+        "name": "cmd",
+        "type": "u32"
+      },
+      {
+        "name": "arg",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 3,
+    "summary": "Dispatches SPU driver ioctl commands (FM/noise masks, reverb attrs, common attrs, addr)."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80024318",
+    "ghidra_name": "FUN_80024318",
+    "name": "kf_end_spu_set_voice_attr",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "voice_attr",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Writes masked per-voice SPU MMIO parameters (volume, pitch, addr, ADSR) across 24 voices."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8002449c",
+    "ghidra_name": "FUN_8002449c",
+    "name": "kf_end_spu_write_reverb_regs",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "reverb_regs",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Writes masked hardware SPU reverb delay/filter/coefficient MMIO registers 0x1f801dc0..1dfc."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8002496c",
+    "ghidra_name": "FUN_8002496c",
+    "name": "kf_end_spu_write_common_attr_regs",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "common_attr",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Writes masked master/reverb/CD/external volume and enable bits to SPU control registers."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80024d04",
+    "ghidra_name": "FUN_80024d04",
+    "name": "kf_end_spu_noop_zero",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "unused",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Unused libspu helper stub unconditionally returning zero."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80024e68",
+    "ghidra_name": "FUN_80024e68",
+    "name": "kf_end_spu_memcpy_bytes",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dst",
+        "type": "u8 *"
+      },
+      {
+        "name": "src",
+        "type": "u8 *"
+      },
+      {
+        "name": "len",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Local byte-copy helper compiled inside libspu reverb module."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80024e98",
+    "ghidra_name": "FUN_80024e98",
+    "name": "kf_end_spu_set_reverb_mode_attr",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "reverb_attr",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 6,
+    "summary": "Validates reverb work area and applies preset reverb mode, depth, delay, and feedback."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80025388",
+    "ghidra_name": "FUN_80025388",
+    "name": "kf_end_spu_malloc_gc_coalesce",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Coalesces adjacent free SPU RAM allocation blocks and compacts free descriptors."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80025684",
+    "ghidra_name": "FUN_80025684",
+    "name": "kf_end_spu_init_malloc",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "max_blocks",
+        "type": "s32"
+      },
+      {
+        "name": "table_buf",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Initializes SPU RAM allocator table spanning 512KB SPU memory minus reserved header."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800256f4",
+    "ghidra_name": "FUN_800256f4",
+    "name": "kf_end_spu_malloc",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Allocates aligned block from SPU RAM free list and returns SPU byte address or -1."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800259b4",
+    "ghidra_name": "FUN_800259b4",
+    "name": "kf_end_spu_malloc_split_block",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "slot_idx",
+        "type": "s32"
+      },
+      {
+        "name": "start_addr",
+        "type": "s32"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Splits SPU heap descriptor block around caller start address and marks range allocated."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80025d10",
+    "ghidra_name": "FUN_80025d10",
+    "name": "kf_end_spu_malloc_with_start_addr",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "start_addr",
+        "type": "u32"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 2,
+    "summary": "Allocates SPU RAM block pinned at a caller-specified byte address."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80025fb8",
+    "ghidra_name": "FUN_80025fb8",
+    "name": "kf_end_spu_addr_in_allocated_range",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "spu_addr",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Checks whether an SPU RAM byte address overlaps any currently allocated SPU heap block."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80026028",
+    "ghidra_name": "FUN_80026028",
+    "name": "kf_end_spu_check_reverb_workarea_free",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "word_addr",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Checks if SPU reverb workarea starting address conflicts with allocated soundbank blocks."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80026058",
+    "ghidra_name": "FUN_80026058",
+    "name": "kf_end_spu_free",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "spu_addr",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 1,
+    "summary": "Marks SPU heap block free by setting high bit and runs SPU heap coalescing."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800260d4",
+    "ghidra_name": "FUN_800260d4",
+    "name": "kf_end_spu_dump_malloc",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Prints SPU RAM allocation table slots, addresses, and block byte sizes."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8002617c",
+    "ghidra_name": "FUN_8002617c",
+    "name": "kf_end_spu_clear_reverb_work_area",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "reverb_mode",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 5,
+    "summary": "Zeros SPU RAM reverb work area for preset mode when not occupied by soundbanks."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800262c4",
+    "ghidra_name": "FUN_800262c4",
+    "name": "kf_end_spu_set_reverb",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "enable",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Enables or disables SPU hardware reverb processing after checking work area validity."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80026370",
+    "ghidra_name": "FUN_80026370",
+    "name": "kf_end_spu_is_transfer_completed",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "flag",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Polls or waits until pending SPU DMA/PIO memory transfer event completes."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x80026420",
+    "ghidra_name": "FUN_80026420",
+    "name": "kf_end_spu_set_transfer_completed_flag",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "clear_flag",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 0,
+    "summary": "Sets internal SPU transfer completion state flag according to caller flag."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x8002646c",
+    "ghidra_name": "FUN_8002646c",
+    "name": "kf_end_spu_set_transfer_start_addr",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "spu_addr",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 4,
+    "summary": "Sets SPU RAM transfer start address <= 0x7f000 via driver ioctl 0x2b."
+  },
+  {
+    "program": "END.EXE",
+    "address": "0x800264bc",
+    "ghidra_name": "FUN_800264bc",
+    "name": "kf_end_spu_write",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "src_addr",
+        "type": "void *"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_end",
+    "wave": 3,
+    "summary": "Clamps write size to 0x7f000 and uploads RAM buffer into SPU RAM at start address."
+  }
+]

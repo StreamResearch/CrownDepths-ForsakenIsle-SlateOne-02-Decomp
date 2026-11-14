@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "project": "kings-field",
+  "platform": "ps1",
+  "serial": "SLUS-00158",
+  "standalone_relpath": "decomps/ps1/kings-field/standalone",
+  "moved_from": "Sandbox/kings-field-decomp",
+  "read_only": true,
+  "total_files": 6297,
+  "total_bytes": 716862355,
+  "verified_files": {
+    "disc/files/SLUS_001.58": {
+      "bytes": 4096,
+      "sha256": "8a94d391291c413bed1aa0ed1ac0adae4328a4841058346b8af1fd41ea3e45a6"
+    },
+    "disc/files/OPEN.EXE": {
+      "bytes": 190464,
+      "sha256": "8f73f299ce1335bb23c9e438047f470dde37600ac38b558663333438a5b7b324"
+    },
+    "disc/files/GAME.EXE": {
+      "bytes": 387072,
+      "sha256": "3ca696397ace8b062bce71d390a79f5b5ca6e941ed23c0cc7adb8b261553b10a"
+    },
+    "disc/files/END.EXE": {
+      "bytes": 169984,
+      "sha256": "602b87f70d87f7decbb9d934b7c29c567c811632b1d4f59f88e4ce6b0a263da3"
+    },
+    "disc/files/CD/FN.D": {
+      "bytes": 1188,
+      "sha256": "031c80fdb0e3a9f488b63f15efded53d194d47062d90be135bc59bfbb5ce8c61"
+    },
+    "decompiled/SLUS_001.58/SLUS_001.58_full.c": {
+      "bytes": 3558,
+      "sha256": "6f8a2781bb7507f90d0eebea37e70235fb8925aa642beb1935e80e27fedb2e75"
+    },
+    "decompiled/OPEN.EXE/OPEN.EXE_full.c": {
+      "bytes": 384584,
+      "sha256": "48086700a8067da20b2206faff96625cc331116be7655b732de041cb5b067de2"
+    },
+    "decompiled/GAME.EXE/GAME.EXE_full.c": {
+      "bytes": 1341340,
+      "sha256": "ccfee767ed1da9841cc6545dc7043bea571321a3e087a2760d409e91ead3768a"
+    },
+    "decompiled/END.EXE/END.EXE_full.c": {
+      "bytes": 293643,
+      "sha256": "f3ad09130dc8a6fd6be30ca3b5f09a4ccf8eee61c719ad8545ee6114c6233443"
+    },
+    "reports/decomp_master_summary.json": {
+      "bytes": 10693,
+      "sha256": "b8d3f044f8cd987750d36fe2903d712d737a5e3bfc83d14b11a2146f1287a130"
+    },
+    "ghidra_project/legacy-project.gpr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "assets/assets_summary.json": {
+      "bytes": 4405,
+      "sha256": "46d085ae604bafcad7ab3a1c7a0087918d0d36576ba94382475c94e37bff73c4"
+    }
+  }
+}

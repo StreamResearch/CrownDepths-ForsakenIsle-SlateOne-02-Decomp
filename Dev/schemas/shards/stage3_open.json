@@ -1,0 +1,7062 @@
+[
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80011ae0",
+    "ghidra_name": "FUN_80011ae0",
+    "name": "kf_open_main",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 11,
+    "summary": "OPEN.EXE top-level entry loop managing intro FMVs, title screen, input, and fade transitions."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80011fc0",
+    "ghidra_name": "FUN_80011fc0",
+    "name": "kf_open_title_fade_out",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "fade_mode",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 8,
+    "summary": "Drives title-screen fade frame loop, drawing backdrop/logo/prompt layers and ramping master volume."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80012084",
+    "ghidra_name": "FUN_80012084",
+    "name": "kf_open_load_title_pack",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 10,
+    "summary": "Allocates heap memory via malloc3 and loads OP/OPU.DAT title asset pack from CD-ROM."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80012180",
+    "ghidra_name": "FUN_80012180",
+    "name": "kf_open_init_graphics",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 6,
+    "summary": "Initializes PS1-SDK GPU/GTE subsystems, black clear color, and 640x240 double-buffered draw/display environments."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800122bc",
+    "ghidra_name": "FUN_800122bc",
+    "name": "kf_open_init_sound",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 9,
+    "summary": "Initializes libsnd, sets tick mode and reverb depth, starts audio timer, and sets CD/serial mix."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80012348",
+    "ghidra_name": "FUN_80012348",
+    "name": "kf_open_load_title_assets_and_audio",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "pack_buf",
+        "type": "void *"
+      },
+      {
+        "name": "flags",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 6,
+    "summary": "Unpacks title TIM textures into VRAM and loads/transfers title VAB soundbank and SEQ music track."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80012638",
+    "ghidra_name": "FUN_80012638",
+    "name": "kf_open_draw_title_crest_fade",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "draw_mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Animates and submits textured crest polygon fade sequence to active ordering table."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80012d28",
+    "ghidra_name": "FUN_80012d28",
+    "name": "kf_open_draw_title_backdrop",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "draw_mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Draws animated King's Field title screen backdrop quads using VRAM texture page at X=640."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80013344",
+    "ghidra_name": "FUN_80013344",
+    "name": "kf_open_draw_title_logo_banner",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "draw_mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Renders title logo banner overlay quads with semi-transparency and fade-in step state."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80013680",
+    "ghidra_name": "FUN_80013680",
+    "name": "kf_open_draw_press_start_prompt",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "draw_mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Pulses alpha luminance and draws semi-transparent Press Start prompt polygon to active frame."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80013840",
+    "ghidra_name": "FUN_80013840",
+    "name": "kf_open_poll_title_input",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "menu_flags",
+        "type": "u32"
+      },
+      {
+        "name": "action_out",
+        "type": "s32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Polls controller pad edge presses, triggers menu navigation SFX, and updates selected title action."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80013984",
+    "ghidra_name": "FUN_80013984",
+    "name": "kf_open_begin_poly_ft4",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Initializes current scratch POLY_FT4 packet template before populating vertex coordinates."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800139d4",
+    "ghidra_name": "FUN_800139d4",
+    "name": "kf_open_submit_poly_ft4",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ot_slot",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Applies global fade offset to active POLY_FT4 packet, inserts into OT slot, and advances packet cursor."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80013aa0",
+    "ghidra_name": "FUN_80013aa0",
+    "name": "kf_open_begin_frame",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Swaps active display frame buffer, clears 1024-entry ordering table, and resets primitive packet cursor."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80013b04",
+    "ghidra_name": "FUN_80013b04",
+    "name": "kf_open_end_frame",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 7,
+    "summary": "Synchronizes GPU drawing and VSync, applies DRAWENV/DISPENV pair, and submits frame ordering table."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80013b5c",
+    "ghidra_name": "FUN_80013b5c",
+    "name": "kf_open_load_cd_file",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "dest_buf",
+        "type": "void *"
+      },
+      {
+        "name": "rel_path",
+        "type": "char *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 9,
+    "summary": "Resolves CD-ROM file path via CdSearchFile, seeks to sectors, and reads file contents synchronously."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80013cb8",
+    "ghidra_name": "FUN_80013cb8",
+    "name": "kf_open_upload_vram_tims",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Walks embedded TIM image stream via OpenTIM/ReadTIM and uploads pixels and CLUTs to VRAM."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80013d28",
+    "ghidra_name": "FUN_80013d28",
+    "name": "kf_open_play_sfx_note",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "tone",
+        "type": "s16"
+      },
+      {
+        "name": "note",
+        "type": "s16"
+      },
+      {
+        "name": "vol_left",
+        "type": "s16"
+      },
+      {
+        "name": "vol_right",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Validates non-zero sound parameters and triggers title SFX voice playback via SsUtKeyOnV."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80013db0",
+    "ghidra_name": "FUN_80013db0",
+    "name": "kf_open_pre_init_noop",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Empty pre-initialization stub called at startup of kf_open_main."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80013db8",
+    "ghidra_name": "start",
+    "name": "kf_open_entry_point",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 12,
+    "summary": "C runtime entry point (start) dispatching directly into kf_open_main."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80013dc8",
+    "ghidra_name": "FUN_80013dc8",
+    "name": "kf_open_play_str_movie",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "movie_index",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 9,
+    "summary": "Opens \\OP\\OP0.S;1..\\OP\\OP2.S;1 on CD-ROM and runs full MDEC STR video decode and display loop."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80014170",
+    "ghidra_name": "FUN_80014170",
+    "name": "kf_open_init_str_decoder_state",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Initializes double-buffered MDEC/VLC ring pointers and 320x240 display RECT upload geometry."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001422c",
+    "ghidra_name": "FUN_8001422c",
+    "name": "kf_open_start_str_stream",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cdl_loc",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 8,
+    "summary": "Resets MDEC hardware, attaches DMA output slice callback, configures StSetRing/Stream, and starts CdRead2."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800142a0",
+    "ghidra_name": "FUN_800142a0",
+    "name": "kf_open_mdec_out_callback",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "MDEC DMA completion ISR uploading decoded image strip to VRAM and advancing next DecDCTout slice."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800143ac",
+    "ghidra_name": "FUN_800143ac",
+    "name": "kf_open_decode_next_str_frame",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Polls next complete STR frame from CD ring, swaps VLC buffers, decodes DCT macroblocks, and frees ring."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80014440",
+    "ghidra_name": "FUN_80014440",
+    "name": "kf_open_wait_str_ring_frame",
+    "return_type": "s32 *",
+    "params": [],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Spins on StGetNext until valid STR frame header arrives, checking target frame resolution and limit."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800144f4",
+    "ghidra_name": "FUN_800144f4",
+    "name": "kf_open_wait_str_vram_upload",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "str_state",
+        "type": "s32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Waits for mdec_out_callback VRAM slice upload completion flag with bounded timeout spin."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80014568",
+    "ghidra_name": "FUN_80014568",
+    "name": "kf_open_seek_and_play_cd_stream",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cdl_loc",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 7,
+    "summary": "Issues CdlSeekL command and starts double-speed real-time CD streaming via CdRead2."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800145b0",
+    "ghidra_name": "FUN_800145b0",
+    "name": "kf_open_sbrk3",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "increment",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Extends or allocates raw bytes from the SN heap3 arena top pointer within configured heap bounds."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800146a4",
+    "ghidra_name": "FUN_800146a4",
+    "name": "kf_open_realloc3_try_resize",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "block",
+        "type": "void *"
+      },
+      {
+        "name": "new_size",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Attempts in-place growth/shrink or coalescing resize of an allocated SN malloc3 heap block."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001484c",
+    "ghidra_name": "FUN_8001484c",
+    "name": "kf_open_init_heap3",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "heap_base",
+        "type": "void *"
+      },
+      {
+        "name": "heap_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Initializes SN malloc3 heap arena start, limit, and remaining free size globals."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001488c",
+    "ghidra_name": "FUN_8001488c",
+    "name": "kf_open_malloc3",
+    "return_type": "void *",
+    "params": [
+      {
+        "name": "size",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Allocates word-aligned memory block from SN malloc3 free list, extending arena with sbrk3 if needed."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80014ac0",
+    "ghidra_name": "FUN_80014ac0",
+    "name": "kf_open_free3",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "block",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "No-op SN heap3 release stub retained by PS1-SDK malloc3 linkage in OPEN.EXE."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80014ad4",
+    "ghidra_name": "FUN_80014ad4",
+    "name": "kf_open_realloc3",
+    "return_type": "u8 *",
+    "params": [
+      {
+        "name": "block",
+        "type": "u8 *"
+      },
+      {
+        "name": "new_size",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Reallocates SN malloc3 block in-place when possible or copies contents into newly allocated block."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80014b68",
+    "ghidra_name": "FUN_80014b68",
+    "name": "kf_open_calloc3",
+    "return_type": "u8 *",
+    "params": [
+      {
+        "name": "count",
+        "type": "u32"
+      },
+      {
+        "name": "elem_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Allocates zero-initialized array from SN malloc3 heap and clears bytes with bzero."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80014bbc",
+    "ghidra_name": "FUN_80014bbc",
+    "name": "kf_open_exit_critical_section",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Invokes PS1 BIOS ExitCriticalSection syscall(0) wrapper to re-enable interrupts."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80014c1c",
+    "ghidra_name": "FUN_80014c1c",
+    "name": "kf_open_dec_dct_reset",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Resets MDEC hardware state and callbacks via ResetCallback and low-level MDEC reset."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80014c60",
+    "ghidra_name": "FUN_80014c60",
+    "name": "kf_open_dec_dct_vlc",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "bs_in",
+        "type": "u16 *"
+      },
+      {
+        "name": "dct_out",
+        "type": "u16 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Decodes PlayStation STR bitstream into MDEC run-level data, dispatching v1/v2 or v3 Huffman decoder."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80014ca0",
+    "ghidra_name": "FUN_80014ca0",
+    "name": "kf_open_dec_dct_in",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dct_buf",
+        "type": "u32 *"
+      },
+      {
+        "name": "mode",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Patches MDEC command header RGB24/STP mode bits and initiates MDEC input DMA transfer."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80014d1c",
+    "ghidra_name": "FUN_80014d1c",
+    "name": "kf_open_dec_dct_out",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "out_buf",
+        "type": "u32"
+      },
+      {
+        "name": "word_count",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Starts MDEC output DMA transfer of decoded pixel slices into specified RAM buffer."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80014d3c",
+    "ghidra_name": "FUN_80014d3c",
+    "name": "kf_open_dec_dct_in_sync",
+    "return_type": "s32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Waits for pending MDEC input DMA transfer completion with hardware timeout check."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80014d5c",
+    "ghidra_name": "FUN_80014d5c",
+    "name": "kf_open_dec_dct_out_sync",
+    "return_type": "s32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Waits for pending MDEC output DMA transfer completion with hardware timeout check."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80014d7c",
+    "ghidra_name": "FUN_80014d7c",
+    "name": "kf_open_mdec_reset_hw",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Clears MDEC in/out DMA channels and uploads hardware quantization/IDCT tables when mode is zero."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80014e88",
+    "ghidra_name": "FUN_80014e88",
+    "name": "kf_open_mdec_dma_in",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dct_words",
+        "type": "u32 *"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Waits for prior MDEC input DMA and launches CH0 DMA transfer feeding MDEC command and macroblocks."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80014f24",
+    "ghidra_name": "FUN_80014f24",
+    "name": "kf_open_mdec_dma_out",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "out_addr",
+        "type": "u32"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Waits for prior MDEC output DMA and launches CH1 DMA transfer draining decoded pixels."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80014fb8",
+    "ghidra_name": "FUN_80014fb8",
+    "name": "kf_open_mdec_in_sync",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Polls DMA CH0 enable bit until MDEC input completes or invokes timeout diagnostics."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80015050",
+    "ghidra_name": "FUN_80015050",
+    "name": "kf_open_mdec_out_sync",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Polls DMA CH1 enable bit until MDEC output completes or invokes timeout diagnostics."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80015100",
+    "ghidra_name": "FUN_80015100",
+    "name": "kf_open_mdec_print_status",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Prints MDEC DMA channel activity, addresses, FIFO flags, and pixel format status over stdout."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800151d0",
+    "ghidra_name": "FUN_800151d0",
+    "name": "kf_open_mdec_timeout_handler",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "op_label",
+        "type": "char *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Logs MDEC timeout diagnostic message, dumps hardware status, and performs warm MDEC reset."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001521c",
+    "ghidra_name": "FUN_8001521c",
+    "name": "kf_open_mdec_vlc_decode_v1_v2",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "bs_in",
+        "type": "u16 *"
+      },
+      {
+        "name": "dct_out",
+        "type": "u16 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Decodes STR version 1 and 2 bitstream Huffman AC/DC coefficients into MDEC input buffer."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001546c",
+    "ghidra_name": "FUN_8001546c",
+    "name": "kf_open_mdec_vlc_decode_v3",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "bs_in",
+        "type": "u16 *"
+      },
+      {
+        "name": "dct_out",
+        "type": "u16 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Decodes STR version 3 Huffman-compressed bitstream coefficients into MDEC input buffer."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80015854",
+    "ghidra_name": "FUN_80015854",
+    "name": "kf_open_mdec_vlc_decode_dc_coeff",
+    "return_type": "s32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Reads variable-length Huffman DC coefficient word using MDEC v3 lookup tables."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80015a64",
+    "ghidra_name": "FUN_80015a64",
+    "name": "kf_open_gpu_write_gp1_cmd",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "gp1_cmd",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Masks 24-bit GPU status control command and dispatches via low-level GPU_cw BIOS call."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80015a8c",
+    "ghidra_name": "FUN_80015a8c",
+    "name": "kf_open_reset_graph",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Resets GPU command queue and hardware registers, hooking GPU IRQ callback according to reset mode."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80015c60",
+    "ghidra_name": "FUN_80015c60",
+    "name": "kf_open_set_graph_reverse",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "reverse_flag",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Sets GPU display horizontal-reverse mode flag and updates GP1 display parameters."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80015d28",
+    "ghidra_name": "FUN_80015d28",
+    "name": "kf_open_set_graph_debug",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "debug_level",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Configures libgpu debug verbosity level and prints current graph type/reverse state when non-zero."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80015d8c",
+    "ghidra_name": "FUN_80015d8c",
+    "name": "kf_open_get_graph_type",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Returns detected PlayStation GPU revision type flag from libgpu state."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80015d9c",
+    "ghidra_name": "FUN_80015d9c",
+    "name": "kf_open_get_graph_debug",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Returns current libgpu debug logging verbosity level."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80015dc4",
+    "ghidra_name": "FUN_80015dc4",
+    "name": "kf_open_set_disp_mask",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "enable",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Enables or blanks PlayStation video display output via GP1(03h) command."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80015e04",
+    "ghidra_name": "FUN_80015e04",
+    "name": "kf_open_draw_sync",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Synchronizes GPU command queue and DMA completion, returning remaining queue depth or completion."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80015e34",
+    "ghidra_name": "FUN_80015e34",
+    "name": "kf_open_clear_image",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "rect",
+        "type": "void *"
+      },
+      {
+        "name": "r",
+        "type": "u32"
+      },
+      {
+        "name": "g",
+        "type": "u32"
+      },
+      {
+        "name": "b",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Enqueues asynchronous VRAM rectangle fill command using specified 24-bit RGB color."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80015e84",
+    "ghidra_name": "FUN_80015e84",
+    "name": "kf_open_load_image",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "rect",
+        "type": "void *"
+      },
+      {
+        "name": "pix_data",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Enqueues asynchronous CPU-to-VRAM pixel DMA upload for specified VRAM rectangle."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80015ec0",
+    "ghidra_name": "FUN_80015ec0",
+    "name": "kf_open_store_image",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "rect",
+        "type": "void *"
+      },
+      {
+        "name": "pix_out",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Enqueues asynchronous VRAM-to-CPU pixel DMA readback for specified VRAM rectangle."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80015efc",
+    "ghidra_name": "FUN_80015efc",
+    "name": "kf_open_move_image",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "src_rect",
+        "type": "void *"
+      },
+      {
+        "name": "dst_x",
+        "type": "u32"
+      },
+      {
+        "name": "dst_y",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Constructs GP0(80h) VRAM-to-VRAM copy primitive and submits it to GPU command queue."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80015f68",
+    "ghidra_name": "FUN_80015f68",
+    "name": "kf_open_clear_otag",
+    "return_type": "u32 *",
+    "params": [
+      {
+        "name": "ot",
+        "type": "u32 *"
+      },
+      {
+        "name": "count",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Initializes forward-linked ordering table array with end-of-table terminator."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80015fc4",
+    "ghidra_name": "FUN_80015fc4",
+    "name": "kf_open_clear_otag_r",
+    "return_type": "u32 *",
+    "params": [
+      {
+        "name": "ot",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Dispatches reverse ordering table clear through GPU hardware vtable slot +0x2c."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80015ff4",
+    "ghidra_name": "FUN_80015ff4",
+    "name": "kf_open_draw_prim",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "prim",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Validates primitive when debug enabled, waits for GPU idle, and writes packet words via PIO."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80016078",
+    "ghidra_name": "FUN_80016078",
+    "name": "kf_open_draw_otag",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ot_head",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 6,
+    "summary": "Enqueues ordering table DMA chain for GPU execution or falls back to CPU trace in debug level 2."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800160d0",
+    "ghidra_name": "FUN_800160d0",
+    "name": "kf_open_put_draw_env",
+    "return_type": "u32 *",
+    "params": [
+      {
+        "name": "draw_env",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Builds GP0 draw-environment packet inside DRAWENV, submits it to GPU queue, and caches active state."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800161f0",
+    "ghidra_name": "FUN_800161f0",
+    "name": "kf_open_put_disp_env",
+    "return_type": "u16 *",
+    "params": [
+      {
+        "name": "disp_env",
+        "type": "u16 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Applies DISPENV display area, screen range, interlace, and 24-bit flags to GPU GP1 registers."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800165d0",
+    "ghidra_name": "FUN_800165d0",
+    "name": "kf_open_set_draw_tex_window",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dr_mode",
+        "type": "s32"
+      },
+      {
+        "name": "tw_rect",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Packs GP0(E2h) texture window masking command from rectangle struct into draw mode buffer."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80016608",
+    "ghidra_name": "FUN_80016608",
+    "name": "kf_open_set_draw_area",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dr_area",
+        "type": "s32"
+      },
+      {
+        "name": "clip_rect",
+        "type": "s16 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Packs GP0(E3h/E4h) drawing clip rectangle top-left and bottom-right GPU commands."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80016678",
+    "ghidra_name": "FUN_80016678",
+    "name": "kf_open_set_draw_offset",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dr_offset",
+        "type": "s32"
+      },
+      {
+        "name": "offset_xy",
+        "type": "u16 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Packs GP0(E5h) 2D drawing X/Y origin offset GPU command."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800166e0",
+    "ghidra_name": "FUN_800166e0",
+    "name": "kf_open_set_draw_mode",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dr_mode",
+        "type": "s32"
+      },
+      {
+        "name": "dfe",
+        "type": "u32"
+      },
+      {
+        "name": "dtd",
+        "type": "u32"
+      },
+      {
+        "name": "tpage",
+        "type": "u32"
+      },
+      {
+        "name": "tw_rect",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Packs GP0(E1h) draw mode and GP0(E2h) texture window commands into DR_MODE packet."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80016734",
+    "ghidra_name": "FUN_80016734",
+    "name": "kf_open_build_draw_env_packets",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dr_env_pkt",
+        "type": "s32"
+      },
+      {
+        "name": "draw_env",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Compiles DRAWENV clip, offset, texture page, texture window, and clear fill into GPU DMA packet."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800169d8",
+    "ghidra_name": "FUN_800169d8",
+    "name": "kf_open_pack_gpu_draw_mode_cmd",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "dfe",
+        "type": "s32"
+      },
+      {
+        "name": "dtd",
+        "type": "s32"
+      },
+      {
+        "name": "tpage",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Encodes GP0(E1h) draw-mode control word with dither, display-area draw, and GPU-version tpage bits."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80016a28",
+    "ghidra_name": "FUN_80016a28",
+    "name": "kf_open_pack_gpu_clip_tl_cmd",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "x",
+        "type": "s16"
+      },
+      {
+        "name": "y",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Clamps coordinates to VRAM bounds and encodes GP0(E3h) drawing area top-left command."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80016af8",
+    "ghidra_name": "FUN_80016af8",
+    "name": "kf_open_pack_gpu_clip_br_cmd",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "x",
+        "type": "s16"
+      },
+      {
+        "name": "y",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Clamps coordinates to VRAM bounds and encodes GP0(E4h) drawing area bottom-right command."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80016bc8",
+    "ghidra_name": "FUN_80016bc8",
+    "name": "kf_open_pack_gpu_offset_cmd",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "x",
+        "type": "u32"
+      },
+      {
+        "name": "y",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Encodes signed X/Y screen drawing offset into GP0(E5h) GPU command word."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80016c04",
+    "ghidra_name": "FUN_80016c04",
+    "name": "kf_open_pack_gpu_tex_window_cmd",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "tw_bytes",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Encodes 8-pixel-step texture window mask and offset fields into GP0(E2h) GPU command."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80016c88",
+    "ghidra_name": "FUN_80016c88",
+    "name": "kf_open_calc_disp_vram_x",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "disp_env",
+        "type": "s16 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Computes VRAM display start X coordinate accounting for GPU type and horizontal reverse flag."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80016d78",
+    "ghidra_name": "FUN_80016d78",
+    "name": "kf_open_dma_clear_otag",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "ot",
+        "type": "s32"
+      },
+      {
+        "name": "count",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Launches PlayStation DMA Channel 6 (OTC) reverse linked-list clear with timeout check."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80016e60",
+    "ghidra_name": "FUN_80016e60",
+    "name": "kf_open_cb_clear_image_vram",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "rect_words",
+        "type": "u32 *"
+      },
+      {
+        "name": "rgb24",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "GPU queue callback submitting GP0(02h) fast VRAM rectangle fill or clipped fallback quad."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800170a8",
+    "ghidra_name": "FUN_800170a8",
+    "name": "kf_open_cb_load_image_vram",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "rect_ptr",
+        "type": "s32"
+      },
+      {
+        "name": "pix_src",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "GPU queue callback initiating DMA Channel 2 upload of rectangular texture pixels into VRAM."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80017358",
+    "ghidra_name": "FUN_80017358",
+    "name": "kf_open_cb_store_image_vram",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "rect_ptr",
+        "type": "s32"
+      },
+      {
+        "name": "pix_dst",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "GPU queue callback initiating DMA Channel 2 readback of rectangular VRAM pixels into RAM."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80017624",
+    "ghidra_name": "FUN_80017624",
+    "name": "kf_open_gpu_write_gp1_cached",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "gp1_cmd",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Writes GP1 control command register to GPU hardware."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001765c",
+    "ghidra_name": "FUN_8001765c",
+    "name": "kf_open_gpu_read_gp1_cached",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "reg_idx",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Reads cached GPU display configuration shadow word tagged with register index."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001767c",
+    "ghidra_name": "FUN_8001767c",
+    "name": "kf_open_gpu_pio_write_prim_words",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "words",
+        "type": "u32 *"
+      },
+      {
+        "name": "word_count",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Switches GPU to CPU-in mode (GP1 04h) and streams primitive words directly to GP0 FIFO."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800176c8",
+    "ghidra_name": "FUN_800176c8",
+    "name": "kf_open_gpu_dma_send_otag",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ot_addr",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Switches GPU to DMA-out mode and starts DMA Channel 2 linked-list transfer of ordering table."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80017718",
+    "ghidra_name": "FUN_80017718",
+    "name": "kf_open_gpu_read_gp0_info",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "info_idx",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Queries GP1(10h) GPU internal information register and returns masked 24-bit result."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001774c",
+    "ghidra_name": "FUN_8001774c",
+    "name": "kf_open_gpu_queue_add_prim",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      },
+      {
+        "name": "arg0",
+        "type": "void *"
+      },
+      {
+        "name": "arg2",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Enqueues zero-copy GPU command entry with no inline payload copy."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80017770",
+    "ghidra_name": "FUN_80017770",
+    "name": "kf_open_gpu_queue_enqueue",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      },
+      {
+        "name": "arg0",
+        "type": "void *"
+      },
+      {
+        "name": "copy_bytes",
+        "type": "s32"
+      },
+      {
+        "name": "arg2",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Inserts command entry into 64-slot GPU ring queue, flushing head when queue is nearly full."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001795c",
+    "ghidra_name": "FUN_8001795c",
+    "name": "kf_open_gpu_queue_flush_next",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "GPU IRQ callback draining ready ring-queue items and executing next queued DMA/VRAM operation."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80017c34",
+    "ghidra_name": "FUN_80017c34",
+    "name": "kf_open_gpu_reset_hw_and_queue",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "reset_mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Clears 64-slot GPU command queue and issues hardware/DMA reset sequence on GPU."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80017d84",
+    "ghidra_name": "FUN_80017d84",
+    "name": "kf_open_gpu_draw_sync",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Polls until GPU command ring, DMA CH2, and GPU busy flags all drain or return non-blocking depth."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80017f08",
+    "ghidra_name": "FUN_80017f08",
+    "name": "kf_open_gpu_reset_timeout",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Sets GPU watchdog deadline to current VSync counter plus 240 frames."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80017f28",
+    "ghidra_name": "FUN_80017f28",
+    "name": "kf_open_gpu_check_timeout",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Checks GPU watchdog deadline; prints queue/DMA state and resets GPU hardware on timeout."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80017fc4",
+    "ghidra_name": "FUN_80017fc4",
+    "name": "kf_open_gpu_memcpy_bytes",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dst",
+        "type": "u8 *"
+      },
+      {
+        "name": "src",
+        "type": "u8 *"
+      },
+      {
+        "name": "len",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Local byte-copy helper compiled inside libgpu queue object."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80017ff4",
+    "ghidra_name": "FUN_80017ff4",
+    "name": "kf_open_gpu_memset_bytes",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dst",
+        "type": "u8 *"
+      },
+      {
+        "name": "val",
+        "type": "u8"
+      },
+      {
+        "name": "len",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Local byte-fill helper compiled inside libgpu queue object."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001802c",
+    "ghidra_name": "FUN_8001802c",
+    "name": "kf_open_gs_open_tim",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "tim_addr",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Sets libgs active TIM stream pointer for subsequent kf_open_gs_read_tim calls."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001803c",
+    "ghidra_name": "FUN_8001803c",
+    "name": "kf_open_gs_read_tim",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "tim_info_out",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Parses next TIM image header from active stream and advances cursor past pixel and CLUT data."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800180a0",
+    "ghidra_name": "FUN_800180a0",
+    "name": "kf_open_gs_map_modeling_data",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "tmd_addr",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Initializes libgs TMD parser state against object 0 of a loaded PlayStation TMD model buffer."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800180e4",
+    "ghidra_name": "FUN_800180e4",
+    "name": "kf_open_gs_scan_tmd_prim",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "prim_out",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Reads and converts next TMD primitive packet while indexing linked vertex and normal tables."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001833c",
+    "ghidra_name": "FUN_8001833c",
+    "name": "kf_open_gs_parse_tim_header",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "tim_words",
+        "type": "s32 *"
+      },
+      {
+        "name": "info_out",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Validates TIM magic ID 0x10, extracts CLUT/pixel pointers, and returns total word size."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80018458",
+    "ghidra_name": "FUN_80018458",
+    "name": "kf_open_gs_analyze_tmd_object",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "tmd_words",
+        "type": "u32 *"
+      },
+      {
+        "name": "obj_id",
+        "type": "s32"
+      },
+      {
+        "name": "prim_top_out",
+        "type": "s32 *"
+      },
+      {
+        "name": "vert_top_out",
+        "type": "s32 *"
+      },
+      {
+        "name": "norm_top_out",
+        "type": "s32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Parses TMD object directory entry and outputs vertex, normal, and primitive base addresses plus primitive count."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800185ec",
+    "ghidra_name": "FUN_800185ec",
+    "name": "kf_open_gs_convert_tmd_prim",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "tmd_prim",
+        "type": "u32 *"
+      },
+      {
+        "name": "gs_prim_out",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Unpacks TMD primitive header/indices (FT3, FT4, FT3L, GT3L, FT4L, GT4L) into libgs working packet."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80019768",
+    "ghidra_name": "FUN_80019768",
+    "name": "kf_open_get_tpage",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "tp",
+        "type": "u32"
+      },
+      {
+        "name": "abr",
+        "type": "u32"
+      },
+      {
+        "name": "x",
+        "type": "u32"
+      },
+      {
+        "name": "y",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Encodes texture bit-depth, semi-transparency mode, and VRAM page X/Y into 16-bit tpage ID."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800197fc",
+    "ghidra_name": "FUN_800197fc",
+    "name": "kf_open_get_clut",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "x",
+        "type": "s32"
+      },
+      {
+        "name": "y",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Encodes VRAM palette X/Y coordinates into 16-bit GPU CLUT attribute word."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80019814",
+    "ghidra_name": "FUN_80019814",
+    "name": "kf_open_dump_tpage",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "tpage",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Prints decoded texture page bit-depth, blend mode, and VRAM coordinates via printf."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800198a4",
+    "ghidra_name": "FUN_800198a4",
+    "name": "kf_open_dump_clut",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "clut",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Prints decoded CLUT VRAM X/Y coordinates via printf."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001991c",
+    "ghidra_name": "FUN_8001991c",
+    "name": "kf_open_add_prim",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ot_entry",
+        "type": "u32 *"
+      },
+      {
+        "name": "prim",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Prepends GPU primitive packet into ordering table linked list node."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800199d0",
+    "ghidra_name": "FUN_800199d0",
+    "name": "kf_open_set_semi_trans",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "prim",
+        "type": "s32"
+      },
+      {
+        "name": "enable",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Sets or clears semi-transparency bit (0x02) inside GPU primitive command byte."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80019a84",
+    "ghidra_name": "FUN_80019a84",
+    "name": "kf_open_set_poly_ft4",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "poly_ft4",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Initializes GPU POLY_FT4 primitive packet word length (9) and command tag (0x2c)."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80019c3c",
+    "ghidra_name": "FUN_80019c3c",
+    "name": "kf_open_dump_draw_env",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "draw_env",
+        "type": "s16 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Prints DRAWENV clip, offset, texture window, dither/draw flags, and tpage settings."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80019d80",
+    "ghidra_name": "FUN_80019d80",
+    "name": "kf_open_dump_disp_env",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "disp_env",
+        "type": "s16 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Prints DISPENV VRAM source rect, CRT screen rect, interlace, and RGB24 flags."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80019e30",
+    "ghidra_name": "FUN_80019e30",
+    "name": "kf_open_load_tpage",
+    "return_type": "u16",
+    "params": [
+      {
+        "name": "pix",
+        "type": "void *"
+      },
+      {
+        "name": "tp",
+        "type": "s32"
+      },
+      {
+        "name": "abr",
+        "type": "u32"
+      },
+      {
+        "name": "x",
+        "type": "u32"
+      },
+      {
+        "name": "y",
+        "type": "u32"
+      },
+      {
+        "name": "w",
+        "type": "s32"
+      },
+      {
+        "name": "h",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Uploads texture image to VRAM according to pixel bit-depth and returns encoded tpage ID."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80019f18",
+    "ghidra_name": "FUN_80019f18",
+    "name": "kf_open_load_clut",
+    "return_type": "u16",
+    "params": [
+      {
+        "name": "clut_pix",
+        "type": "void *"
+      },
+      {
+        "name": "x",
+        "type": "u32"
+      },
+      {
+        "name": "y",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Uploads 256-entry CLUT row to VRAM at (x, y) and returns encoded 16-bit CLUT handle."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80019f7c",
+    "ghidra_name": "FUN_80019f7c",
+    "name": "kf_open_set_def_draw_env",
+    "return_type": "u16 *",
+    "params": [
+      {
+        "name": "draw_env",
+        "type": "u16 *"
+      },
+      {
+        "name": "x",
+        "type": "u16"
+      },
+      {
+        "name": "y",
+        "type": "u16"
+      },
+      {
+        "name": "w",
+        "type": "u16"
+      },
+      {
+        "name": "h",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Populates DRAWENV structure defaults for target VRAM framebuffer region."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001a008",
+    "ghidra_name": "FUN_8001a008",
+    "name": "kf_open_set_def_disp_env",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "disp_env",
+        "type": "u16 *"
+      },
+      {
+        "name": "x",
+        "type": "u16"
+      },
+      {
+        "name": "y",
+        "type": "u16"
+      },
+      {
+        "name": "w",
+        "type": "u16"
+      },
+      {
+        "name": "h",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Populates DISPENV structure defaults for target VRAM scanout region."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001a044",
+    "ghidra_name": "FUN_8001a044",
+    "name": "kf_open_get_prim_type_name",
+    "return_type": "u8 *",
+    "params": [
+      {
+        "name": "prim_code",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Looks up human-readable GPU primitive mnemonic string from command opcode byte."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001a0b0",
+    "ghidra_name": "FUN_8001a0b0",
+    "name": "kf_open_get_prim_type_len",
+    "return_type": "u8",
+    "params": [
+      {
+        "name": "prim_code",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Looks up expected GPU primitive payload word length from command opcode byte."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001a10c",
+    "ghidra_name": "FUN_8001a10c",
+    "name": "kf_open_cpu_draw_otag",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ot",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Debug fallback traversing ordering table linked list and submitting each primitive via DrawPrim."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001a1b4",
+    "ghidra_name": "FUN_8001a1b4",
+    "name": "kf_open_dump_otag",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ot",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Walks ordering table linked list and logs primitive addresses, types, and errors."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001a2fc",
+    "ghidra_name": "FUN_8001a2fc",
+    "name": "kf_open_check_prim_valid",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "caller_name",
+        "type": "char *"
+      },
+      {
+        "name": "prim_addr",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Validates GPU primitive packet length matches opcode byte; logs diagnostic on mismatch."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001a4d4",
+    "ghidra_name": "FUN_8001a4d4",
+    "name": "kf_open_set_geom_offset",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ofx",
+        "type": "s32"
+      },
+      {
+        "name": "ofy",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Writes 16.16 fixed-point screen center projection offsets into GTE OFX and OFY registers."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001a4ec",
+    "ghidra_name": "FUN_8001a4ec",
+    "name": "kf_open_set_geom_screen",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "h_dist",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Writes projection plane distance H into GTE H register."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001a630",
+    "ghidra_name": "FUN_8001a630",
+    "name": "kf_open_init_geom",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Enables COP2 in CPU Status register and initializes default GTE projection and fog constants."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001ad90",
+    "ghidra_name": "FUN_8001ad90",
+    "name": "kf_open_cd_init",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 6,
+    "summary": "Retries CD-ROM hardware reset up to 5 times and installs default BIOS event delivery callbacks."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001ae1c",
+    "ghidra_name": "FUN_8001ae1c",
+    "name": "kf_open_cd_init_and_patch",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 6,
+    "summary": "Patches PlayStation BIOS CD tables, resets CD-ROM drive, and hooks default sync/ready/data callbacks."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001ae94",
+    "ghidra_name": "FUN_8001ae94",
+    "name": "kf_open_cd_default_sync_event_cb",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Default CdSyncCallback delivering PS1 BIOS event 0xf0000003 class 0x20."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001aebc",
+    "ghidra_name": "FUN_8001aebc",
+    "name": "kf_open_cd_default_ready_event_cb",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Default CdReadyCallback delivering PS1 BIOS event 0xf0000003 class 0x40."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001aee4",
+    "ghidra_name": "FUN_8001aee4",
+    "name": "kf_open_cd_default_data_event_cb",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Default CdDataCallback delivering PS1 BIOS event 0xf0000003 class 0x40."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001af1c",
+    "ghidra_name": "FUN_8001af1c",
+    "name": "kf_open_cd_reset_wrapper",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 6,
+    "summary": "Top-level CdReset wrapper forwarding reset mode into cd_hw_init."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001af3c",
+    "ghidra_name": "FUN_8001af3c",
+    "name": "kf_open_cd_sync",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      },
+      {
+        "name": "result",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Waits or polls CD command completion status and copies 8-byte CD response buffer."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001af5c",
+    "ghidra_name": "FUN_8001af5c",
+    "name": "kf_open_cd_ready",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      },
+      {
+        "name": "result",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Waits or polls CD sector data-ready interrupt status and copies 8-byte response buffer."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001af7c",
+    "ghidra_name": "FUN_8001af7c",
+    "name": "kf_open_cd_data_sync",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Waits or polls remaining CD DMA sector transfer count until zero or timeout."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001b024",
+    "ghidra_name": "FUN_8001b024",
+    "name": "kf_open_cd_sync_callback",
+    "return_type": "void *",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Installs user CdSyncCallback function pointer and returns previous handler."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001b03c",
+    "ghidra_name": "FUN_8001b03c",
+    "name": "kf_open_cd_ready_callback",
+    "return_type": "void *",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Installs user CdReadyCallback function pointer and returns previous handler."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001b054",
+    "ghidra_name": "FUN_8001b054",
+    "name": "kf_open_cd_data_callback",
+    "return_type": "void *",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Installs user CdDataCallback function pointer and returns previous handler."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001b06c",
+    "ghidra_name": "FUN_8001b06c",
+    "name": "kf_open_cd_control_exec",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "cmd",
+        "type": "u8"
+      },
+      {
+        "name": "param",
+        "type": "void *"
+      },
+      {
+        "name": "result",
+        "type": "u8 *"
+      },
+      {
+        "name": "nowait",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Retries issuing CD-ROM command with temporary callback suspension until ack or retry exhaustion."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001b18c",
+    "ghidra_name": "FUN_8001b18c",
+    "name": "kf_open_cd_control",
+    "return_type": "bool",
+    "params": [
+      {
+        "name": "cmd",
+        "type": "u8"
+      },
+      {
+        "name": "param",
+        "type": "void *"
+      },
+      {
+        "name": "result",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Sends blocking/ack-waited CD-ROM control command and returns non-zero on success."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001b1b0",
+    "ghidra_name": "FUN_8001b1b0",
+    "name": "kf_open_cd_control_f",
+    "return_type": "bool",
+    "params": [
+      {
+        "name": "cmd",
+        "type": "u8"
+      },
+      {
+        "name": "param",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Issues non-blocking fast CD-ROM control command without waiting for completion ack."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001b1d8",
+    "ghidra_name": "FUN_8001b1d8",
+    "name": "kf_open_cd_control_b",
+    "return_type": "bool",
+    "params": [
+      {
+        "name": "cmd",
+        "type": "u8"
+      },
+      {
+        "name": "param",
+        "type": "void *"
+      },
+      {
+        "name": "result",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Issues CD-ROM control command and blocks in CdSync(0) until CdlComplete."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001b244",
+    "ghidra_name": "FUN_8001b244",
+    "name": "kf_open_cd_read",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "sectors",
+        "type": "s32"
+      },
+      {
+        "name": "buf",
+        "type": "void *"
+      },
+      {
+        "name": "mode",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Configures CD sector mode/stride (0x800/0x924/0x918 bytes) and starts sector DMA read loop."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001b318",
+    "ghidra_name": "FUN_8001b318",
+    "name": "kf_open_cd_flush",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Flushes pending CD-ROM command state via CdlInit/reset FIFO command."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001b338",
+    "ghidra_name": "FUN_8001b338",
+    "name": "kf_open_cd_read2",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "mode",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 6,
+    "summary": "Sets CD-ROM mode, hooks streaming ring callbacks when stream bit 0x100 set, and starts CdlReadS."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001b3a8",
+    "ghidra_name": "FUN_8001b3a8",
+    "name": "kf_open_cd_int_to_pos",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "lba",
+        "type": "s32"
+      },
+      {
+        "name": "pos_bcd",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Converts linear sector LBA index (+150 pregap) to BCD minute/second/sector CdlLOC struct."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001b57c",
+    "ghidra_name": "FUN_8001b57c",
+    "name": "kf_open_cd_memcpy8",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dst",
+        "type": "u8 *"
+      },
+      {
+        "name": "src",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Copies 8-byte CD-ROM status response payload when destination pointer is non-null."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001b5ac",
+    "ghidra_name": "FUN_8001b5ac",
+    "name": "kf_open_cd_reset_timeout",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Sets CD-ROM watchdog deadline to current VSync counter plus 480 frames."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001b5cc",
+    "ghidra_name": "FUN_8001b5cc",
+    "name": "kf_open_cd_check_timeout",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Checks CD-ROM watchdog deadline and prints Sync/Ready diagnostics on timeout."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001b664",
+    "ghidra_name": "FUN_8001b664",
+    "name": "kf_open_cd_poll_irq_in_loop",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Polls CD interrupt status when CheckCallback reports software callback mode active."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001b740",
+    "ghidra_name": "FUN_8001b740",
+    "name": "kf_open_cd_intr_dispatch",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Drains pending CDROM interrupts and invokes registered CdReadyCallback and CdSyncCallback."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001b808",
+    "ghidra_name": "FUN_8001b808",
+    "name": "kf_open_cd_intr_handler",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Reads CDROM REG3/FIFO response bytes, classifies INT1..INT5 status, and updates sync/ready states."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001bbcc",
+    "ghidra_name": "FUN_8001bbcc",
+    "name": "kf_open_cd_wait_sync",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "non_blocking",
+        "type": "s32"
+      },
+      {
+        "name": "result",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Waits for CdlComplete/CdlDiskError or returns 0 immediately in non-blocking mode."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001bc7c",
+    "ghidra_name": "FUN_8001bc7c",
+    "name": "kf_open_cd_wait_ready",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "non_blocking",
+        "type": "s32"
+      },
+      {
+        "name": "result",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Waits for CD data-ready status or clears and returns immediately in non-blocking mode."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001bd08",
+    "ghidra_name": "FUN_8001bd08",
+    "name": "kf_open_cd_send_hw_cmd",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "cmd",
+        "type": "u8"
+      },
+      {
+        "name": "param",
+        "type": "u8 *"
+      },
+      {
+        "name": "result",
+        "type": "void *"
+      },
+      {
+        "name": "nowait",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Writes command parameters to CDROM FIFO, triggers controller opcode, and optionally awaits INT2."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001bf94",
+    "ghidra_name": "FUN_8001bf94",
+    "name": "kf_open_cd_reset_fifo_and_mute",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "params",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Waits for CD sync idle and sends CD-ROM hardware register 3 control flags 0x20."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001c044",
+    "ghidra_name": "FUN_8001c044",
+    "name": "kf_open_cd_hw_init",
+    "return_type": "s32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Initializes CD-ROM IRQ/SPU CD volume registers, resets drive, and configures CdlNop/Setmode."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001c144",
+    "ghidra_name": "FUN_8001c144",
+    "name": "kf_open_cd_start_sector_dma",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "dest_addr",
+        "type": "u32"
+      },
+      {
+        "name": "sector_count",
+        "type": "s32"
+      },
+      {
+        "name": "words_per_sector",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Arms CdReadyCallback chain and launches first CD sector DMA read."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001c268",
+    "ghidra_name": "FUN_8001c268",
+    "name": "kf_open_cd_data_sync_wait",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "non_blocking",
+        "type": "s32"
+      },
+      {
+        "name": "result",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Spins until remaining sector count drains or disk error/timeout occurs."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001c324",
+    "ghidra_name": "FUN_8001c324",
+    "name": "kf_open_cd_sector_ready_cb",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "intr_status",
+        "type": "s32"
+      },
+      {
+        "name": "result",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "CdReady ISR callback triggering sequential sector DMA reads and final CdDataCallback."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001c440",
+    "ghidra_name": "FUN_8001c440",
+    "name": "kf_open_cd_dma_read_sector",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "dest_addr",
+        "type": "u32"
+      },
+      {
+        "name": "words_per_sector",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Programs CDROM_DELAY and DMA Channel 3 to transfer one sector from CD FIFO into RAM."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001c584",
+    "ghidra_name": "FUN_8001c584",
+    "name": "kf_open_st_set_ring",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ring_buf",
+        "type": "void *"
+      },
+      {
+        "name": "ring_sectors",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Binds STR streaming ring buffer base address and sector count, clearing all slot headers."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001c5e4",
+    "ghidra_name": "FUN_8001c5e4",
+    "name": "kf_open_st_clear_ring",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Resets active STR ring read/write indices and zeroes all ring sector status entries."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001c62c",
+    "ghidra_name": "FUN_8001c62c",
+    "name": "kf_open_st_unset_ring",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Detaches CD DMA and Ready streaming callbacks inside a critical section."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001c664",
+    "ghidra_name": "FUN_8001c664",
+    "name": "kf_open_st_dma_complete_cb",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "CD DMA completion callback finalizing completed STR ring slots and invoking user decode notify."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001c6cc",
+    "ghidra_name": "FUN_8001c6cc",
+    "name": "kf_open_st_set_stream",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "mode_flag",
+        "type": "u32"
+      },
+      {
+        "name": "start_frame",
+        "type": "u32"
+      },
+      {
+        "name": "end_frame",
+        "type": "u32"
+      },
+      {
+        "name": "dma_done_cb",
+        "type": "void *"
+      },
+      {
+        "name": "sector_done_cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Configures live CD STR stream filtering, frame bounds, and ring completion callbacks."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001c730",
+    "ghidra_name": "FUN_8001c730",
+    "name": "kf_open_st_set_emulate",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ram_stream_addr",
+        "type": "u32"
+      },
+      {
+        "name": "start_frame",
+        "type": "u32"
+      },
+      {
+        "name": "end_frame",
+        "type": "u32"
+      },
+      {
+        "name": "unused",
+        "type": "u32"
+      },
+      {
+        "name": "dma_done_cb",
+        "type": "void *"
+      },
+      {
+        "name": "sector_done_cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Configures RAM-emulated STR stream playback source and completion callbacks."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001c7a0",
+    "ghidra_name": "FUN_8001c7a0",
+    "name": "kf_open_st_free_ring",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "frame_addr",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Marks all CD ring slots occupied by a decoded STR frame as free for overwrite."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001c86c",
+    "ghidra_name": "FUN_8001c86c",
+    "name": "kf_open_st_reset_ring_slots",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "start_idx",
+        "type": "s32"
+      },
+      {
+        "name": "slot_count",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Clears status headers for consecutive STR ring slots."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001c8a8",
+    "ghidra_name": "FUN_8001c8a8",
+    "name": "kf_open_st_get_next",
+    "return_type": "bool",
+    "params": [
+      {
+        "name": "frame_addr_out",
+        "type": "s32 *"
+      },
+      {
+        "name": "frame_header_out",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Returns pointer and metadata header for next completely assembled STR frame in CD ring."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001c95c",
+    "ghidra_name": "FUN_8001c95c",
+    "name": "kf_open_st_set_mask",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "enable",
+        "type": "u32"
+      },
+      {
+        "name": "start_frame",
+        "type": "u32"
+      },
+      {
+        "name": "end_frame",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Sets STR stream frame mask flag and frame range limits."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001c97c",
+    "ghidra_name": "FUN_8001c97c",
+    "name": "kf_open_st_ring_sector_intr",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "CD Ready interrupt handler validating 0x0160 STR chunks and DMA-assembling multi-sector frames."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001d330",
+    "ghidra_name": "FUN_8001d330",
+    "name": "kf_open_dma_start_channel",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ch",
+        "type": "u32"
+      },
+      {
+        "name": "madr",
+        "type": "u32"
+      },
+      {
+        "name": "bcr",
+        "type": "u32"
+      },
+      {
+        "name": "chcr",
+        "type": "u32"
+      },
+      {
+        "name": "dpcr_mask",
+        "type": "u32"
+      },
+      {
+        "name": "use_dicr",
+        "type": "s32"
+      },
+      {
+        "name": "dicr_flag",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Low-level PS1 DMA channel launcher checking channel busy status and arming DPCR/DICR."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001d4bc",
+    "ghidra_name": "FUN_8001d4bc",
+    "name": "kf_open_cd_copy_dwords",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dst",
+        "type": "u32 *"
+      },
+      {
+        "name": "src",
+        "type": "u32 *"
+      },
+      {
+        "name": "word_count",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Copies 32-bit words between buffers for RAM-emulated STR ring reads."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001d510",
+    "ghidra_name": "FUN_8001d510",
+    "name": "kf_open_enter_critical_section",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Invokes PS1 BIOS EnterCriticalSection syscall(0) wrapper to mask interrupts."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001d528",
+    "ghidra_name": "FUN_8001d528",
+    "name": "kf_open_cd_install_bios_hooks",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Patches BIOS A(0) function vectors at 0xa00003e0..0x48c with libcd helper wrappers."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001d5a8",
+    "ghidra_name": "FUN_8001d5a8",
+    "name": "kf_open_cd_bios_seek_l",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cdl_loc",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 6,
+    "summary": "BIOS CD hook issuing blocking CdlSeekL (0x15) command."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001d5d0",
+    "ghidra_name": "FUN_8001d5d0",
+    "name": "kf_open_cd_bios_pause",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 6,
+    "summary": "BIOS CD hook issuing blocking CdlPause (0x08) command."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001d5f8",
+    "ghidra_name": "FUN_8001d5f8",
+    "name": "kf_open_cd_bios_nop",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "result",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 6,
+    "summary": "BIOS CD hook issuing blocking CdlNop (0x01) status query."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001d634",
+    "ghidra_name": "FUN_8001d634",
+    "name": "kf_open_cd_bios_read_sync",
+    "return_type": "bool",
+    "params": [],
+    "domain": "module_open",
+    "wave": 6,
+    "summary": "BIOS CD hook initiating single-sector read and polling CdDataSync until idle."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001d668",
+    "ghidra_name": "FUN_8001d668",
+    "name": "kf_open_cd_bios_call_a0",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Dispatches PlayStation BIOS A(0) table syscall vector."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001d678",
+    "ghidra_name": "FUN_8001d678",
+    "name": "kf_open_cd_search_file",
+    "return_type": "u32 *",
+    "params": [
+      {
+        "name": "file_out",
+        "type": "u32 *"
+      },
+      {
+        "name": "path",
+        "type": "char *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 8,
+    "summary": "Resolves ISO9660 backslash path on disc and populates CdlFILE location and byte size."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001d95c",
+    "ghidra_name": "FUN_8001d95c",
+    "name": "kf_open_cd_cmp_filename12",
+    "return_type": "bool",
+    "params": [
+      {
+        "name": "a",
+        "type": "char *"
+      },
+      {
+        "name": "b",
+        "type": "char *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Compares 12-character uppercase 8.3 ISO9660 directory entry filenames."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001d97c",
+    "ghidra_name": "FUN_8001d97c",
+    "name": "kf_open_cd_new_media",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 7,
+    "summary": "Reads ISO9660 Primary Volume Descriptor, verifies CD001 signature, and caches path table."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001dc84",
+    "ghidra_name": "FUN_8001dc84",
+    "name": "kf_open_cd_find_dir_in_path_table",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "parent_dir_id",
+        "type": "s32"
+      },
+      {
+        "name": "dir_name",
+        "type": "char *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Scans cached ISO9660 path table entries matching parent directory ID and directory name."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001dd3c",
+    "ghidra_name": "FUN_8001dd3c",
+    "name": "kf_open_cd_cache_dir_files",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "dir_id",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 7,
+    "summary": "Reads ISO9660 directory extent sector and caches filenames, BCD locations, and byte sizes."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e00c",
+    "ghidra_name": "FUN_8001e00c",
+    "name": "kf_open_cd_memcpy_bytes",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dst",
+        "type": "u8 *"
+      },
+      {
+        "name": "src",
+        "type": "u8 *"
+      },
+      {
+        "name": "len",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Local byte-copy helper compiled inside libcd ISO9660 filesystem unit."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e03c",
+    "ghidra_name": "FUN_8001e03c",
+    "name": "kf_open_cd_read_sectors_sync",
+    "return_type": "bool",
+    "params": [
+      {
+        "name": "sectors",
+        "type": "s32"
+      },
+      {
+        "name": "lba",
+        "type": "s32"
+      },
+      {
+        "name": "dst_buf",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 6,
+    "summary": "Seeks to LBA sector via CdlSetloc and synchronously reads ISO9660 metadata sectors."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e0cc",
+    "ghidra_name": "FUN_8001e0cc",
+    "name": "kf_open_set_dma_mdec_in_callback",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Registers DMA Channel 0 (MDEC input) completion callback via DMACallback."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e0f0",
+    "ghidra_name": "FUN_8001e0f0",
+    "name": "kf_open_set_dma_mdec_out_callback",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Registers DMA Channel 1 (MDEC output) completion callback via DMACallback."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e114",
+    "ghidra_name": "FUN_8001e114",
+    "name": "kf_open_set_dma_cdrom_callback",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Registers DMA Channel 3 (CD-ROM) completion callback via DMACallback."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e138",
+    "ghidra_name": "FUN_8001e138",
+    "name": "kf_open_set_dma_spu_callback",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Registers DMA Channel 4 (SPU) completion callback via DMACallback."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e15c",
+    "ghidra_name": "FUN_8001e15c",
+    "name": "kf_open_set_dma_pio_callback",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Registers DMA Channel 5 (PIO) completion callback via DMACallback."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e180",
+    "ghidra_name": "FUN_8001e180",
+    "name": "kf_open_set_gpu_irq_callback",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Registers GPU IRQ slot 2 interrupt handler via InterruptCallback."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e1a4",
+    "ghidra_name": "FUN_8001e1a4",
+    "name": "kf_open_set_spu_irq_callback",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Registers SPU IRQ slot 9 interrupt handler via InterruptCallback."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e1c8",
+    "ghidra_name": "FUN_8001e1c8",
+    "name": "kf_open_set_sio_irq_callback",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Registers SIO/Controller IRQ slot 10 interrupt handler via InterruptCallback."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e1ec",
+    "ghidra_name": "FUN_8001e1ec",
+    "name": "kf_open_start_vsync_irq",
+    "return_type": "void *",
+    "params": [],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Configures HBlank timer, enables VSync IRQ 0 handler, and returns VSyncCallback setter pointer."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e268",
+    "ghidra_name": "FUN_8001e268",
+    "name": "kf_open_stop_vsync_irq",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Detaches VSync IRQ 0 handler and clears active VSync callback state."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e2c8",
+    "ghidra_name": "FUN_8001e2c8",
+    "name": "kf_open_invoke_vsync_callback",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Invokes registered user VSync interrupt callback function pointer if non-null."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e2ec",
+    "ghidra_name": "FUN_8001e2ec",
+    "name": "kf_open_vsync_callback_impl",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "cb",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Stores new VSync user callback pointer (starting VSync IRQ if needed) and returns previous pointer."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e36c",
+    "ghidra_name": "FUN_8001e36c",
+    "name": "kf_open_pad_init",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "mode",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Resets callback subsystem and initializes BIOS controller pad polling via PAD_init2."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e3c4",
+    "ghidra_name": "FUN_8001e3c4",
+    "name": "kf_open_pad_read",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "port_mask",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Polls PlayStation BIOS PAD_dr and returns inverted bitmask of pressed controller buttons."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e3ec",
+    "ghidra_name": "FUN_8001e3ec",
+    "name": "kf_open_pad_stop",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Stops PlayStation controller BIOS driver polling via StopPAD2."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e43c",
+    "ghidra_name": "FUN_8001e43c",
+    "name": "kf_open_reset_callback",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Initializes libetc IRQ/DMA callback tables via internal ResetCallback handler."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e46c",
+    "ghidra_name": "FUN_8001e46c",
+    "name": "kf_open_interrupt_callback",
+    "return_type": "void *",
+    "params": [
+      {
+        "name": "irq",
+        "type": "s32"
+      },
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Dispatches InterruptCallback registration into active callback dispatcher."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e49c",
+    "ghidra_name": "FUN_8001e49c",
+    "name": "kf_open_dma_callback",
+    "return_type": "void *",
+    "params": [
+      {
+        "name": "dma_ch",
+        "type": "s32"
+      },
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Invokes active DMA callback registration vector from callback vtable."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e4cc",
+    "ghidra_name": "FUN_8001e4cc",
+    "name": "kf_open_vsync_callback",
+    "return_type": "void *",
+    "params": [
+      {
+        "name": "cb",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Invokes active VSync callback registration vector from callback vtable."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e4fc",
+    "ghidra_name": "FUN_8001e4fc",
+    "name": "kf_open_stop_callback",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Shuts down libetc IRQ/DMA/VSync callback dispatchers cleanly."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e52c",
+    "ghidra_name": "FUN_8001e52c",
+    "name": "kf_open_check_callback",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Returns active software interrupt callback state flag from libetc dispatcher."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e53c",
+    "ghidra_name": "FUN_8001e53c",
+    "name": "kf_open_init_irq_dispatcher",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Installs BIOS HookEntryInt interrupt dispatcher, initializes VSync/DMA chains, and clears I_MASK."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e75c",
+    "ghidra_name": "FUN_8001e75c",
+    "name": "kf_open_register_irq_handler",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "irq",
+        "type": "u32"
+      },
+      {
+        "name": "cb",
+        "type": "s32"
+      },
+      {
+        "name": "unused2",
+        "type": "u32"
+      },
+      {
+        "name": "prev_out",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Binds or clears hardware interrupt callback handler for IRQ 0..10 and updates I_MASK."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e808",
+    "ghidra_name": "FUN_8001e808",
+    "name": "kf_open_teardown_irq_dispatcher",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Masks all hardware IRQs and tears down DMA and VSync callback dispatchers."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e8e4",
+    "ghidra_name": "FUN_8001e8e4",
+    "name": "kf_open_init_dma_dispatcher",
+    "return_type": "u8 *",
+    "params": [],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Clears DMA callback array, hooks IRQ 3 DMA master handler, and returns DMA callback register fn."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e948",
+    "ghidra_name": "FUN_8001e948",
+    "name": "kf_open_stop_dma_dispatcher",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Detaches IRQ 3 DMA master handler and clears DMA channel callbacks."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001e9a8",
+    "ghidra_name": "FUN_8001e9a8",
+    "name": "kf_open_dma_irq_dispatch",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Services DICR DMA channel completion flags and invokes per-channel callbacks."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001eb88",
+    "ghidra_name": "FUN_8001eb88",
+    "name": "kf_open_vsync",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Waits for N VSync frames or returns HBlank counter / elapsed VSync tick depending on mode."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001ec8c",
+    "ghidra_name": "FUN_8001ec8c",
+    "name": "kf_open_vsync_wait_target",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "target_tick",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Spins until global VSync tick counter reaches target value or logs VSync timeout."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001ed14",
+    "ghidra_name": "FUN_8001ed14",
+    "name": "kf_open_ss_seq_set_vol",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "vol_l",
+        "type": "s16"
+      },
+      {
+        "name": "vol_r",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Sets left/right stereo master volume for a single open SEQ score."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001ed4c",
+    "ghidra_name": "FUN_8001ed4c",
+    "name": "kf_open_ss_sep_set_vol",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "sep_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "vol_l",
+        "type": "s16"
+      },
+      {
+        "name": "vol_r",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Sets left/right stereo volume for an individual track inside an open SEP container."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001ed88",
+    "ghidra_name": "FUN_8001ed88",
+    "name": "kf_open_ss_set_seq_track_vol_internal",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "vol_l",
+        "type": "s16"
+      },
+      {
+        "name": "vol_r",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Stores SEQ/SEP stereo channel volume and recalculates channel SPU voice attenuation."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001edfc",
+    "ghidra_name": "FUN_8001edfc",
+    "name": "kf_open_ss_init_internal",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "hot_start",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 7,
+    "summary": "Initializes SPU (cold or hot), clears 24 hardware voice states, and initializes libsnd runtime."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001ef10",
+    "ghidra_name": "FUN_8001ef10",
+    "name": "kf_open_ss_init",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 8,
+    "summary": "Cold-initializes PlayStation SPU and libsnd audio synthesizer."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001ef30",
+    "ghidra_name": "FUN_8001ef30",
+    "name": "kf_open_ss_init_hot",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 8,
+    "summary": "Warm-initializes libsnd audio synthesizer while preserving existing SPU RAM state."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001ef50",
+    "ghidra_name": "FUN_8001ef50",
+    "name": "kf_open_ss_set_table_size",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "table_buf",
+        "type": "s32"
+      },
+      {
+        "name": "max_seqs",
+        "type": "s16"
+      },
+      {
+        "name": "max_tracks",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Configures caller-supplied libsnd SEQ/SEP track state buffer and maximum concurrency counts."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f0f4",
+    "ghidra_name": "FUN_8001f0f4",
+    "name": "kf_open_ss_set_tick_mode",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "tick_mode",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Configures libsnd update timer rate mode (VSync or root-counter hardware clock)."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f1b4",
+    "ghidra_name": "FUN_8001f1b4",
+    "name": "kf_open_ss_timer_delay_spin",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Short hardware settle spin loop used during sound root-counter timer configuration."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f1d0",
+    "ghidra_name": "FUN_8001f1d0",
+    "name": "kf_open_ss_start_tick_timer",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "force_timer",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Starts libsnd sequence tick driver using VSync callback or hardware root counter event."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f468",
+    "ghidra_name": "FUN_8001f468",
+    "name": "kf_open_ss_start2",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Starts libsnd audio processing engine with timer mode override enabled."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f488",
+    "ghidra_name": "FUN_8001f488",
+    "name": "kf_open_ss_start",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Starts libsnd audio processing engine using configured tick mode."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f4a8",
+    "ghidra_name": "FUN_8001f4a8",
+    "name": "kf_open_ss_end",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Disables and closes libsnd root-counter event timer inside a critical section."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f510",
+    "ghidra_name": "FUN_8001f510",
+    "name": "kf_open_ss_quit",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Shuts down underlying SPU driver state via SpuQuit."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f550",
+    "ghidra_name": "FUN_8001f550",
+    "name": "kf_open_ss_set_rcnt",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "spec",
+        "type": "u32"
+      },
+      {
+        "name": "target",
+        "type": "u16"
+      },
+      {
+        "name": "mode",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Programs hardware root counter 0..2 target and mode control register."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f624",
+    "ghidra_name": "FUN_8001f624",
+    "name": "kf_open_ss_start_rcnt",
+    "return_type": "bool",
+    "params": [
+      {
+        "name": "spec",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Unmasks hardware root counter IRQ bit in PS1 I_MASK register."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f68c",
+    "ghidra_name": "FUN_8001f68c",
+    "name": "kf_open_ss_stop_rcnt",
+    "return_type": "bool",
+    "params": [
+      {
+        "name": "spec",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Stops specified hardware root counter channel."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f6e0",
+    "ghidra_name": "FUN_8001f6e0",
+    "name": "kf_open_ss_ut_reverb_on",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Enables hardware SPU reverb effect processing via SpuSetReverb(1)."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f700",
+    "ghidra_name": "FUN_8001f700",
+    "name": "kf_open_ss_ut_reverb_off",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Disables hardware SPU reverb effect processing via SpuSetReverb(0)."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f720",
+    "ghidra_name": "FUN_8001f720",
+    "name": "kf_open_ss_ut_set_reverb_type",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "reverb_type",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 7,
+    "summary": "Selects hardware SPU reverb preset mode 0..9 via SpuSetReverbModeParam."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f790",
+    "ghidra_name": "FUN_8001f790",
+    "name": "kf_open_ss_ut_set_reverb_depth",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "depth_left",
+        "type": "s16"
+      },
+      {
+        "name": "depth_right",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 7,
+    "summary": "Scales 0..127 reverb depth into 16-bit SPU reverb mix depth registers."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f84c",
+    "ghidra_name": "FUN_8001f84c",
+    "name": "kf_open_ss_ut_set_reverb_feedback",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "feedback",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 7,
+    "summary": "Configures SPU reverb feedback parameter via SpuSetReverbModeParam."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f88c",
+    "ghidra_name": "FUN_8001f88c",
+    "name": "kf_open_ss_ut_set_reverb_delay",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "delay",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 7,
+    "summary": "Configures SPU reverb delay parameter via SpuSetReverbModeParam."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f8cc",
+    "ghidra_name": "FUN_8001f8cc",
+    "name": "kf_open_ss_vab_open_head",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "vh_addr",
+        "type": "void *"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Opens VAB instrument header bank in RAM and automatically allocates SPU waveform memory."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f8fc",
+    "ghidra_name": "FUN_8001f8fc",
+    "name": "kf_open_ss_vab_open_head_sticky",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "vh_addr",
+        "type": "void *"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "spu_addr",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Opens VAB instrument header bank bound to caller-specified SPU RAM base address."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f92c",
+    "ghidra_name": "FUN_8001f92c",
+    "name": "kf_open_ss_vab_open_head_with_mode",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "vh_addr",
+        "type": "void *"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "spu_addr",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Alternate SsVabOpenHeadSticky entry binding VAB header to caller-specified SPU RAM address."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001f95c",
+    "ghidra_name": "FUN_8001f95c",
+    "name": "kf_open_ss_vab_open_head_internal",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "vh_words",
+        "type": "u32 *"
+      },
+      {
+        "name": "vab_id",
+        "type": "s32"
+      },
+      {
+        "name": "use_fixed_addr",
+        "type": "s16"
+      },
+      {
+        "name": "spu_addr",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Parses VAB header tables, ADPCM offsets, and tone descriptors, allocating SPU RAM slots."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001fd90",
+    "ghidra_name": "FUN_8001fd90",
+    "name": "kf_open_ss_set_mvol",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "vol_left",
+        "type": "s16"
+      },
+      {
+        "name": "vol_right",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Sets SPU master stereo output volume scaled from 0..127 libsnd range."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8001fde8",
+    "ghidra_name": "FUN_8001fde8",
+    "name": "kf_open_ss_alloc_spu_voice",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "priority",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Finds free or lowest-priority SPU voice slot across 24 hardware channels."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80020040",
+    "ghidra_name": "FUN_80020040",
+    "name": "kf_open_ss_voice_calc_seq_vol_pan",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "unused",
+        "type": "u32"
+      },
+      {
+        "name": "voice_vol",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Computes left/right SPU volume registers with stereo panning/reverb flags for SEQ voices."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80020470",
+    "ghidra_name": "FUN_80020470",
+    "name": "kf_open_ss_voice_key_off_current",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Clears current libsnd voice state and flags its SPU hardware channel for key-off."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80020540",
+    "ghidra_name": "FUN_80020540",
+    "name": "kf_open_ss_voice_find_program_tones",
+    "return_type": "u8",
+    "params": [
+      {
+        "name": "tone_idx_out",
+        "type": "u8 *"
+      },
+      {
+        "name": "note_out",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Finds all tones in current VAB program whose min/max note key range covers active note."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800205f0",
+    "ghidra_name": "FUN_800205f0",
+    "name": "kf_open_ss_voice_load_tone_regs",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Populates SPU voice register shadow fields (ADSR, SPU start addr, pitch, loop) from tone."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80020820",
+    "ghidra_name": "FUN_80020820",
+    "name": "kf_open_ss_voice_apply_note_vol_pan",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Computes active SPU voice stereo pan/volume, noise clock, and noise-mode bitmask."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80020bbc",
+    "ghidra_name": "FUN_80020bbc",
+    "name": "kf_open_ss_voice_set_spu_vol",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u32"
+      },
+      {
+        "name": "vol_left",
+        "type": "u16"
+      },
+      {
+        "name": "vol_right",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Writes left/right volume directly into libsnd voice shadow registers and noise mask."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80020c10",
+    "ghidra_name": "FUN_80020c10",
+    "name": "kf_open_ss_voice_trigger_noise",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u32"
+      },
+      {
+        "name": "unused1",
+        "type": "u32"
+      },
+      {
+        "name": "unused2",
+        "type": "u32"
+      },
+      {
+        "name": "noise_ch",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Marks voice channel active in noise mode and raises key-on bitmask."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80020cec",
+    "ghidra_name": "FUN_80020cec",
+    "name": "kf_open_ss_voice_clear_state",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Marks specified libsnd voice slot inactive and clears noise bitmask registers."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80020d30",
+    "ghidra_name": "FUN_80020d30",
+    "name": "kf_open_ss_calc_voice_pitch_default",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Calculates SPU 14-bit pitch register value from current note, base note, and fine tuning."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80020dec",
+    "ghidra_name": "FUN_80020dec",
+    "name": "kf_open_ss_calc_voice_pitch",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "note",
+        "type": "s32"
+      },
+      {
+        "name": "fine_delta",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Calculates SPU pitch value for given MIDI note and fine detune offset."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80020ef0",
+    "ghidra_name": "FUN_80020ef0",
+    "name": "kf_open_ss_voice_set_pitch_bend",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u32"
+      },
+      {
+        "name": "bend",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Updates SPU voice pitch register applying pitch-bend wheel sensitivity range."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800210d4",
+    "ghidra_name": "FUN_800210d4",
+    "name": "kf_open_ss_voice_debug_hook_a_noop",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Empty three-arg debug telemetry hook inside libsnd voice allocator."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800210dc",
+    "ghidra_name": "FUN_800210dc",
+    "name": "kf_open_ss_voice_debug_hook_b_noop",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Empty single-arg debug telemetry hook inside libsnd voice allocator."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800210ec",
+    "ghidra_name": "FUN_800210ec",
+    "name": "kf_open_ss_voice_debug_hook_a",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "arg0",
+        "type": "s16"
+      },
+      {
+        "name": "arg1",
+        "type": "s16"
+      },
+      {
+        "name": "arg2",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Wrapper invoking ss_voice_debug_hook_a_noop with signed 16-bit parameters."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80021120",
+    "ghidra_name": "FUN_80021120",
+    "name": "kf_open_ss_voice_debug_hook_b",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "arg0",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Wrapper invoking ss_voice_debug_hook_b_noop with signed 16-bit parameter."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80021144",
+    "ghidra_name": "FUN_80021144",
+    "name": "kf_open_ss_init_sound_driver",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "voice_count",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Initializes SPU malloc pool, zeros 24 voice shadow structs, and flushes initial SPU registers."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80021450",
+    "ghidra_name": "FUN_80021450",
+    "name": "kf_open_ss_ut_key_on_raw",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "pitch",
+        "type": "u16"
+      },
+      {
+        "name": "vol_l",
+        "type": "u16"
+      },
+      {
+        "name": "vol_r",
+        "type": "u16"
+      },
+      {
+        "name": "unused",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Allocates priority-255 SPU voice and applies raw volume and pitch register values."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800214e8",
+    "ghidra_name": "FUN_800214e8",
+    "name": "kf_open_ss_ut_all_key_off",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Keys off every active hardware SPU voice slot tracked by libsnd."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80021574",
+    "ghidra_name": "FUN_80021574",
+    "name": "kf_open_ss_ut_key_on_default",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "pitch",
+        "type": "u16"
+      },
+      {
+        "name": "vol_l",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Triggers raw voice with default stereo volume and pitch parameters."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800215a0",
+    "ghidra_name": "FUN_800215a0",
+    "name": "kf_open_ss_seq_set_channel_pitch_bend",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "ch_id",
+        "type": "u16"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "bend",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Applies MIDI pitch bend delta across all active SPU voices matching sequence channel."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80021860",
+    "ghidra_name": "FUN_80021860",
+    "name": "kf_open_ss_flush_spu_voice_regs",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Commits dirty SPU voice registers and triggers queued key-on/key-off hardware masks."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80021b5c",
+    "ghidra_name": "FUN_80021b5c",
+    "name": "kf_open_ss_seq_note_on",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "ch_id",
+        "type": "u16"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "note",
+        "type": "u16"
+      },
+      {
+        "name": "vel",
+        "type": "s16"
+      },
+      {
+        "name": "pan",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Triggers sequence note-on across matching program tones or routes zero-velocity to note-off."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80021f64",
+    "ghidra_name": "FUN_80021f64",
+    "name": "kf_open_ss_seq_note_off",
+    "return_type": "char",
+    "params": [
+      {
+        "name": "ch_id",
+        "type": "s16"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "note",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Releases active SPU voices matching sequence channel, VAB program, and MIDI note."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800220b8",
+    "ghidra_name": "FUN_800220b8",
+    "name": "kf_open_ss_ut_key_on",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "note",
+        "type": "u16"
+      },
+      {
+        "name": "unused",
+        "type": "u32"
+      },
+      {
+        "name": "vol_l",
+        "type": "u16"
+      },
+      {
+        "name": "vol_r",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Converts stereo volume into magnitude and pan, triggering SFX note on channel 0x20."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800221a8",
+    "ghidra_name": "FUN_800221a8",
+    "name": "kf_open_ss_ut_key_off",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "note",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Stops SFX voices triggered on channel 0x20 matching VAB, program, and note."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800221e4",
+    "ghidra_name": "FUN_800221e4",
+    "name": "kf_open_ss_set_channel_vol",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "ch_id",
+        "type": "u32"
+      },
+      {
+        "name": "vol_l",
+        "type": "s16"
+      },
+      {
+        "name": "vol_r",
+        "type": "s16"
+      },
+      {
+        "name": "recalc",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Updates stored stereo volume for SEQ/SFX channel and optionally updates live voice volumes."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800223a0",
+    "ghidra_name": "FUN_800223a0",
+    "name": "kf_open_ss_get_channel_vol",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "ch_id",
+        "type": "u32"
+      },
+      {
+        "name": "vol_l_out",
+        "type": "u16 *"
+      },
+      {
+        "name": "vol_r_out",
+        "type": "u16 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Retrieves stored left/right volume values for specified SEQ/SFX channel ID."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800224c4",
+    "ghidra_name": "FUN_800224c4",
+    "name": "kf_open_ss_stop_channel_voices",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "ch_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Keys off all currently playing SPU voices belonging to specified SEQ/SEP channel ID."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80022558",
+    "ghidra_name": "FUN_80022558",
+    "name": "kf_open_ss_ut_set_prog_mvol",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "mvol",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Selects VAB/program and returns master volume attribute."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800225c8",
+    "ghidra_name": "FUN_800225c8",
+    "name": "kf_open_ss_get_prog_mvol",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Selects VAB/program and returns program master volume field."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80022618",
+    "ghidra_name": "FUN_80022618",
+    "name": "kf_open_ss_ut_set_prog_mpan",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "mpan",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Selects VAB/program and returns program master pan field."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80022688",
+    "ghidra_name": "FUN_80022688",
+    "name": "kf_open_ss_get_prog_mpan",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Selects VAB/program and returns program master pan attribute."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800226d8",
+    "ghidra_name": "FUN_800226d8",
+    "name": "kf_open_ss_ut_key_on_v",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "u16"
+      },
+      {
+        "name": "tone",
+        "type": "u8"
+      },
+      {
+        "name": "note",
+        "type": "s16"
+      },
+      {
+        "name": "fine",
+        "type": "s16"
+      },
+      {
+        "name": "vol_l",
+        "type": "s16"
+      },
+      {
+        "name": "vol_r",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Allocates a free SPU voice and plays a specific VAB tone/note as stereo SFX."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80022b00",
+    "ghidra_name": "FUN_80022b00",
+    "name": "kf_open_ss_ut_key_off_v",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u16"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "tone",
+        "type": "s16"
+      },
+      {
+        "name": "note",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Keys off a specific SPU voice slot if its VAB/program/tone/note match caller params."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80022c24",
+    "ghidra_name": "FUN_80022c24",
+    "name": "kf_open_ss_ut_key_on_voice_slot",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u16"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "u16"
+      },
+      {
+        "name": "tone",
+        "type": "u8"
+      },
+      {
+        "name": "note",
+        "type": "s16"
+      },
+      {
+        "name": "fine",
+        "type": "s16"
+      },
+      {
+        "name": "vol_l",
+        "type": "s16"
+      },
+      {
+        "name": "vol_r",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Plays specified VAB tone/note on an explicit SPU voice channel < 24."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002301c",
+    "ghidra_name": "FUN_8002301c",
+    "name": "kf_open_ss_ut_key_off_voice_slot",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Directly keys off explicit hardware SPU voice channel < 24."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80023088",
+    "ghidra_name": "FUN_80023088",
+    "name": "kf_open_ss_ut_pitch_bend",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "unused0",
+        "type": "u32"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "unused3",
+        "type": "u32"
+      },
+      {
+        "name": "bend",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Applies pitch bend across active channel-0x20 voices matching VAB and program."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800230c4",
+    "ghidra_name": "FUN_800230c4",
+    "name": "kf_open_ss_ut_change_pitch",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u16"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "note",
+        "type": "s16"
+      },
+      {
+        "name": "unused",
+        "type": "u32"
+      },
+      {
+        "name": "new_note",
+        "type": "s16"
+      },
+      {
+        "name": "new_fine",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Updates live pitch of playing SPU voice slot using new MIDI note and fine detune."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002321c",
+    "ghidra_name": "FUN_8002321c",
+    "name": "kf_open_ss_ut_change_adsr",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u16"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "note",
+        "type": "s16"
+      },
+      {
+        "name": "adsr1",
+        "type": "u16"
+      },
+      {
+        "name": "adsr2",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Updates hardware ADSR1/ADSR2 envelope words on a matching live SPU voice."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80023368",
+    "ghidra_name": "FUN_80023368",
+    "name": "kf_open_ss_ut_unsupported_stub",
+    "return_type": "s32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Unimplemented libsnd utility stub returning error sentinel -1."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80023480",
+    "ghidra_name": "FUN_80023480",
+    "name": "kf_open_ss_ut_set_vvol",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "voice_id",
+        "type": "u16"
+      },
+      {
+        "name": "vol_l",
+        "type": "s16"
+      },
+      {
+        "name": "vol_r",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Sets left/right SPU output volume on live hardware voice channel < 24."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80023558",
+    "ghidra_name": "FUN_80023558",
+    "name": "kf_open_ss_reset_all_voices",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Clears and keys off all 24 SPU voice tracking slots."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800236a0",
+    "ghidra_name": "FUN_800236a0",
+    "name": "kf_open_ss_select_vab_prog",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "u16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Validates VAB slot state and binds active program/tone/header pointers."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80023774",
+    "ghidra_name": "FUN_80023774",
+    "name": "kf_open_ss_vab_trans_body",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "vb_addr",
+        "type": "void *"
+      },
+      {
+        "name": "vab_id",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Transfers VAB ADPCM waveform body to allocated SPU RAM address via SpuWrite."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80023844",
+    "ghidra_name": "FUN_80023844",
+    "name": "kf_open_ss_seq_open",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "seq_addr",
+        "type": "void *"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Allocates SEQ playback slot 0..31 and initializes sequence track from SEQ header."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800238f4",
+    "ghidra_name": "FUN_800238f4",
+    "name": "kf_open_ss_sep_open",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "sep_addr",
+        "type": "s32"
+      },
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "num_tracks",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Allocates SEP playback slot and initializes multiple sub-tracks from SEP container."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80023a14",
+    "ghidra_name": "FUN_80023a14",
+    "name": "kf_open_ss_sep_init_track",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "sep_id",
+        "type": "u16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "vab_id",
+        "type": "u16"
+      },
+      {
+        "name": "data_ptr",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Initializes single SEP track state, timing resolution, and initial delta time."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80023da4",
+    "ghidra_name": "FUN_80023da4",
+    "name": "kf_open_ss_seq_init_track",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "u16"
+      },
+      {
+        "name": "vab_id",
+        "type": "u16"
+      },
+      {
+        "name": "seq_data",
+        "type": "char *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Validates SEQ magic/version header and initializes sequence track playback state."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800240ec",
+    "ghidra_name": "FUN_800240ec",
+    "name": "kf_open_ss_seq_step_track_events",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s32"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 12,
+    "summary": "Advances delta-time countdown and dispatches ready MIDI events in sequence track."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800241f4",
+    "ghidra_name": "FUN_800241f4",
+    "name": "kf_open_ss_seq_dispatch_midi_event",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 11,
+    "summary": "Parses MIDI status/running-status byte and dispatches Note, CC, Program, Pitch, or Meta event."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002448c",
+    "ghidra_name": "FUN_8002448c",
+    "name": "kf_open_ss_seq_handle_note_event",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "note",
+        "type": "u8"
+      },
+      {
+        "name": "vel",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Handles MIDI Note On / Note Off sequence event for active channel."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002458c",
+    "ghidra_name": "FUN_8002458c",
+    "name": "kf_open_ss_seq_handle_program_change",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Updates active MIDI channel program index and reads next VLQ delta."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800245fc",
+    "ghidra_name": "FUN_800245fc",
+    "name": "kf_open_ss_seq_handle_control_change",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "u16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "cc_num",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 10,
+    "summary": "Processes MIDI CC events (bank, mod, vol, pan, expression, damper, NRPN/RPN, Data Entry)."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800248d4",
+    "ghidra_name": "FUN_800248d4",
+    "name": "kf_open_ss_seq_cc_bank_lsb",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "u16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "val",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Handles MIDI CC 1 modulation/tone modifier and advances sequence delta."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800249f4",
+    "ghidra_name": "FUN_800249f4",
+    "name": "kf_open_ss_seq_cc_portamento_time",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "u16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "val",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Handles MIDI CC 5 parameter update and advances sequence delta."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80024b14",
+    "ghidra_name": "FUN_80024b14",
+    "name": "kf_open_ss_seq_cc_portamento_switch",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "u16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "val",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Handles MIDI CC 0x41 tone/voice modifier and advances sequence delta."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80024cb4",
+    "ghidra_name": "FUN_80024cb4",
+    "name": "kf_open_ss_seq_cc_all_notes_reverb_off",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 6,
+    "summary": "Handles MIDI CC reverb/all-off control change and advances sequence delta."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80024d6c",
+    "ghidra_name": "FUN_80024d6c",
+    "name": "kf_open_ss_seq_cc_nrpn_lsb",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "u16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "val",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Sets active NRPN parameter index LSB for sequence track Data Entry commands."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80024e90",
+    "ghidra_name": "FUN_80024e90",
+    "name": "kf_open_ss_seq_cc_nrpn_msb",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "val",
+        "type": "s8"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Sets active NRPN parameter MSB/mode (0x14 / 0x1e) for sequence track Data Entry."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80024fb8",
+    "ghidra_name": "FUN_80024fb8",
+    "name": "kf_open_ss_seq_cc_rpn_lsb",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "val",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Handles MIDI CC 0x64 RPN LSB and advances sequence delta."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80025028",
+    "ghidra_name": "FUN_80025028",
+    "name": "kf_open_ss_seq_cc_rpn_msb",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "val",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Handles MIDI CC 0x65 RPN MSB and advances sequence delta."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80025098",
+    "ghidra_name": "FUN_80025098",
+    "name": "kf_open_ss_seq_cc_data_entry",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "data_val",
+        "type": "u8"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 9,
+    "summary": "Processes MIDI CC 6 Data Entry for libsnd NRPN subcommands (loops, VAB tone edits, reverb)."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80025658",
+    "ghidra_name": "FUN_80025658",
+    "name": "kf_open_ss_seq_nrpn_ut_dispatch",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "tone",
+        "type": "s16"
+      },
+      {
+        "name": "subcmd",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 8,
+    "summary": "Dispatches libsnd NRPN Data Entry commands 0..0x16 to mutate VAB tone attributes or reverb."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800259b0",
+    "ghidra_name": "FUN_800259b0",
+    "name": "kf_open_ss_seq_handle_pitch_bend",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Handles MIDI 0xE0 pitch-bend event for active sequence track."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80025a54",
+    "ghidra_name": "FUN_80025a54",
+    "name": "kf_open_ss_seq_handle_meta_event",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "meta_type",
+        "type": "s8"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Handles MIDI 0xFF meta events (0x2f end-of-track loop/stop and 0x51 tempo changes)."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80025dac",
+    "ghidra_name": "FUN_80025dac",
+    "name": "kf_open_ss_seq_read_vlq_delta",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s32"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Decodes variable-length quantity (VLQ) MIDI delta timestamp from sequence stream."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80025e60",
+    "ghidra_name": "FUN_80025e60",
+    "name": "kf_open_ss_seq_stop_sub_track",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Resets sequence track stereo volume and terminates playback cleanly."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80025f90",
+    "ghidra_name": "FUN_80025f90",
+    "name": "kf_open_ss_tone_attr_unpack",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "adsr1",
+        "type": "u32"
+      },
+      {
+        "name": "adsr2",
+        "type": "u32"
+      },
+      {
+        "name": "tone_attr",
+        "type": "u16 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Unpacks hardware SPU ADSR1/ADSR2 bitfields into decoded ToneAtr fields."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80025fec",
+    "ghidra_name": "FUN_80025fec",
+    "name": "kf_open_ss_tone_attr_pack",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "tone_attr",
+        "type": "u16 *"
+      },
+      {
+        "name": "adsr1_out",
+        "type": "u16 *"
+      },
+      {
+        "name": "adsr2_out",
+        "type": "u16 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Packs ToneAtr envelope fields back into hardware SPU ADSR1/ADSR2 16-bit registers."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80026078",
+    "ghidra_name": "FUN_80026078",
+    "name": "kf_open_ss_vab_get_tone_attr",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "tone",
+        "type": "s32"
+      },
+      {
+        "name": "attr_out",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Copies unpacked VAB ToneAtr structure into caller buffer."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800262b4",
+    "ghidra_name": "FUN_800262b4",
+    "name": "kf_open_ss_vab_set_tone_attr",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "tone",
+        "type": "s32"
+      },
+      {
+        "name": "attr_in",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Writes caller ToneAtr fields back into active VAB tone table."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002647c",
+    "ghidra_name": "FUN_8002647c",
+    "name": "kf_open_ss_set_sustain_pedal_on",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Sets libsnd global sustain pedal / hold flag state to active (2)."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80026490",
+    "ghidra_name": "FUN_80026490",
+    "name": "kf_open_ss_vab_get_prog_attr",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "s16"
+      },
+      {
+        "name": "prog",
+        "type": "s16"
+      },
+      {
+        "name": "prog_attr_out",
+        "type": "u8 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Copies VAB ProgAtr metadata record into caller buffer."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80026598",
+    "ghidra_name": "FUN_80026598",
+    "name": "kf_open_ss_set_sustain_pedal_off",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Clears libsnd global sustain pedal / hold flag state to zero."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800265a8",
+    "ghidra_name": "FUN_800265a8",
+    "name": "kf_open_ss_seq_set_fade",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "mode",
+        "type": "u8"
+      },
+      {
+        "name": "ticks",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Initiates crescendo or decrescendo volume envelope on a single SEQ score."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800265e0",
+    "ghidra_name": "FUN_800265e0",
+    "name": "kf_open_ss_sep_set_fade",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "mode",
+        "type": "u8"
+      },
+      {
+        "name": "ticks",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Initiates crescendo or decrescendo volume envelope on a SEP sub-track."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80026618",
+    "ghidra_name": "FUN_80026618",
+    "name": "kf_open_ss_sep_set_vol_immediate",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "vol",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Immediately updates SEP track target volume without ramping."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800266dc",
+    "ghidra_name": "FUN_800266dc",
+    "name": "kf_open_ss_seq_configure_vol_fade",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      },
+      {
+        "name": "fade_dir",
+        "type": "s8"
+      },
+      {
+        "name": "vol_target",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Configures target volume and step direction for sequence track fade processing."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800267d4",
+    "ghidra_name": "FUN_800267d4",
+    "name": "kf_open_ss_set_serial_vol",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "serial_ch",
+        "type": "s8"
+      },
+      {
+        "name": "vol_left",
+        "type": "s16"
+      },
+      {
+        "name": "vol_right",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Configures SPU CD-DA (channel 0) or External audio input stereo mix volume."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80026988",
+    "ghidra_name": "FUN_80026988",
+    "name": "kf_open_ss_vab_trans_completed",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "wait_flag",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Polls or blocks until VAB body DMA transfer to SPU RAM completes."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800269b0",
+    "ghidra_name": "FUN_800269b0",
+    "name": "kf_open_ss_seq_stop",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Stops active single-track SEQ playback and keys off its voices."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80026a44",
+    "ghidra_name": "FUN_80026a44",
+    "name": "kf_open_ss_sep_stop",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "sep_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Stops active SEP container sub-track playback and keys off its voices."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80026b00",
+    "ghidra_name": "FUN_80026b00",
+    "name": "kf_open_ss_seq_stop_track",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Stops sequence track playback, resets channel states, and keys off active track voices."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80026c08",
+    "ghidra_name": "FUN_80026c08",
+    "name": "kf_open_ss_seq_called_t_by_t_entry",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Primary entry prelude falling directly into SsSeqCalledTbyT frame tick processor."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80026c10",
+    "ghidra_name": "FUN_80026c10",
+    "name": "kf_open_ss_seq_called_t_by_t",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 14,
+    "summary": "libsnd per-tick dispatcher flushing SPU voices and stepping active SEQ/SEP fades, pauses, and MIDI events."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80026e40",
+    "ghidra_name": "FUN_80026e40",
+    "name": "kf_open_ss_seq_update_vol_fade",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "u16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Interpolates sequence track volume fade-out or ramp step per tick."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800272b4",
+    "ghidra_name": "FUN_800272b4",
+    "name": "kf_open_ss_seq_update_pause_state",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s32"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Applies deferred pause transition state flags on sequence track."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80027314",
+    "ghidra_name": "FUN_80027314",
+    "name": "kf_open_ss_seq_advance_tick",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 13,
+    "summary": "Steps active sequence track MIDI event queue for one audio tick."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80027340",
+    "ghidra_name": "FUN_80027340",
+    "name": "kf_open_ss_seq_update_crescendo_fade",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "u16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Interpolates sequence track volume crescendo ramp step per tick."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800277b4",
+    "ghidra_name": "FUN_800277b4",
+    "name": "kf_open_ss_seq_clear_play_flags",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Stops track voices and clears sequence track running status flags."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002789c",
+    "ghidra_name": "FUN_8002789c",
+    "name": "kf_open_ss_seq_update_tempo",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s32"
+      },
+      {
+        "name": "track_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Interpolates gradual sequence tempo acceleration or deceleration ramp."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80027a74",
+    "ghidra_name": "FUN_80027a74",
+    "name": "kf_open_ss_vab_close",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "vab_id",
+        "type": "u16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Frees allocated SPU waveform memory block and releases VAB ID slot."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80027b00",
+    "ghidra_name": "FUN_80027b00",
+    "name": "kf_open_ss_vab_transfer",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "vh_vb_addr",
+        "type": "void *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 6,
+    "summary": "Opens VAB header and uploads its paired waveform body to SPU RAM."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80027b5c",
+    "ghidra_name": "FUN_80027b5c",
+    "name": "kf_open_ss_seq_close",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "seq_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Closes open SEQ slot, releases its allocation bitmask, and stops track playback."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80027cc4",
+    "ghidra_name": "FUN_80027cc4",
+    "name": "kf_open_ss_sep_close",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "sep_id",
+        "type": "s16"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Closes open SEP slot, releases its allocation bitmask, and stops all tracks."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80027e2c",
+    "ghidra_name": "FUN_80027e2c",
+    "name": "kf_open_spu_set_common_mix_flags",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "target",
+        "type": "s8"
+      },
+      {
+        "name": "reverb_flag",
+        "type": "s8"
+      },
+      {
+        "name": "enable",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Configures SPU common CD/External audio enable and reverb routing bits via ioctl 0x100."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80027ecc",
+    "ghidra_name": "FUN_80027ecc",
+    "name": "kf_open_spu_init_core",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "hot_start",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Initializes SPU callbacks, resets SPU hardware/voices, starts IRQ event, and clears reverb flags."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80027fac",
+    "ghidra_name": "FUN_80027fac",
+    "name": "kf_open_spu_init",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 6,
+    "summary": "Cold-initializes PlayStation SPU hardware and all 24 voice registers."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80027fcc",
+    "ghidra_name": "FUN_80027fcc",
+    "name": "kf_open_spu_init_hot",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 6,
+    "summary": "Warm-initializes PlayStation SPU hardware without resetting SPU RAM contents."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80027fec",
+    "ghidra_name": "FUN_80027fec",
+    "name": "kf_open_spu_start",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Hooks SPU DMA Channel 4 callback and opens/enables SPU transfer completion event."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80028068",
+    "ghidra_name": "FUN_80028068",
+    "name": "kf_open_spu_quit_entry",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Entry guard falling into kf_open_spu_quit to disable SPU DMA IRQ and event."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80028070",
+    "ghidra_name": "FUN_80028070",
+    "name": "kf_open_spu_quit",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Disables SPU DMA callback and closes SPU BIOS completion event inside critical section."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800280d8",
+    "ghidra_name": "FUN_800280d8",
+    "name": "kf_open_spu_hw_wait_spin",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Hardware timing spin delay (240 iterations) after SPU register writes."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80028138",
+    "ghidra_name": "FUN_80028138",
+    "name": "kf_open_spu_reset_hw_and_voices",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "hot_start",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Resets SPU control register, mutes master/reverb outputs, and keys off voices."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80028398",
+    "ghidra_name": "FUN_80028398",
+    "name": "kf_open_spu_disable_dma_irq_cb",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Clears SPU DMA completion user callback and detaches DMA Channel 4 callback."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800283c0",
+    "ghidra_name": "FUN_800283c0",
+    "name": "kf_open_spu_enable_dma_irq_cb",
+    "return_type": "u32",
+    "params": [],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Attaches SPU DMA Channel 4 completion handler and returns device descriptor 3."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800283e8",
+    "ghidra_name": "FUN_800283e8",
+    "name": "kf_open_spu_set_dma_delay_read",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Configures SPU bus delay timing register for SPU-to-RAM DMA readback."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80028418",
+    "ghidra_name": "FUN_80028418",
+    "name": "kf_open_spu_set_dma_delay_write",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Configures SPU bus delay timing register for RAM-to-SPU DMA writes."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80028448",
+    "ghidra_name": "FUN_80028448",
+    "name": "kf_open_spu_write_dispatch",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "src_addr",
+        "type": "u32"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Selects SPU DMA write or manual PIO transfer depending on configured transfer mode."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800284b0",
+    "ghidra_name": "FUN_800284b0",
+    "name": "kf_open_spu_pio_write_ram",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "src_words",
+        "type": "u16 *"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Transfers data from main RAM to SPU RAM manually via hardware FIFO and polling."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800286b0",
+    "ghidra_name": "FUN_800286b0",
+    "name": "kf_open_spu_read",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "dst_addr",
+        "type": "u32"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Reads data from configured SPU RAM start address into main RAM via DMA Channel 4."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800286e0",
+    "ghidra_name": "FUN_800286e0",
+    "name": "kf_open_spu_dma_irq_handler",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "SPU DMA Channel 4 completion handler delivering event or calling user transfer callback."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80028764",
+    "ghidra_name": "FUN_80028764",
+    "name": "kf_open_spu_dma_write_ram",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "src_addr",
+        "type": "u32"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Configures SPU transfer mode and launches DMA Channel 4 upload into SPU RAM."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80028898",
+    "ghidra_name": "FUN_80028898",
+    "name": "kf_open_spu_dma_read_entry",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dst_addr",
+        "type": "u32"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Entry prelude setting SPU read transfer mode before starting Channel 4 DMA read."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800288a0",
+    "ghidra_name": "FUN_800288a0",
+    "name": "kf_open_spu_dma_read_ram",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dst_addr",
+        "type": "u32"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Configures SPU bus read timing and triggers DMA Channel 4 download into main RAM."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800289a8",
+    "ghidra_name": "FUN_800289a8",
+    "name": "kf_open_spu_dma_read_at_addr",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dst_addr",
+        "type": "u32"
+      },
+      {
+        "name": "spu_addr_div8",
+        "type": "u16"
+      },
+      {
+        "name": "block_count",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Programs SPU transfer address and initiates 64-byte block DMA read from SPU RAM."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80028a68",
+    "ghidra_name": "FUN_80028a68",
+    "name": "kf_open_spu_device_ioctl",
+    "return_type": "bool",
+    "params": [
+      {
+        "name": "fd",
+        "type": "u32"
+      },
+      {
+        "name": "cmd",
+        "type": "u32"
+      },
+      {
+        "name": "arg",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Dispatches SPU driver ioctl commands (FM/noise masks, reverb attrs, common attrs, addr)."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002927c",
+    "ghidra_name": "FUN_8002927c",
+    "name": "kf_open_spu_set_voice_attr",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "voice_attr",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Writes masked per-voice SPU MMIO parameters (volume, pitch, addr, ADSR) across 24 voices."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80029400",
+    "ghidra_name": "FUN_80029400",
+    "name": "kf_open_spu_write_reverb_regs",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "reverb_regs",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Writes masked hardware SPU reverb delay/filter/coefficient MMIO registers 0x1f801dc0..1dfc."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x800298d0",
+    "ghidra_name": "FUN_800298d0",
+    "name": "kf_open_spu_write_common_attr_regs",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "common_attr",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Writes masked master/reverb/CD/external volume and enable bits to SPU control registers."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80029c68",
+    "ghidra_name": "FUN_80029c68",
+    "name": "kf_open_spu_noop_zero",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "unused",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Unused libspu helper stub unconditionally returning zero."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80029dcc",
+    "ghidra_name": "FUN_80029dcc",
+    "name": "kf_open_spu_memcpy_bytes",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "dst",
+        "type": "u8 *"
+      },
+      {
+        "name": "src",
+        "type": "u8 *"
+      },
+      {
+        "name": "len",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Local byte-copy helper compiled inside libspu reverb module."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x80029dfc",
+    "ghidra_name": "FUN_80029dfc",
+    "name": "kf_open_spu_set_reverb_mode_attr",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "reverb_attr",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 6,
+    "summary": "Validates reverb work area and applies preset reverb mode, depth, delay, and feedback."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002a2ec",
+    "ghidra_name": "FUN_8002a2ec",
+    "name": "kf_open_spu_malloc_gc_coalesce",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Coalesces adjacent free SPU RAM allocation blocks and compacts free descriptors."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002a5e8",
+    "ghidra_name": "FUN_8002a5e8",
+    "name": "kf_open_spu_init_malloc",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "max_blocks",
+        "type": "s32"
+      },
+      {
+        "name": "table_buf",
+        "type": "u32 *"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Initializes SPU RAM allocator table spanning 512KB SPU memory minus reserved header."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002a658",
+    "ghidra_name": "FUN_8002a658",
+    "name": "kf_open_spu_malloc",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Allocates aligned block from SPU RAM free list and returns SPU byte address or -1."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002a918",
+    "ghidra_name": "FUN_8002a918",
+    "name": "kf_open_spu_malloc_split_block",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "slot_idx",
+        "type": "s32"
+      },
+      {
+        "name": "start_addr",
+        "type": "s32"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Splits SPU heap descriptor block around caller start address and marks range allocated."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002ac74",
+    "ghidra_name": "FUN_8002ac74",
+    "name": "kf_open_spu_malloc_with_start_addr",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "start_addr",
+        "type": "u32"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 2,
+    "summary": "Allocates SPU RAM block pinned at a caller-specified byte address."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002af1c",
+    "ghidra_name": "FUN_8002af1c",
+    "name": "kf_open_spu_addr_in_allocated_range",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "spu_addr",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Checks whether an SPU RAM byte address overlaps any currently allocated SPU heap block."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002af8c",
+    "ghidra_name": "FUN_8002af8c",
+    "name": "kf_open_spu_check_reverb_workarea_free",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "word_addr",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Checks if SPU reverb workarea starting address conflicts with allocated soundbank blocks."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002afb4",
+    "ghidra_name": "FUN_8002afb4",
+    "name": "kf_open_spu_free",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "spu_addr",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 1,
+    "summary": "Marks SPU heap block free by setting high bit and runs SPU heap coalescing."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002b038",
+    "ghidra_name": "FUN_8002b038",
+    "name": "kf_open_spu_dump_malloc",
+    "return_type": "void",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Prints SPU RAM allocation table slots, addresses, and block byte sizes."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002b0e0",
+    "ghidra_name": "FUN_8002b0e0",
+    "name": "kf_open_spu_clear_reverb_work_area",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "reverb_mode",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 5,
+    "summary": "Zeros SPU RAM reverb work area for preset mode when not occupied by soundbanks."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002b228",
+    "ghidra_name": "FUN_8002b228",
+    "name": "kf_open_spu_set_reverb",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "enable",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Enables or disables SPU hardware reverb processing after checking work area validity."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002b2d4",
+    "ghidra_name": "FUN_8002b2d4",
+    "name": "kf_open_spu_is_transfer_completed",
+    "return_type": "s32",
+    "params": [
+      {
+        "name": "flag",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Polls or waits until pending SPU DMA/PIO memory transfer event completes."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002b384",
+    "ghidra_name": "FUN_8002b384",
+    "name": "kf_open_spu_set_transfer_completed_flag",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "clear_flag",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Sets internal SPU transfer completion state flag according to caller flag."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002b3b0",
+    "ghidra_name": "FUN_8002b3b0",
+    "name": "kf_open_spu_is_transfer_idle",
+    "return_type": "bool",
+    "params": [],
+    "domain": "module_open",
+    "wave": 0,
+    "summary": "Returns non-zero when no SPU RAM transfer is currently marked in-flight."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002b3d0",
+    "ghidra_name": "FUN_8002b3d0",
+    "name": "kf_open_spu_set_transfer_mode",
+    "return_type": "void",
+    "params": [
+      {
+        "name": "mode",
+        "type": "s32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Selects SPU DMA (0) or manual PIO (1) transfer mode via driver ioctl 0x21."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002b424",
+    "ghidra_name": "FUN_8002b424",
+    "name": "kf_open_spu_set_transfer_start_addr",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "spu_addr",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 4,
+    "summary": "Sets SPU RAM transfer start address <= 0x7f000 via driver ioctl 0x2b."
+  },
+  {
+    "program": "OPEN.EXE",
+    "address": "0x8002b474",
+    "ghidra_name": "FUN_8002b474",
+    "name": "kf_open_spu_write",
+    "return_type": "u32",
+    "params": [
+      {
+        "name": "src_addr",
+        "type": "void *"
+      },
+      {
+        "name": "byte_size",
+        "type": "u32"
+      }
+    ],
+    "domain": "module_open",
+    "wave": 3,
+    "summary": "Clamps write size to 0x7f000 and uploads RAM buffer into SPU RAM at start address."
+  }
+]

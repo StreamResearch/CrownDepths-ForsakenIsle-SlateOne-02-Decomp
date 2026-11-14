@@ -1,0 +1,30 @@
+{
+    "schemaVersion": 2,
+    "lifecycleState": "active",
+    "name": "KingsField-PlayStation",
+    "projectGroup": "Research",
+    "relativePath": "Research/KingsField-PlayStation",
+    "containerTier": "Tier R (4-Folder Research)",
+    "ecosystemTier": "ResearchTrack",
+    "appArchetype": "LAB",
+    "version": "0.1.0",
+    "activeMilestone": "0.1.0",
+    "goalMajorVersion": "1.0.0",
+    "stateChangedDate": "2026-11-14",
+    "lastVersionDate": "2026-11-14",
+    "productionSubpath": null,
+    "supersededBy": null,
+    "tasklistDetailLevel": 3,
+    "openTaskCount": 0,
+    "completedTaskCount": 0,
+    "openReportCount": 0,
+    "gates": {
+        "isGate0ScopePassed": true,
+        "isGate1PlanPassed": true,
+        "isGate2BuildPassed": true,
+        "isInspecterVerified": true,
+        "isTessaSynced": true
+    },
+    "notes": "Graduated from ../../Personal/R&D/decomps/ps1/kings-field (D4 / S4 / R3; downstream KingsFieldRecomp v0.1.3).",
+    "updatedAtUtc": "2026-11-14T08:16:15.727Z"
+}
