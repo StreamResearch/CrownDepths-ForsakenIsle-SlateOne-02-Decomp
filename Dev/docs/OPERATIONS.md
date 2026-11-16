@@ -10,7 +10,7 @@
 ## 2. Reproducible Unpack, Build & Parity Commands
 - **Standalone Container Unpacker (`psx_kf_unpack.py`):**
 ```powershell
-& 'python' -B '../../Research/KingsField-PlayStation\Dev\scripts\psx_kf_unpack.py' '../../Research/KingsField-PlayStation\Corpus\standalone\disc\files' --out-dir '../../Research/KingsField-PlayStation\Sandbox\extracts\assets'
+& 'python' -B '../../Research/KingsField-PlayStation\Dev\scripts\psx_kf_unpack.py' '../../Research/KingsField-PlayStation\Corpus\standalone\disc\files' --out-dir '../../Research/KingsField-PlayStation\Corpus\work\extracts\assets'
 ```
 - **Stage D4 Full MIPS Build (`259/259` `.c` -> `260` `.o`) + LP32 Host Parity (`10/10`):**
 ```powershell
@@ -25,7 +25,7 @@
 & 'python' -B 'R&D/Dev/tools/decomp\decomp_cli.py' verify --track '../../Research/KingsField-PlayStation' --tier D4
 & 'python' -B 'R&D/Dev/tools/decomp\decomp_cli.py' verify --track '../../Research/KingsField-PlayStation' --tier S4
 ```
-- **Tier R 4-Folder Scaffold Audit (`scaffold_project.ps1 -Research`):**
+- **Tier R 3-Folder Scaffold Audit (`scaffold_project.ps1 -Research`):**
 ```powershell
 powershell -ExecutionPolicy Bypass -File "$env:USERPROFILE\scaffold_project.ps1" -ProjectName 'KingsField-PlayStation' -Group 'Research' -Research -AuditOnly
 ```
@@ -37,9 +37,9 @@ powershell -ExecutionPolicy Bypass -File "$env:USERPROFILE\scaffold_project.ps1"
 
 ## 4. Dual-Track Archival, Private Remote & Stage 3 Downstream
 - **Private Remote Policy:** Tracks commit to `main`, tag `v0.1.0`, and push exclusively to private `StreamResearch/KingsField-PlayStation` (zero `Corpus/` or retail assets).
-- **Clean-Room `.7z` Backup (never package `Corpus/`, `Sandbox/`, `Archive/`, or `.git/`):**
+- **Clean-Room `.7z` Backup (never package `Corpus/`, `Archive/`, or `.git/`):**
 ```powershell
-& 'C:\Program Files\7-Zip\7z.exe' a -t7z -mx=9 '../../Research/KingsField-PlayStation\Archive\KingsField-PlayStation-v0.1.0-d4-s4-r3.7z' '../../Research/KingsField-PlayStation\*' '-xr!Corpus\*' '-xr!Sandbox\*' '-xr!Archive\*' '-xr!.git\*' '-xr!__pycache__\*'
+& 'C:\Program Files\7-Zip\7z.exe' a -t7z -mx=9 '../../Research/KingsField-PlayStation\Archive\KingsField-PlayStation-v0.1.0-d4-s4-r3.7z' '../../Research/KingsField-PlayStation\*' '-xr!Corpus' '-xr!Corpus\*' '-xr!Archive\*' '-xr!.git\*' '-xr!__pycache__\*'
 ```
 - **Downstream Stage 3 Link (`KingsFieldRecomp`):** [`../../Personal/KingsFieldRecomp\`](../../Personal/KingsFieldRecomp/README.md) (`v0.1.3` / `R3` on `reStation v0.1.1` + `reEngine`) links bidirectionally via `downstreamProjects` (`Dev/research.manifest.json`) while keeping `Corpus/` strictly confined here.
 - **Notion Manual Page:** `Operations Runbook` (`<NOTION_OPERATIONS_PAGE_ID>`).
