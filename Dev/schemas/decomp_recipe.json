@@ -1,0 +1,48 @@
+{
+  "moduleId": "crowndepths-forsakenisle-slateone-02",
+  "title": "CrownDepths ForsakenIsle (SlateOne) 02",
+  "packageFileName": "CrownDepths-ForsakenIsle-SlateOne-02.decomp",
+  "platformId": "ps1",
+  "engineId": "reStation",
+  "engineVersion": "0.2.0",
+  "compatibleEngineTrack": "0.2.x",
+  "decompSchemaVersion": "1.0.0",
+  "targetDecompTier": "D3",
+  "goalDecompTier": "D4",
+  "packageVersion": "0.2.0",
+  "serialNumber": "SLUS-00158",
+  "defaultBootExecutable": "SLUS_001.58",
+  "sleighLanguageId": "MIPS:LE:32:R3000A_GTE",
+  "upstreamResearchPath": "CrownDepths-ForsakenIsle-SlateOne-02-Decomp",
+  "ghidraProjectName": "CrownDepthsForsakenIsleSlateOne02",
+  "preloadRomDir": "data/rom",
+  "recipeEntryPoint": "Dev/scripts/psx_kf_unpack.py",
+  "customUnpackerScript": "Dev/scripts/psx_kf_unpack.py",
+  "tierMaterializerScript": "Dev/scripts/materialize_decomp_tiers.py",
+  "toolchainRequirements": {
+    "minimumGhidraVersion": "11.2",
+    "requiresHeadlessJdk": true,
+    "requiredExtensions": []
+  },
+  "cleanRoomRules": {
+    "allowRetailStrings": false,
+    "allowCFunctionBodies": false,
+    "allowRetailAssets": false,
+    "allowTrademarkTokens": false
+  },
+  "bundleDirectories": [
+    "Dev/schemas",
+    "Dev/scripts"
+  ],
+  "excludedSubtrees": [
+    "Corpus",
+    "Archive",
+    ".git",
+    "Dev/docs",
+    "Dev/data",
+    "Dev/logs",
+    "Dev/scripts/tests",
+    "__pycache__",
+    ".pytest_cache"
+  ]
+}

@@ -1,13 +1,15 @@
 # Context: KingsField-PlayStation
 
-- **Tier R (`ps1`, `v0.1.0-hf.1`):** `D4/S4/R3`. Zero `Builds`/`Installers`/`Releases`; `Corpus` gitignored & `-xr!Corpus\*` (`standalone` RO).
-- **Control & Links:** [manifest](Dev/research.manifest.json) | [workspace](Dev/KingsField-PlayStation.code-workspace) | [R&D](../../Personal/R&D/AGENTS.md) | [KingsFieldRecomp](../../Personal/KingsFieldRecomp/AGENTS.md) | [Oracle Ref](<SKILLS_DIR>/graduate/references/tier_r_oracle_and_hardware_reference.md)
+- **Tier R (`ps1`, `v0.2.0`):** `D3/S4/R3` (`goalDecompTier: D4`, `goalStudyTier: S5`, target engine `reStation` `0.2.x`). Zero `Builds`/`Installers`/`Releases`; `Corpus` & `Dev/data/` gitignored (`-xr!Corpus\*`, `standalone/` RO).
+- **Control:** [research.manifest.json](Dev/research.manifest.json) | [CrownDepths-ForsakenIsle-SlateOne-02-Decomp.code-workspace](Dev/CrownDepths-ForsakenIsle-SlateOne-02-Decomp.code-workspace) | Downstream: `KingsFieldRecomp` (`read-only`)
 
-## 1. Quartet & State
-- [README](README.md) | [FEATURES](FEATURES.md) | [ROADMAP](ROADMAP.md) | [CHANGELOG](CHANGELOG.md) | [state](active.state)
+## 1. Quartet, Security & State
+- [README.md](README.md) | [FEATURES.md](FEATURES.md) | [ROADMAP.md](ROADMAP.md) | [CHANGELOG.md](CHANGELOG.md) | [SECURITY.md](SECURITY.md) | [active.state](active.state)
 
 ## 2. Manuals (`Dev/docs/`)
-- [ARCHITECTURE](Dev/docs/ARCHITECTURE.md) | [SPECIFICATIONS](Dev/docs/SPECIFICATIONS.md) | [FINDINGS](Dev/docs/FINDINGS.md) | [OPERATIONS](Dev/docs/OPERATIONS.md)
+- [ARCHITECTURE.md](Dev/docs/ARCHITECTURE.md) | [SPECIFICATIONS.md](Dev/docs/SPECIFICATIONS.md) | [FINDINGS.md](Dev/docs/FINDINGS.md) | [OPERATIONS.md](Dev/docs/OPERATIONS.md)
+- **Specs, Spokes, Plans & Reports:** [specifications/](Dev/docs/specifications/) | [findings/](Dev/docs/findings/) | [stages/](Dev/docs/stages/) | Local-only gitignored: `Dev/docs/plans/`, `Dev/docs/reports/`
 
 ## 3. Governance & Notion
-- [DevBible](../../Personal/_DevBible/01_PROJECT_LAYOUTS.md) | **Notion:** `<NOTION_PROJECT_PAGE_ID>` (`🔬 Research` `<NOTION_RESEARCH_PARENT_PAGE_ID>`; `<NOTION_ARCHITECTURE_PAGE_ID>`..`588f`)
+- **Notion:** `<NOTION_PROJECT_PAGE_ID>` (`<NOTION_TASK_LIST_COLLECTION>` — local IDs in gitignored `Dev/data/notion_hub.local.json`)
+- **Commit `/post` Hook:** Every commit & release pushes `/post` via `active.state` -> `discordPost` (`DISCORD_WEBHOOK_FOUNDATION`), tagging `@StreamDoesDev`.

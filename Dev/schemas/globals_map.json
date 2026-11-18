@@ -18760,7 +18760,7 @@
     "parent_address": null,
     "domain": "module_game",
     "confidence": "high",
-    "evidence": "PS1-SDK GTE projection/view workspace passed to GAME.EXE@8005d7cc"
+    "evidence": "PS1 GTE projection/view workspace passed to GAME.EXE@8005d7cc"
   },
   {
     "address": "0x80192d28",

@@ -19,7 +19,7 @@
     "params": [],
     "domain": "module_end",
     "wave": 6,
-    "summary": "Initializes PS1-SDK GPU/GTE with white clear color and 320x240 double-buffered display/draw environments."
+    "summary": "Initializes PS1 GPU/GTE with white clear color and 320x240 double-buffered display/draw environments."
   },
   {
     "program": "END.EXE",
@@ -270,7 +270,7 @@
     ],
     "domain": "module_end",
     "wave": 0,
-    "summary": "No-op SN heap3 release stub retained by PS1-SDK malloc3 linkage in END.EXE."
+    "summary": "No-op SN heap3 release stub retained by PS1 SDK malloc3 linkage in END.EXE."
   },
   {
     "program": "END.EXE",

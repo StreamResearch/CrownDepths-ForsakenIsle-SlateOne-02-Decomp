@@ -46,7 +46,7 @@
     "params": [],
     "domain": "module_open",
     "wave": 6,
-    "summary": "Initializes PS1-SDK GPU/GTE subsystems, black clear color, and 640x240 double-buffered draw/display environments."
+    "summary": "Initializes PS1 GPU/GTE subsystems, black clear color, and 640x240 double-buffered draw/display environments."
   },
   {
     "program": "OPEN.EXE",
@@ -495,7 +495,7 @@
     ],
     "domain": "module_open",
     "wave": 0,
-    "summary": "No-op SN heap3 release stub retained by PS1-SDK malloc3 linkage in OPEN.EXE."
+    "summary": "No-op SN heap3 release stub retained by PS1 SDK malloc3 linkage in OPEN.EXE."
   },
   {
     "program": "OPEN.EXE",

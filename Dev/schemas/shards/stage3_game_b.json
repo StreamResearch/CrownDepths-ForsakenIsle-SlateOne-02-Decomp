@@ -451,7 +451,7 @@
     "params": [],
     "domain": "audio",
     "wave": 2,
-    "summary": "Queries PS1-SDK hardware key-on/off envelope state for all 24 SPU channels and updates active voice flags at DAT_801989b0."
+    "summary": "Queries PS1 hardware key-on/off envelope state for all 24 SPU channels and updates active voice flags at DAT_801989b0."
   },
   {
     "program": "GAME.EXE",

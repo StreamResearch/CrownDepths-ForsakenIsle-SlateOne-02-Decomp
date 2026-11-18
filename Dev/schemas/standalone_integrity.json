@@ -1,33 +1,251 @@
 {
-  "schema_version": 1,
-  "project": "kings-field",
-  "platform": "ps1",
-  "serial": "SLUS-00158",
+  "schemaVersion": 2,
+  "gameId": "kings-field",
+  "platformId": "ps1",
+  "serialOrHash": "SLUS-00158",
+  "generatedAtUtc": "2026-11-18T10:12:00.000Z",
   "standalone_relpath": "Corpus/standalone",
-  "moved_from": "stage0/kings-field-decomp",
   "read_only": true,
   "total_files": 6297,
   "total_bytes": 716862355,
+  "requiredDiscChecksums": [
+    {
+      "relativePath": "disc/files/COPY.TXT",
+      "expectedSha256": "c94fcb7794e9659df1f155e611c90410616e6b0cc87d7797d0398a17f1c0682e",
+      "expectedSizeBytes": 74,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/END.EXE",
+      "expectedSha256": "602b87f70d87f7decbb9d934b7c29c567c811632b1d4f59f88e4ce6b0a263da3",
+      "expectedSizeBytes": 169984,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/GAME.EXE",
+      "expectedSha256": "3ca696397ace8b062bce71d390a79f5b5ca6e941ed23c0cc7adb8b261553b10a",
+      "expectedSizeBytes": 387072,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/LICENSEA.DAT",
+      "expectedSha256": "492b094e1f8764a08a939c9a5f52bb14477eab7d24c17240bbb8eebfe772725c",
+      "expectedSizeBytes": 28032,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/license_data.dat",
+      "expectedSha256": "6f76a9947cfacfca9ccffc68953de17a1e17bc0f4e72b35b8b11938b41b174b5",
+      "expectedSizeBytes": 28032,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/OPEN.EXE",
+      "expectedSha256": "8f73f299ce1335bb23c9e438047f470dde37600ac38b558663333438a5b7b324",
+      "expectedSizeBytes": 190464,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/SLUS_001.58",
+      "expectedSha256": "8a94d391291c413bed1aa0ed1ac0adae4328a4841058346b8af1fd41ea3e45a6",
+      "expectedSizeBytes": 4096,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/SYSTEM.CNF",
+      "expectedSha256": "e39237828f0766ec4cb7d3279b4c6edecf6d862c479a257f94e41a30c2e42880",
+      "expectedSizeBytes": 69,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/CD/FN.D",
+      "expectedSha256": "031c80fdb0e3a9f488b63f15efded53d194d47062d90be135bc59bfbb5ce8c61",
+      "expectedSizeBytes": 1188,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/CD/COM/FDAT.T",
+      "expectedSha256": "3620c4062b01eaa5f46cf04ea5d2e644aa755ac8b5fc18a673a84a86b416667e",
+      "expectedSizeBytes": 1992704,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/CD/COM/ITEM.T",
+      "expectedSha256": "3a70dfd2efcad684afd9e9add2d0cc91f16dce062234125aa93d597e899905d6",
+      "expectedSizeBytes": 11110400,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/CD/COM/MO.T",
+      "expectedSha256": "5afe6cadb443c22a1b7c23efc0243ff012406e79a71b313f908f6977e1148970",
+      "expectedSizeBytes": 5693440,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/CD/COM/RTIM.T",
+      "expectedSha256": "d93d4d440b589af31420824406a1e50d80dc62bea552a8f15b52d5c8d34f6281",
+      "expectedSizeBytes": 4304896,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/CD/COM/RTMD.T",
+      "expectedSha256": "deff9da267c7e091f123b83b61c5637cd4fe4953c3bd34108ad78effc8f24f82",
+      "expectedSizeBytes": 1083392,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/CD/COM/TALK.T",
+      "expectedSha256": "d3f51c65f19ab220016aee631742f0941690522b154e20770c5e3eb464d24106",
+      "expectedSizeBytes": 13197312,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/CD/COM/VAB.T",
+      "expectedSha256": "60c1455d3d47c6539d058c633208556ad6a185980a2373889957b08c5303976c",
+      "expectedSizeBytes": 3768320,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/OP/ED0.S",
+      "expectedSha256": "6c2e4fdc5ed89bc0c1a2ce1fe3a0c8c5550adf0f3eefe732cc1702a52e4a789d",
+      "expectedSizeBytes": 60042208,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/OP/ED1.S",
+      "expectedSha256": "ac090ae499c83d7b74262a774f0d48a3af4c8de1979ad463e21a193c10a8b6df",
+      "expectedSizeBytes": 98315232,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/OP/OP.D",
+      "expectedSha256": "a4977fff7aa9712057eb8512e1e011bb6689c5952decdb96681e7fd5aa186e1a",
+      "expectedSizeBytes": 552344,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/OP/OP0.S",
+      "expectedSha256": "8acac18ed17b3d21e6d0a476a2b00d54b2ce432ed91573444772accde9a3df7d",
+      "expectedSizeBytes": 3417568,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/OP/OP1.S",
+      "expectedSha256": "73f214d33e05f3833d5ccad09329989404c002016e44c9959eecd3cd9ecef507",
+      "expectedSizeBytes": 6650592,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/OP/OP2.S",
+      "expectedSha256": "fd8df0b6706abe57ef1bafc196de524f01b2231b7ab3dc43aaaa0b93fc11eb1b",
+      "expectedSizeBytes": 38494944,
+      "isRequired": true
+    },
+    {
+      "relativePath": "disc/files/OP/OPU.D",
+      "expectedSha256": "490e73937b742b3f6c1817f4e3f01ff4d820617a50bab432132e5788ff8c2730",
+      "expectedSizeBytes": 552344,
+      "isRequired": true
+    },
+    {
+      "relativePath": "target/King's Field (USA).bin",
+      "expectedSha256": "1c0ae4cf1b6af81c3397b4618c6194187d4884037f04146b3daf9f31f7a677c7",
+      "expectedSizeBytes": 258183744,
+      "isRequired": false
+    }
+  ],
   "verified_files": {
-    "disc/files/SLUS_001.58": {
-      "bytes": 4096,
-      "sha256": "8a94d391291c413bed1aa0ed1ac0adae4328a4841058346b8af1fd41ea3e45a6"
-    },
-    "disc/files/OPEN.EXE": {
-      "bytes": 190464,
-      "sha256": "8f73f299ce1335bb23c9e438047f470dde37600ac38b558663333438a5b7b324"
-    },
-    "disc/files/GAME.EXE": {
-      "bytes": 387072,
-      "sha256": "3ca696397ace8b062bce71d390a79f5b5ca6e941ed23c0cc7adb8b261553b10a"
+    "disc/files/COPY.TXT": {
+      "bytes": 74,
+      "sha256": "c94fcb7794e9659df1f155e611c90410616e6b0cc87d7797d0398a17f1c0682e"
     },
     "disc/files/END.EXE": {
       "bytes": 169984,
       "sha256": "602b87f70d87f7decbb9d934b7c29c567c811632b1d4f59f88e4ce6b0a263da3"
     },
+    "disc/files/GAME.EXE": {
+      "bytes": 387072,
+      "sha256": "3ca696397ace8b062bce71d390a79f5b5ca6e941ed23c0cc7adb8b261553b10a"
+    },
+    "disc/files/LICENSEA.DAT": {
+      "bytes": 28032,
+      "sha256": "492b094e1f8764a08a939c9a5f52bb14477eab7d24c17240bbb8eebfe772725c"
+    },
+    "disc/files/license_data.dat": {
+      "bytes": 28032,
+      "sha256": "6f76a9947cfacfca9ccffc68953de17a1e17bc0f4e72b35b8b11938b41b174b5"
+    },
+    "disc/files/OPEN.EXE": {
+      "bytes": 190464,
+      "sha256": "8f73f299ce1335bb23c9e438047f470dde37600ac38b558663333438a5b7b324"
+    },
+    "disc/files/SLUS_001.58": {
+      "bytes": 4096,
+      "sha256": "8a94d391291c413bed1aa0ed1ac0adae4328a4841058346b8af1fd41ea3e45a6"
+    },
+    "disc/files/SYSTEM.CNF": {
+      "bytes": 69,
+      "sha256": "e39237828f0766ec4cb7d3279b4c6edecf6d862c479a257f94e41a30c2e42880"
+    },
     "disc/files/CD/FN.D": {
       "bytes": 1188,
       "sha256": "031c80fdb0e3a9f488b63f15efded53d194d47062d90be135bc59bfbb5ce8c61"
+    },
+    "disc/files/CD/COM/FDAT.T": {
+      "bytes": 1992704,
+      "sha256": "3620c4062b01eaa5f46cf04ea5d2e644aa755ac8b5fc18a673a84a86b416667e"
+    },
+    "disc/files/CD/COM/ITEM.T": {
+      "bytes": 11110400,
+      "sha256": "3a70dfd2efcad684afd9e9add2d0cc91f16dce062234125aa93d597e899905d6"
+    },
+    "disc/files/CD/COM/MO.T": {
+      "bytes": 5693440,
+      "sha256": "5afe6cadb443c22a1b7c23efc0243ff012406e79a71b313f908f6977e1148970"
+    },
+    "disc/files/CD/COM/RTIM.T": {
+      "bytes": 4304896,
+      "sha256": "d93d4d440b589af31420824406a1e50d80dc62bea552a8f15b52d5c8d34f6281"
+    },
+    "disc/files/CD/COM/RTMD.T": {
+      "bytes": 1083392,
+      "sha256": "deff9da267c7e091f123b83b61c5637cd4fe4953c3bd34108ad78effc8f24f82"
+    },
+    "disc/files/CD/COM/TALK.T": {
+      "bytes": 13197312,
+      "sha256": "d3f51c65f19ab220016aee631742f0941690522b154e20770c5e3eb464d24106"
+    },
+    "disc/files/CD/COM/VAB.T": {
+      "bytes": 3768320,
+      "sha256": "60c1455d3d47c6539d058c633208556ad6a185980a2373889957b08c5303976c"
+    },
+    "disc/files/OP/ED0.S": {
+      "bytes": 60042208,
+      "sha256": "6c2e4fdc5ed89bc0c1a2ce1fe3a0c8c5550adf0f3eefe732cc1702a52e4a789d"
+    },
+    "disc/files/OP/ED1.S": {
+      "bytes": 98315232,
+      "sha256": "ac090ae499c83d7b74262a774f0d48a3af4c8de1979ad463e21a193c10a8b6df"
+    },
+    "disc/files/OP/OP.D": {
+      "bytes": 552344,
+      "sha256": "a4977fff7aa9712057eb8512e1e011bb6689c5952decdb96681e7fd5aa186e1a"
+    },
+    "disc/files/OP/OP0.S": {
+      "bytes": 3417568,
+      "sha256": "8acac18ed17b3d21e6d0a476a2b00d54b2ce432ed91573444772accde9a3df7d"
+    },
+    "disc/files/OP/OP1.S": {
+      "bytes": 6650592,
+      "sha256": "73f214d33e05f3833d5ccad09329989404c002016e44c9959eecd3cd9ecef507"
+    },
+    "disc/files/OP/OP2.S": {
+      "bytes": 38494944,
+      "sha256": "fd8df0b6706abe57ef1bafc196de524f01b2231b7ab3dc43aaaa0b93fc11eb1b"
+    },
+    "disc/files/OP/OPU.D": {
+      "bytes": 552344,
+      "sha256": "490e73937b742b3f6c1817f4e3f01ff4d820617a50bab432132e5788ff8c2730"
     },
     "decompiled/SLUS_001.58/SLUS_001.58_full.c": {
       "bytes": 3558,
@@ -48,10 +266,6 @@
     "reports/decomp_master_summary.json": {
       "bytes": 10693,
       "sha256": "b8d3f044f8cd987750d36fe2903d712d737a5e3bfc83d14b11a2146f1287a130"
-    },
-    "ghidra_project/legacy-project.gpr": {
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "assets/assets_summary.json": {
       "bytes": 4405,

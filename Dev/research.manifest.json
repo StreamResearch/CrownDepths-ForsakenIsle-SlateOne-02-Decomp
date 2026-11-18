@@ -1,19 +1,52 @@
 {
+  "$schema": "https://schemas.local/manifest.v2.json",
   "schemaVersion": 2,
+  "manifestType": "research-repo",
+  "appId": "kings-field-play-station",
+  "researchId": "kings-field-play-station",
+  "version": "0.2.0",
   "gameId": "kings-field",
   "title": "King's Field",
   "platform": "ps1",
+  "platformId": "ps1",
+  "engineId": "reStation",
+  "decompSchemaVersion": "1.0.0",
   "pipelineFamily": "native_ghidra_c",
   "serialOrHash": "SLUS-00158",
-  "abiProfile": "ps1-psyq-mipsel",
-  "currentDecompTier": "D4",
+  "abiProfile": "ps1-mipsel",
+  "researchAxis": "hybrid",
+  "currentDecompTier": "D3",
   "goalDecompTier": "D4",
-  "currentRecompTier": "R3",
+  "d4ParityTier": "none",
+  "currentStudyTier": "S4",
+  "goalStudyTier": "S5",
+  "currentRecompTier": "R2",
   "goalRecompTier": "R3",
-  "workspaceFile": "KingsField-PlayStation.code-workspace",
+  "currentPortTier": "none",
+  "goalPortTier": "none",
+  "workspaceFile": "CrownDepths-ForsakenIsle-SlateOne-02-Decomp.code-workspace",
+  "preservedTiers": [
+    "D1_Raw",
+    "D2_Structured",
+    "D3_Mapped"
+  ],
   "recompProjectPath": "../../Personal/KingsFieldRecomp",
+  "portProjectPath": null,
+  "isHumanPlaytestSignedOff": false,
+  "downstreamProjects": [
+    "../../Personal/KingsFieldRecomp"
+  ],
+  "upstreamResearchPath": null,
+  "graduatedFromPath": "R&D/decomps/ps1/kings-field",
+  "corpusRoot": "Corpus",
   "deferredStandalonePath": "../Corpus/standalone",
   "customUnpackerScript": "Dev/scripts/psx_kf_unpack.py",
+  "decompBundle": {
+    "moduleId": "crowndepths-forsakenisle-slateone-02",
+    "packageFileName": "CrownDepths-ForsakenIsle-SlateOne-02.decomp",
+    "recipe": "Dev/schemas/decomp_recipe.json",
+    "decompSchemaVersion": "1.0.0"
+  },
   "binaries": [
     {
       "name": "SLUS_001.58",
@@ -46,7 +79,7 @@
     "globalsTotal": 1549,
     "globalsMapped": 1549,
     "domainsCount": 5,
-    "readableFiles": 268,
+    "readableFiles": 39,
     "workspaceReady": true
   },
   "gates": {
@@ -67,8 +100,12 @@
       "verifiedAtUtc": "2026-11-14T07:40:06.494Z"
     },
     "D4": {
-      "passed": true,
-      "verifiedAtUtc": "2026-11-14T08:16:49.623Z"
+      "passed": false,
+      "verifiedAtUtc": null
+    },
+    "D5": {
+      "passed": false,
+      "verifiedAtUtc": null
     },
     "R0": {
       "passed": false,
@@ -83,8 +120,8 @@
       "verifiedAtUtc": "2026-11-13T08:09:56Z"
     },
     "R3": {
-      "passed": true,
-      "verifiedAtUtc": "2026-11-14T08:16:53Z"
+      "passed": false,
+      "verifiedAtUtc": null
     },
     "R4": {
       "passed": false,
@@ -93,14 +130,6 @@
     "R5": {
       "passed": false,
       "verifiedAtUtc": null
-    },
-    "D5": {
-      "passed": false,
-      "verifiedAtUtc": null
-    },
-    "S4": {
-      "passed": true,
-      "verifiedAtUtc": "2026-11-14T08:16:49.623Z"
     },
     "S0": {
       "passed": true,
@@ -118,24 +147,38 @@
       "passed": true,
       "verifiedAtUtc": "2026-11-14T08:16:15.702Z"
     },
+    "S4": {
+      "passed": true,
+      "verifiedAtUtc": "2026-11-14T08:16:49.623Z"
+    },
     "S5": {
+      "passed": false,
+      "verifiedAtUtc": null
+    },
+    "P0": {
+      "passed": false,
+      "verifiedAtUtc": null
+    },
+    "P1": {
+      "passed": false,
+      "verifiedAtUtc": null
+    },
+    "P2": {
+      "passed": false,
+      "verifiedAtUtc": null
+    },
+    "P3": {
+      "passed": false,
+      "verifiedAtUtc": null
+    },
+    "P4": {
+      "passed": false,
+      "verifiedAtUtc": null
+    },
+    "P5": {
       "passed": false,
       "verifiedAtUtc": null
     }
   },
-  "updatedAtUtc": "2026-11-16T00:48:00.000Z",
-  "manifestType": "research-repo",
-  "researchAxis": "hybrid",
-  "currentStudyTier": "S4",
-  "goalStudyTier": "S4",
-  "downstreamProjects": [
-    "../../Personal/KingsFieldRecomp"
-  ],
-  "upstreamResearchPath": "../../Personal/R&D/decomps/ps1/kings-field",
-  "$schema": "https://schemas.local/manifest.v2.json",
-  "appId": "kings-field-play-station",
-  "version": "0.1.0-hf.1",
-  "researchId": "kings-field-play-station",
-  "graduatedFromPath": "../../Personal/R&D/decomps/ps1/kings-field",
-  "corpusRoot": "Corpus"
+  "updatedAtUtc": "2026-11-18T22:00:00.000Z"
 }

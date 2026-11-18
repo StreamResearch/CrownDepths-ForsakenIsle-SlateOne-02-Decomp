@@ -19,7 +19,7 @@
     "params": [],
     "domain": "module_end",
     "wave": 6,
-    "summary": "Initializes PS1-SDK GPU/GTE with white clear color and 320x240 double-buffered display/draw environments."
+    "summary": "Initializes PS1 GPU/GTE with white clear color and 320x240 double-buffered display/draw environments."
   },
   {
     "program": "END.EXE",
@@ -270,7 +270,7 @@
     ],
     "domain": "module_end",
     "wave": 0,
-    "summary": "No-op SN heap3 release stub retained by PS1-SDK malloc3 linkage in END.EXE."
+    "summary": "No-op SN heap3 release stub retained by PS1 SDK malloc3 linkage in END.EXE."
   },
   {
     "program": "END.EXE",
@@ -6442,7 +6442,7 @@
     "params": [],
     "domain": "audio",
     "wave": 2,
-    "summary": "Queries PS1-SDK hardware key-on/off envelope state for all 24 SPU channels and updates active voice flags at DAT_801989b0."
+    "summary": "Queries PS1 hardware key-on/off envelope state for all 24 SPU channels and updates active voice flags at DAT_801989b0."
   },
   {
     "program": "GAME.EXE",
@@ -7844,7 +7844,7 @@
     ],
     "domain": "core",
     "wave": 1,
-    "summary": "C++ runtime array delete wrapper releasing memory via PS1-SDK free3."
+    "summary": "C++ runtime array delete wrapper releasing memory via PS1 SDK free3."
   },
   {
     "program": "GAME.EXE",
@@ -9953,7 +9953,7 @@
     "params": [],
     "domain": "input_save",
     "wave": 0,
-    "summary": "Opens and enables the four PS1-SDK BIOS Memory Card events (IOE, error, timeout, newcard) on descriptor 0xf4000001."
+    "summary": "Opens and enables the four PS1 BIOS Memory Card events (IOE, error, timeout, newcard) on descriptor 0xf4000001."
   },
   {
     "program": "GAME.EXE",
@@ -16518,7 +16518,7 @@
     ],
     "domain": "core",
     "wave": 0,
-    "summary": "Extends the PS1-SDK malloc3 arena high-water sentinel by req_bytes rounded to words if within heap end limit."
+    "summary": "Extends the PS1 SDK malloc3 arena high-water sentinel by req_bytes rounded to words if within heap end limit."
   },
   {
     "program": "GAME.EXE",
@@ -16538,7 +16538,7 @@
     ],
     "domain": "core",
     "wave": 0,
-    "summary": "Implements PS1-SDK realloc3 by shrinking in place or coalescing adjacent free blocks before fallback allocation."
+    "summary": "Implements PS1 SDK realloc3 by shrinking in place or coalescing adjacent free blocks before fallback allocation."
   },
   {
     "program": "GAME.EXE",
@@ -16558,7 +16558,7 @@
     ],
     "domain": "core",
     "wave": 0,
-    "summary": "Initializes PS1-SDK InitHeap3 arena bounds globals and clears initial free-block pointer state."
+    "summary": "Initializes PS1 SDK InitHeap3 arena bounds globals and clears initial free-block pointer state."
   },
   {
     "program": "GAME.EXE",
@@ -16574,7 +16574,7 @@
     ],
     "domain": "core",
     "wave": 1,
-    "summary": "Implements PS1-SDK malloc3 first-fit allocator with block splitting, free block coalescing, and arena growth."
+    "summary": "Implements PS1 SDK malloc3 first-fit allocator with block splitting, free block coalescing, and arena growth."
   },
   {
     "program": "GAME.EXE",
@@ -16590,7 +16590,7 @@
     ],
     "domain": "core",
     "wave": 0,
-    "summary": "Marks an allocated PS1-SDK heap3 block free by setting bit 0 on its 4-byte size header."
+    "summary": "Marks an allocated PS1 SDK heap3 block free by setting bit 0 on its 4-byte size header."
   },
   {
     "program": "GAME.EXE",
@@ -16724,7 +16724,7 @@
     ],
     "domain": "io_storage",
     "wave": 0,
-    "summary": "Installs a new PS1-SDK CdSyncCallback function pointer and returns the previously registered handler."
+    "summary": "Installs a new PS1 CdSyncCallback function pointer and returns the previously registered handler."
   },
   {
     "program": "GAME.EXE",
@@ -16740,7 +16740,7 @@
     ],
     "domain": "io_storage",
     "wave": 0,
-    "summary": "Installs a new PS1-SDK CdReadyCallback function pointer and returns the previously registered handler."
+    "summary": "Installs a new PS1 CdReadyCallback function pointer and returns the previously registered handler."
   },
   {
     "program": "GAME.EXE",
@@ -16756,7 +16756,7 @@
     ],
     "domain": "io_storage",
     "wave": 0,
-    "summary": "Installs a new PS1-SDK CdDataCallback function pointer and returns the previously registered handler."
+    "summary": "Installs a new PS1 CdDataCallback function pointer and returns the previously registered handler."
   },
   {
     "program": "GAME.EXE",
@@ -16954,7 +16954,7 @@
     "params": [],
     "domain": "io_storage",
     "wave": 0,
-    "summary": "Sets PS1-SDK libcd watchdog deadline DAT_8006e9f4 to 480 ticks ahead of the VSync tick counter."
+    "summary": "Sets PS1 libcd watchdog deadline DAT_8006e9f4 to 480 ticks ahead of the VSync tick counter."
   },
   {
     "program": "GAME.EXE",
@@ -17137,7 +17137,7 @@
     ],
     "domain": "io_storage",
     "wave": 1,
-    "summary": "Polls PS1-SDK CdReady loop copying response bytes and aborting cleanly on disk errors or timeout."
+    "summary": "Polls PS1 CdReady loop copying response bytes and aborting cleanly on disk errors or timeout."
   },
   {
     "program": "GAME.EXE",
@@ -17408,7 +17408,7 @@
     ],
     "domain": "io_storage",
     "wave": 0,
-    "summary": "Byte-wise memcpy helper compiled inside PS1-SDK libcd for unaligned directory record copies."
+    "summary": "Byte-wise memcpy helper compiled inside PS1 libcd for unaligned directory record copies."
   },
   {
     "program": "GAME.EXE",
@@ -17564,7 +17564,7 @@
     "params": [],
     "domain": "io_storage",
     "wave": 0,
-    "summary": "Returns constant 1 for PS1-SDK CD streaming status/version check."
+    "summary": "Returns constant 1 for PS1 CD streaming status/version check."
   },
   {
     "program": "GAME.EXE",
@@ -17699,7 +17699,7 @@
     ],
     "domain": "audio",
     "wave": 1,
-    "summary": "Queries PS1-SDK SpuGetAllKeysStatus across all 24 hardware SPU voices (0..23) into out_status."
+    "summary": "Queries PS1 SpuGetAllKeysStatus across all 24 hardware SPU voices (0..23) into out_status."
   },
   {
     "program": "GAME.EXE",
@@ -17783,7 +17783,7 @@
     "params": [],
     "domain": "audio",
     "wave": 0,
-    "summary": "Shuts down PS1-SDK SPU DMA completion event handle DAT_801daefc cleanly via DisableEvent/CloseEvent."
+    "summary": "Shuts down PS1 SPU DMA completion event handle DAT_801daefc cleanly via DisableEvent/CloseEvent."
   },
   {
     "program": "GAME.EXE",
@@ -18146,7 +18146,7 @@
     ],
     "domain": "audio",
     "wave": 0,
-    "summary": "Byte-wise memcpy helper compiled inside PS1-SDK libspu for sound header transfers."
+    "summary": "Byte-wise memcpy helper compiled inside PS1 libspu for sound header transfers."
   },
   {
     "program": "GAME.EXE",
@@ -18173,7 +18173,7 @@
     "params": [],
     "domain": "audio",
     "wave": 0,
-    "summary": "Coalesces adjacent free entries inside PS1-SDK SpuInitMalloc block descriptor table DAT_8006eac4."
+    "summary": "Coalesces adjacent free entries inside PS1 SpuInitMalloc block descriptor table DAT_8006eac4."
   },
   {
     "program": "GAME.EXE",
@@ -18209,7 +18209,7 @@
     ],
     "domain": "audio",
     "wave": 1,
-    "summary": "Allocates an aligned Sound RAM block from PS1-SDK SPU heap descriptor table DAT_8006eac4."
+    "summary": "Allocates an aligned Sound RAM block from PS1 SPU heap descriptor table DAT_8006eac4."
   },
   {
     "program": "GAME.EXE",
@@ -18371,7 +18371,7 @@
     "params": [],
     "domain": "audio",
     "wave": 0,
-    "summary": "Returns true when PS1-SDK SPU transfer mode is configured for DMA transfers (DAT_8009b4e4 == 0)."
+    "summary": "Returns true when PS1 SPU transfer mode is configured for DMA transfers (DAT_8009b4e4 == 0)."
   },
   {
     "program": "GAME.EXE",
@@ -20011,7 +20011,7 @@
     ],
     "domain": "audio",
     "wave": 1,
-    "summary": "Validates PS1-SDK 'SEQp' header signature, reads PPQN/BPM tempo, and initializes playback cursor on seq_idx."
+    "summary": "Validates PS1 'SEQp' header signature, reads PPQN/BPM tempo, and initializes playback cursor on seq_idx."
   },
   {
     "program": "GAME.EXE",
@@ -21276,7 +21276,7 @@
     ],
     "domain": "render_gfx",
     "wave": 0,
-    "summary": "Implements PS1-SDK SetGeomOffset by writing screen center offsets (<< 16) to GTE registers OFX and OFY."
+    "summary": "Implements PS1 SDK SetGeomOffset by writing screen center offsets (<< 16) to GTE registers OFX and OFY."
   },
   {
     "program": "GAME.EXE",
@@ -21292,7 +21292,7 @@
     ],
     "domain": "render_gfx",
     "wave": 0,
-    "summary": "Implements PS1-SDK SetGeomScreen by writing perspective projection distance proj_h to GTE register H."
+    "summary": "Implements PS1 SDK SetGeomScreen by writing perspective projection distance proj_h to GTE register H."
   },
   {
     "program": "GAME.EXE",
@@ -21308,7 +21308,7 @@
     ],
     "domain": "render_gfx",
     "wave": 0,
-    "summary": "Implements PS1-SDK SetDQA by writing fog depth-cueing slope parameter dqa to GTE DQA register."
+    "summary": "Implements PS1 SDK SetDQA by writing fog depth-cueing slope parameter dqa to GTE DQA register."
   },
   {
     "program": "GAME.EXE",
@@ -21324,7 +21324,7 @@
     ],
     "domain": "render_gfx",
     "wave": 0,
-    "summary": "Implements PS1-SDK SetDQB by writing fog depth-cueing intercept dqb to GTE DQB register."
+    "summary": "Implements PS1 SDK SetDQB by writing fog depth-cueing intercept dqb to GTE DQB register."
   },
   {
     "program": "GAME.EXE",
@@ -21435,7 +21435,7 @@
     ],
     "domain": "core",
     "wave": 0,
-    "summary": "Implements PS1-SDK SquareRoot0 integer square root using GTE LZCS/LZCR leading-zero count and lookup table."
+    "summary": "Implements PS1 SDK SquareRoot0 integer square root using GTE LZCS/LZCR leading-zero count and lookup table."
   },
   {
     "program": "GAME.EXE",
@@ -21451,7 +21451,7 @@
     ],
     "domain": "core",
     "wave": 0,
-    "summary": "Implements PS1-SDK SquareRoot12 Q12 fixed-point square root using GTE LZCS/LZCR normalization."
+    "summary": "Implements PS1 SDK SquareRoot12 Q12 fixed-point square root using GTE LZCS/LZCR normalization."
   },
   {
     "program": "GAME.EXE",
@@ -22438,7 +22438,7 @@
     "params": [],
     "domain": "input_save",
     "wave": 0,
-    "summary": "Polls PS1-SDK PAD_dr() controller buffer and returns inverted active-high 32-bit button mask (PadRead)."
+    "summary": "Polls PS1 SDK PAD_dr() controller buffer and returns inverted active-high 32-bit button mask (PadRead)."
   },
   {
     "program": "GAME.EXE",
@@ -22449,7 +22449,7 @@
     "params": [],
     "domain": "input_save",
     "wave": 0,
-    "summary": "Deactivates controller polling hardware cleanly via PS1-SDK BIOS StopPAD2()."
+    "summary": "Deactivates controller polling hardware cleanly via PS1 BIOS StopPAD2()."
   },
   {
     "program": "GAME.EXE",
@@ -22758,7 +22758,7 @@
     ],
     "domain": "render_gfx",
     "wave": 0,
-    "summary": "Forwards 24-bit masked GP0 command word to PS1-SDK GPU_cw()."
+    "summary": "Forwards 24-bit masked GP0 command word to PS1 SDK GPU_cw()."
   },
   {
     "program": "GAME.EXE",
@@ -23565,7 +23565,7 @@
     ],
     "domain": "render_gfx",
     "wave": 0,
-    "summary": "Byte-wise memcpy helper compiled inside PS1-SDK libgpu."
+    "summary": "Byte-wise memcpy helper compiled inside PS1 libgpu."
   },
   {
     "program": "GAME.EXE",
@@ -23589,7 +23589,7 @@
     ],
     "domain": "render_gfx",
     "wave": 0,
-    "summary": "Byte-wise memset helper compiled inside PS1-SDK libgpu."
+    "summary": "Byte-wise memset helper compiled inside PS1 libgpu."
   },
   {
     "program": "GAME.EXE",
@@ -23773,7 +23773,7 @@
     ],
     "domain": "render_gfx",
     "wave": 0,
-    "summary": "Encodes VRAM CLUT coordinates (vram_x >> 4, vram_y) into packed 16-bit PS1-SDK GetClut ID."
+    "summary": "Encodes VRAM CLUT coordinates (vram_x >> 4, vram_y) into packed 16-bit PS1 SDK GetClut ID."
   },
   {
     "program": "GAME.EXE",
@@ -24154,7 +24154,7 @@
     "params": [],
     "domain": "module_open",
     "wave": 6,
-    "summary": "Initializes PS1-SDK GPU/GTE subsystems, black clear color, and 640x240 double-buffered draw/display environments."
+    "summary": "Initializes PS1 GPU/GTE subsystems, black clear color, and 640x240 double-buffered draw/display environments."
   },
   {
     "program": "OPEN.EXE",
@@ -24603,7 +24603,7 @@
     ],
     "domain": "module_open",
     "wave": 0,
-    "summary": "No-op SN heap3 release stub retained by PS1-SDK malloc3 linkage in OPEN.EXE."
+    "summary": "No-op SN heap3 release stub retained by PS1 SDK malloc3 linkage in OPEN.EXE."
   },
   {
     "program": "OPEN.EXE",

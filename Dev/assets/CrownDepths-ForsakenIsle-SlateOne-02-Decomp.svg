@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="slate-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#18181B"/>
+      <stop offset="100%" stop-color="#09090B"/>
+    </linearGradient>
+    <linearGradient id="crystal-cyan" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E0F2FE"/>
+      <stop offset="45%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="crown-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="16" width="480" height="480" rx="96" fill="url(#slate-bg)" stroke="#27272A" stroke-width="10"/>
+  <rect x="64" y="64" width="384" height="384" rx="56" fill="#111115" stroke="#27272A" stroke-width="6"/>
+  <path d="M128 418 L128 226 A128 128 0 0 1 384 226 L384 418 Z" fill="#0B0B0F" stroke="#3F3F46" stroke-width="10"/>
+  <polygon points="184,158 206,104 256,140 306,104 328,158" fill="url(#crown-gold)" stroke="#FEF3C7" stroke-width="4" stroke-linejoin="round"/>
+  <rect x="184" y="158" width="144" height="18" rx="4" fill="#D97706" stroke="#FDE68A" stroke-width="2"/>
+  <polygon points="256,190 278,244 272,366 256,378 240,366 234,244" fill="url(#crystal-cyan)" stroke="#E0F2FE" stroke-width="4"/>
+  <line x1="256" y1="208" x2="256" y2="362" stroke="#E0F2FE" stroke-width="5" opacity="0.85"/>
+  <polygon points="198,366 314,366 304,386 208,386" fill="url(#crown-gold)" stroke="#FDE68A" stroke-width="3"/>
+  <rect x="244" y="386" width="24" height="44" rx="5" fill="#78350F" stroke="#F59E0B" stroke-width="3"/>
+</svg>

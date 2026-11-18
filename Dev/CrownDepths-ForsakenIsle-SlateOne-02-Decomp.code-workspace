@@ -1,0 +1,237 @@
+{
+  "folders": [
+    {
+      "name": "0. CrownDepths-ForsakenIsle-SlateOne-02-Recomp — Native Recomp (Dev)",
+      "path": "../../../Personal/KingsFieldRecomp/Dev"
+    },
+    {
+      "name": "1. CrownDepths ForsakenIsle (SlateOne) 02 — Readable C (SLUS-00158)",
+      "path": "../Corpus/readable"
+    },
+    {
+      "name": "Tier 4 (D4_CleanSource) — Idiomatic Human C",
+      "path": "../Corpus/tiers/D4_CleanSource"
+    },
+    {
+      "name": "Tier 3 (D3_Mapped) — 100% Mapped & Cohesive Modules",
+      "path": "../Corpus/tiers/D3_Mapped"
+    },
+    {
+      "name": "Tier 2 (D2_Structured) — Structured & Named (259 Chunks)",
+      "path": "../Corpus/tiers/D2_Structured"
+    },
+    {
+      "name": "Tier 1 (D1_Raw) — Raw Ghidra Output",
+      "path": "../Corpus/tiers/D1_Raw"
+    },
+    {
+      "name": "2. CrownDepths ForsakenIsle (SlateOne) 02 — Schemas & Catalog",
+      "path": "./schemas"
+    },
+    {
+      "name": "3. CrownDepths ForsakenIsle (SlateOne) 02 — Stage Docs",
+      "path": "./docs"
+    },
+    {
+      "name": "4. CrownDepths ForsakenIsle (SlateOne) 02 — Pipeline Scripts",
+      "path": "./scripts"
+    }
+  ],
+  "settings": {
+    "clangd.path": "${env:LOCALAPPDATA}/Microsoft/WinGet/Packages/LLVM.clangd_Microsoft.Winget.Source_8wekyb3d8bbwe/clangd_23.1.0/bin/clangd.exe",
+    "clangd.arguments": [
+      "--background-index",
+      "--compile-commands-dir=${workspaceFolder:1. CrownDepths ForsakenIsle (SlateOne) 02 — Readable C (SLUS-00158)}",
+      "--header-insertion=never",
+      "--limit-results=0",
+      "-j=4"
+    ],
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "files.associations": {
+      "*.h": "c",
+      "*.c": "c"
+    },
+    "python.defaultInterpreterPath": "python",
+    "files.eol": "\n",
+    "files.exclude": {
+      "**/__pycache__": true,
+      "**/.cache": true,
+      "**/[Dd]esktop.ini": true
+    }
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Verify Track Gates (decomp_cli)",
+        "type": "shell",
+        "command": "python",
+        "args": [
+          "-B",
+          "../../Personal/R&D/Dev/tools/decomp/decomp_cli.py",
+          "verify",
+          "--track",
+          "."
+        ],
+        "options": {
+          "cwd": "${workspaceFolder:2. CrownDepths ForsakenIsle (SlateOne) 02 — Schemas & Catalog}/../.."
+        },
+        "group": {
+          "kind": "test",
+          "isDefault": true
+        },
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared",
+          "clear": true
+        }
+      },
+      {
+        "label": "Materialize Multi-Tier Corpus (D1..D4)",
+        "type": "shell",
+        "command": "python",
+        "args": [
+          "-B",
+          "Dev/scripts/materialize_decomp_tiers.py",
+          "--log-dir",
+          "Dev/logs"
+        ],
+        "options": {
+          "cwd": "${workspaceFolder:2. CrownDepths ForsakenIsle (SlateOne) 02 — Schemas & Catalog}/../.."
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": false
+        },
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared",
+          "clear": true
+        }
+      },
+      {
+        "label": "Index Stage 1 Call Graph & Clusters",
+        "type": "shell",
+        "command": "python",
+        "args": [
+          "-B",
+          "../../Personal/R&D/Dev/tools/decomp/decomp_cli.py",
+          "index",
+          "--track",
+          "."
+        ],
+        "options": {
+          "cwd": "${workspaceFolder:2. CrownDepths ForsakenIsle (SlateOne) 02 — Schemas & Catalog}/../.."
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": false
+        },
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared",
+          "clear": true
+        }
+      },
+      {
+        "label": "Bundle Stage 2/3 Ghidra Schemas",
+        "type": "shell",
+        "command": "python",
+        "args": [
+          "-B",
+          "../../Personal/R&D/Dev/tools/decomp/decomp_cli.py",
+          "bundle",
+          "--track",
+          "."
+        ],
+        "options": {
+          "cwd": "${workspaceFolder:2. CrownDepths ForsakenIsle (SlateOne) 02 — Schemas & Catalog}/../.."
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": false
+        },
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared",
+          "clear": true
+        }
+      },
+      {
+        "label": "Assemble Stage 4 Readable Tree",
+        "type": "shell",
+        "command": "python",
+        "args": [
+          "-B",
+          "../../Personal/R&D/Dev/tools/decomp/decomp_cli.py",
+          "assemble",
+          "--track",
+          "."
+        ],
+        "options": {
+          "cwd": "${workspaceFolder:2. CrownDepths ForsakenIsle (SlateOne) 02 — Schemas & Catalog}/../.."
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared",
+          "clear": true
+        }
+      },
+      {
+        "label": "Refresh Workspace & compile_commands.json",
+        "type": "shell",
+        "command": "python",
+        "args": [
+          "-B",
+          "../../Personal/R&D/Dev/tools/decomp/decomp_cli.py",
+          "workspace",
+          "--track",
+          "."
+        ],
+        "options": {
+          "cwd": "${workspaceFolder:2. CrownDepths ForsakenIsle (SlateOne) 02 — Schemas & Catalog}/../.."
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": false
+        },
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared",
+          "clear": true
+        }
+      },
+      {
+        "label": "Build Stage D4 MIPS Objects & Parity (zig cc)",
+        "type": "shell",
+        "command": "python",
+        "args": [
+          "-B",
+          "Dev/scripts/build_and_verify_d4.py"
+        ],
+        "options": {
+          "cwd": "${workspaceFolder:2. CrownDepths ForsakenIsle (SlateOne) 02 — Schemas & Catalog}/../.."
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": false
+        },
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared",
+          "clear": true
+        }
+      }
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "llvm-vs-code-extensions.vscode-clangd",
+      "ms-python.python"
+    ]
+  }
+}

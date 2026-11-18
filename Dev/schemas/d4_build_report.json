@@ -1,69 +1,71 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "gameId": "kings-field",
-  "verifiedAtUtc": "2026-11-14T08:16:49.623Z",
+  "generatedAtUtc": "2026-11-18T20:53:21.598Z",
+  "verifiedAtUtc": "2026-11-18T20:53:21.598Z",
   "zigTarget": "mipsel-freestanding-eabi",
   "zigCpu": "mips2",
-  "readableFiles": 259,
-  "compiledFiles": 259,
-  "totalObjects": 260,
-  "elf32MipsVerifiedObjects": 260,
-  "archiveFile": "work/d4_build/libkings_field_d4.a",
-  "archiveBytes": 1841082,
+  "readableFiles": 27,
+  "compiledFileCount": 27,
+  "compiledFiles": 27,
+  "totalObjects": 28,
+  "elf32MipsVerifiedObjects": 28,
+  "archivePath": "work/d4_build/libkings_field_d4.a",
+  "fileSizeBytes": 1588042,
+  "compilerErrorCount": 0,
+  "compilerWarningCount": 0,
+  "craftsmanshipTellCount": 55791,
+  "compilerFlags": [
+    "-Wno-everything"
+  ],
   "compilerErrors": 0,
   "compilerWarnings": 0,
-  "errors": 0,
-  "warnings": 0,
   "parityTarget": "x86-windows-gnu",
+  "assertionsPassedCount": 10,
+  "assertionsTotalCount": 10,
   "parityTestsPassed": 10,
-  "parityTestsTotal": 10,
   "parityPassed": true,
-  "passed": true,
-  "parityResults": {
-    "tests": [
-      {
-        "name": "lp32_abi_and_struct_sizes",
-        "passed": true
-      },
-      {
-        "name": "retail_psx_exe_headers",
-        "passed": true
-      },
-      {
-        "name": "retail_t_archive_sector_tables",
-        "passed": true
-      },
-      {
-        "name": "retail_fnd_mo_vab_str_headers",
-        "passed": true
-      },
-      {
-        "name": "live_kf_cd_bcd_and_sector_checksum",
-        "passed": true
-      },
-      {
-        "name": "live_kf_mc_save_checksum",
-        "passed": true
-      },
-      {
-        "name": "live_kf_math_lerp_and_clamp",
-        "passed": true
-      },
-      {
-        "name": "live_kf_math_angles_and_pose",
-        "passed": true
-      },
-      {
-        "name": "live_kf_player_gauge_and_regen",
-        "passed": true
-      },
-      {
-        "name": "live_kf_end_str_decoder_init",
-        "passed": true
-      }
-    ],
-    "passed": 10,
-    "failed": 0,
-    "total": 10
-  }
+  "isPassed": true,
+  "parityResults": [
+    {
+      "name": "lp32_abi_and_struct_sizes",
+      "isPassed": true
+    },
+    {
+      "name": "retail_psx_exe_headers",
+      "isPassed": true
+    },
+    {
+      "name": "retail_t_archive_sector_tables",
+      "isPassed": true
+    },
+    {
+      "name": "retail_fnd_mo_vab_str_headers",
+      "isPassed": true
+    },
+    {
+      "name": "live_kf_cd_bcd_and_sector_checksum",
+      "isPassed": true
+    },
+    {
+      "name": "live_kf_mc_save_checksum",
+      "isPassed": true
+    },
+    {
+      "name": "live_kf_math_lerp_and_clamp",
+      "isPassed": true
+    },
+    {
+      "name": "live_kf_math_angles_and_pose",
+      "isPassed": true
+    },
+    {
+      "name": "live_kf_player_gauge_and_regen",
+      "isPassed": true
+    },
+    {
+      "name": "live_kf_end_str_decoder_init",
+      "isPassed": true
+    }
+  ]
 }

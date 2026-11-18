@@ -28,7 +28,7 @@ typedef u64 undefined8;
 typedef int32_t code;
 #endif
 
-/* PS1-SDK GPU primitives & environments */
+/* PS1 GPU primitives & environments */
 typedef struct RECT {
     s16 x; /* +0x00 */
     s16 y; /* +0x02 */
@@ -98,7 +98,7 @@ typedef struct GsOT {
     u32 *tag; /* +0x10 */
 } GsOT; /* 0x14 */
 
-/* PS1-SDK GTE fixed-point math & geometry */
+/* PS1 GTE fixed-point math & geometry */
 typedef struct MATRIX {
     s16 m[3][3]; /* +0x00 */
     u16 pad; /* +0x12 */
@@ -131,7 +131,7 @@ typedef struct DVECTOR {
     s16 vy; /* +0x02 */
 } DVECTOR; /* 0x04 */
 
-/* PS1-SDK CD-ROM, Memory Card & Kernel BIOS structs */
+/* PS1 CD-ROM, Memory Card & Kernel BIOS structs */
 typedef struct CdlLOC {
     u8 minute; /* +0x00 */
     u8 second; /* +0x01 */
@@ -178,7 +178,7 @@ typedef struct EXEC {
     u32 base; /* +0x38 */
 } EXEC; /* 0x3c */
 
-/* PS1-SDK SPU / Sound structs */
+/* PS1 SPU / Sound structs */
 typedef struct SpuVolume {
     s16 left; /* +0x00 */
     s16 right; /* +0x02 */

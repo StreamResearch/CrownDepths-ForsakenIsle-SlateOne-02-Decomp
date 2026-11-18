@@ -1,64 +1,41 @@
-# Roadmap — KingsField-PlayStation
+# Roadmap
 
-> **Baseline:** `v0.1.0` (`D4 / S4 / R3`) · **Active Horizon:** `v0.1.1` -> `v1.0.0` (`S5` Gold Research Container)
-> **State & Links:** [`active.state`](active.state) · [`FEATURES.md`](FEATURES.md) · [`Dev/docs/plans/tasklist.md`](Dev/docs/plans/tasklist.md) · [`SPECIFICATIONS.md`](Dev/docs/SPECIFICATIONS.md)
+Current baseline: **v0.2.0 (Beta)** | Active target: **v0.3.0** | See [CHANGELOG.md](CHANGELOG.md) for detailed release notes.
 
----
+## Vision
 
-## 1. North Star Goal (`v1.0.0` Summit)
+- **v1.0.0 (Gold Reference):** Certify *CrownDepths ForsakenIsle (SlateOne) 02 Decomp* (`SLUS-00158`) as a self-contained clean-room reference repository featuring verified container decoders, complete binary format specifications (`0` unresolved fields), deterministic fixed-point GTE and 4-executable behavioral trace parity, and complete technical manuals.
+- **v2.0.0 (Byte-Exact Matching):** Optional `1:1` retail byte-matching verification across `SLUS_001.58`, `OPEN.EXE`, `GAME.EXE`, and `END.EXE` using a matching MIPS32 C compiler with a fail-closed fallback when the matching toolchain is absent.
 
-Certify **`KingsField-PlayStation` (`SLUS-00158`)** as a self-contained **`S5` Gold Reference Research Container** (`s5_gold_report.json` `isPassed: true`, `unresolvedFieldCount == 0` in `spec_coverage.json`) featuring full `.T` codec decompressors, clean-room world/item/mesh/audio parsers, `150–380`-line `Dev\docs\specifications\*.md` spokes, Q12 host GTE + 4-executable trace parity in `Corpus\work\` / `--data-dir`, and a zero-gap 4-Doc Research Manual Shelf.
-
-> **Pure Research Container Rule:** This repository is a strictly self-contained `Tier R` research container. Downstream [`KingsFieldRecomp`](../../Personal/KingsFieldRecomp/README.md) (`reStation`) consumes `Dev\schemas\` and `Dev\docs\` strictly **read-only**—nothing in this roadmap gates or blocks Stage-3 recompilation releases.
+> This repository stays strictly self-contained and non-gating toward downstream native PC recompilation projects.
 
 ```mermaid
 flowchart LR
-    V010["v0.1.0: Graduated Tier R Baseline (D4/S4/R3)"] --> V011["v0.1.1: Standard 18 & verify_track_d4"]
-    V011 --> V020["v0.2.0: .T Codecs & Spec Spokes"]
-    V020 --> V030["v0.3.0: Q12 GTE & 4-EXE Trace Parity"]
-    V030 --> V100["v1.0.0: Certified S5 Gold Reference"]
-    V010 -. "Read-Only Reference (Non-Gating)" .-> OptR["Optional Stage 3: KingsFieldRecomp"]
+    V010["v0.1.0-hf.1: Graduated Baseline"] --> V020["v0.2.0: Integrity Gate, .decomp, Decoders, Specs & Public Scrub"]
+    V020 --> V030["v0.3.0: Idiomatic Clean C Rewrite & reSlate Cutover"]
+    V030 --> V040["v0.4.0: Fixed-Point Q12 GTE & 4-EXE Trace Parity"]
+    V040 --> V100["v1.0.0: Gold Reference"]
+    V100 --> V200["v2.0.0: 1:1 Byte-Exact Matching"]
 ```
 
----
+## Active Milestone: v0.3.0 — Idiomatic Clean C Rewrite, `(program, address)` Shards & `reSlate` Cutover
 
-## 2. Active In-Dev Milestone (`v0.1.1` — Standard 18 & Standalone Verifier)
+- [ ] Populate declarative `(program, address)` rewrite metadata (`Dev/schemas/d4_rewrites/*.json`) eliminating `0x80011000` overlay symbol collisions across the multi-tier snapshots already seeded under `Corpus/tiers/`.
+- [ ] Convert raw globals to typed arrays and rewrite all `1,757` functions (`1,632` game + `125` SDK) across the `27` cohesive domain and runtime SDK translation units to clean idiomatic C (`0` decompiler-tell hits, `0` errors and `0` warnings under `-Wall -Wextra -Wno-unused-parameter` after removing `-Wno-everything` and `.clangd` suppressions).
+- [ ] Re-certify clean C compilation and cut the `.decomp` engine target over from `reStation` to `reSlate`.
 
-Focus: Extract standalone `verify_track_d4.py`, modularize `d4_harness\`, and standardize reports for clean, reproducible verification via `--data-dir` / `Corpus\work\`.
+## Upcoming Milestones
 
-- [ ] **`T1` — Standard 18 Reports & Fail-Closed Corpus Paths (`🗄️ Data & Schema`, Unlocked):**
-  - Align `d4_build_report.json`, `s4_verify_report.json`, `spec_coverage.json`, and manifest entries to Standard 18 (`generatedAtUtc`, `isPassed`, `unresolvedFieldCount`).
-  - Keep `psx_kf_unpack.py` outputs strictly inside `--out-dir` / `Corpus\work\`, emitting structured `"status": "MISSING_CORPUS_MEDIA"` JSON on empty BYO-disc runs plus `--offline-synthetic` fixture mode.
-- [ ] **`T2` — Author `verify_track_d4.py` & Modular Multi-TU `d4_harness\` (`🛠️ Build & Infra`, Unlocked):**
-  - Extract verification checks out of [`build_and_verify_d4.py`](Dev/scripts/build_and_verify_d4.py) into a dedicated `Dev/scripts/verify_track_d4.py` matching sibling Tier R repos and `decomp_cli.py verify`.
-  - Split `Dev/scripts/d4_harness/` into `<= 250` LOC/file C translation units discovered via Pass-2 globbing while keeping zero-warning MIPS32 + LP32 host parity builds.
-- [ ] **`T3` — Verify `verify_track_d4.py` & Hardened `S4` Gate via `--data-dir` (`🧪 QA & Testing`, Blocked on `RND-T0`, `T1`, `T2`):**
-  - Execute hardened `study_verifier.py` (`RND-T0`), `verify_track_d4.py`, and `decomp_cli.py verify --tier S4` cleanly via `--data-dir` / `Corpus\work\` with zero warnings.
+- **v0.4.0 — Fixed-Point Q12 GTE & 4-Executable Trace Parity:** Implement deterministic fixed-point Q12 GTE (`COP2`) math (`RTPS`, `RTPT`, frustum culling at `0x800342D8`, and fog) and verify stitched `SLUS_001.58 -> OPEN.EXE -> GAME.EXE -> END.EXE` handoff traces across map zones `0..7` both offline (`--offline-synthetic`) and against `--data-dir`.
+- **v1.0.0 — Gold Reference:** Certify the complete research container (`s5_gold_report.json` with `0` unresolved format fields, gated on upstream verifier and schema alignment) alongside finalized technical manuals.
+- **v2.0.0 — Byte-Exact Matching:** Add an optional `1:1` retail byte-matching verification track (`d5_byte_match.json`, isolated from the functional C rewrite) across `SLUS_001.58`, `OPEN.EXE`, `GAME.EXE`, and `END.EXE`, failing closed with `MISSING_TOOLCHAIN` when matching MIPS C compilers are absent.
 
----
+## Completed Milestones
 
-## 3. Upcoming Stepping Stones (`v0.2.0` -> `v0.3.0` -> `v1.0.0`)
+- [x] **v0.2.0 (2026-11-18):** Installed the `23`-file + `.bin` SHA-256 disc gate, honestly re-opened clean C rewrite certification pending `v0.3.0`, added `materialize_decomp_tiers.py` to preserve multi-tier local C trees and coalesce `259` fragments into `27` cohesive modules (`28` ELF32 MIPS objects), modularized `d4_harness/` + `verify_track_d4.py` (`0`-warning harness), renamed `.code-workspace` to `CrownDepths-ForsakenIsle-SlateOne-02-Decomp.code-workspace` with multi-tier roots, authored `CrownDepths-ForsakenIsle-SlateOne-02.decomp` (`reStation` `0.2.x`), delivered `6` modular container/audio/save decoders (`VAB.T` `.vh` fix), mapped `96/96` spec fields across `6` spec spokes + `3` findings spokes, added synthetic `unittest` suites, and scrubbed local paths/strings/UUIDs across the repository. ([Notes](CHANGELOG.md#020---2026-11-18-beta))
+- [x] **v0.1.0-hf.1 (2026-11-15):** Standardized the 3-folder research repository layout, ignore rules, and clean-room exclusions. ([Notes](CHANGELOG.md#010-hf1---2026-11-15))
+- [x] **v0.1.0 (2026-11-14):** Established the standalone research repository with `1,757` indexed functions across `4` MIPS32 executables, `1,549` mapped globals, LP32 C headers, initial MIPS ELF32 object build plus `10` host parity checks, and `/CD/COM/*.T` container unpacker. ([Notes](CHANGELOG.md#010---2026-11-14))
 
-### `v0.2.0` — `.T` Wrapper Codec Parsers & `S5` Specification Spokes
-- **`T4` — Flat `Dev/scripts/*.py` (`<= 250` LOC) Parsers (`⚙️ Core & Code`, Locked -> `[T3]`):** Decompress `.T`-wrapped entries (resolving `VAB.T` `.vh` `programs=16511` header anomalies) and parse `CD/COM/FDAT.T` (`0..7`), `ITEM.T`/`MAG.T`/dialogue tables, `.MO` morph meshes, and `VAB.T`/`SEQ` audio containers into `--out-dir` / `Corpus\work\`.
-- **`T5` — Zero-Gap `Dev/docs/specifications/*.md` Spokes (`📘 Docs & DevLog`, Locked -> `[T3, T4]`):** Author `150–380`-line spec spokes linked from [`SPECIFICATIONS.md`](Dev/docs/SPECIFICATIONS.md) until `spec_coverage.json` hits `unresolvedFieldCount == 0`.
+## Icebox
 
-### `v0.3.0` — Q12 Host GTE & 4-Executable Chain Trace Parity
-- **`T6` — Host GTE Model & 4-EXE Trace Parity (`🧪 QA & Testing`, Locked -> `[T4, T5]`):** Add deterministic Q12 host GTE (`COP2`) math (`RTPS`/`RTPT`/frustum `0x800342D8`) and verify `SLUS_001.58 -> OPEN.EXE -> GAME.EXE -> END.EXE` handoff traces across map zones (`0..7`) in `Corpus\work\` / `--data-dir`.
-
-### `v1.0.0` — Certified `S5` Gold Reference Research Container
-- **`T7` — `S5` Gold Certification Gate (`🧪 QA & Testing`, Locked -> `[T5, T6]`):** Generate `Dev/schemas/s5_gold_report.json` (`isPassed: true`, `unresolvedFieldCount == 0`) and pass `decomp_cli.py verify --tier S5` (`0` err / `0` warn).
-- **`T8` — Summit Manual Shelf & Notion Sync (`📘 Docs & DevLog`, Locked -> `[T7]`):** Finalize the `S5` Gold 4-Doc Manual Shelf, Root Quartet, `active.state` (`version: "1.0.0"`), and Notion summit parity.
-
----
-
-## 4. Completed Milestones
-
-- [x] **`v0.1.0` (`2026-11-14`) — Graduated `Tier R` Repository (`D4 / S4 / R3`):** Graduated `../../Personal/R&D\decomps\ps1\kings-field` (`SLUS-00158`) into 3-folder `Tier R` storage with `12` SHA-256 baseline entries (`716.86 MB` read-only corpus), `1,757` functions (`1,632` named game + `125` PS1-SDK SDK, `0` failed), `1,549/1,549` globals, `46` structs / `21` typedefs / `3` enums, `268` readable files (`clangd 23.1.0` `0` err/warn), `260/260` ELF32 LE MIPS `.o` -> `libkings_field_d4.a` (`1,841,082` B), `10/10` LP32 host parity tests, `psx_kf_unpack.py`, and read-only `R3` reference link to [`KingsFieldRecomp`](../../Personal/KingsFieldRecomp/README.md) (`v0.1.3`).
-
----
-
-## 5. Icebox & Cutting-Room Floor
-
-- **`D5` (`1:1` Retail Byte-Matching Assembly / Codegen):** Optional per-TU PS1-SDK MIPS instruction-exact matching over `SLUS_001.58`, `OPEN.EXE`, `GAME.EXE`, and `END.EXE` into `Dev/schemas/d5_byte_match.json`. Non-blocking for `v1.0.0` `S5` Gold and downstream [`KingsFieldRecomp`](../../Personal/KingsFieldRecomp/README.md).
-- **Multi-Regional Revision Differentials (`SLPS-00017` / `SLES-00201`):** Optional JP (`King's Field II` naming) / PAL comparative binary offset & container diffs.
+- **Regional Revisions (`SLPS-00069` / `SCES-00510`):** Comparative binary offset, localization, and container notes for Japanese and European PAL releases. *(The 1994 Japanese release `SLPS-00017` is a separate title and remains out of scope.)*

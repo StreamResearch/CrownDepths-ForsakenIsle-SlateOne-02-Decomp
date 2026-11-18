@@ -1,23 +1,106 @@
-# KingsField-PlayStation
+<div align="center">
 
-> **Standalone Clean-Room Research Repository (`Tier R`)** for **King's Field** (North America `SLUS-00158`, `ps1` / `native_ghidra_c`, ABI `ps1-psyq-mipsel`), graduated from `../../Personal/R&D/decomps/ps1/kings-field` on `2026-11-14`.
+<img src="Dev/assets/CrownDepths-ForsakenIsle-SlateOne-02-Decomp.png" alt="CrownDepths ForsakenIsle (SlateOne) 02 Decomp Logo" width="96" />
 
-## Overview
-- **Research ID:** `kings-field-play-station` (`v0.1.0`, `axis=hybrid`, private remote `StreamResearch/KingsField-PlayStation`)
-- **Verified Tiers:** Decomp **`D4 / D4`** · Study **`S4 / S4`** · Recomp **`R3 / R3`** (downstream [`KingsFieldRecomp`](../../Personal/KingsFieldRecomp/README.md) `v0.1.3` on [`reStation v0.1.1`](../../Personal/reStation/README.md) + [`reEngine v0.1.1`](../../Personal/reEngine/README.md))
-- **Target Binaries (`4` PS-X EXEs):** Resident `SLUS_001.58` (`0x80010000`, `4` game + `9` SDK) chaining `OPEN.EXE` (`0x80011000`, `387` game + `31` SDK), `GAME.EXE` (`0x80011000`, `898` game + `56` SDK), and `END.EXE` (`0x80011000`, `343` game + `29` SDK).
-- **Coverage & D4 Build:** `1,757` total functions (`1,632` named game + `125` PS1-SDK SDK, `0` failed), `1,549/1,549` mapped globals, `46` structs / `21` typedefs / `3` enums / `93` type sizes (`kingsfield_types.h` + `4` LP32 headers), `268` readable files (`259` `.c` + headers, `clangd 23.1.0` `0` err/warn), `260/260` ELF32 LE MIPS `.o` -> `libkings_field_d4.a` (`1,841,082` B, `0` errors / `0` warnings), and `10/10` live `x86-windows-gnu` LP32 host parity tests.
+# CrownDepths ForsakenIsle (SlateOne) 02 Decomp
 
-## Repository Layout (`Tier R` 3-Folder Standard)
-- [`Corpus\`](Corpus/) *(gitignored BYO-ROM/extracted artifacts)*: `standalone\` (`12` SHA-256 baseline files, `IsReadOnly = true`), `readable\` (`259` `.c` + `.h` + `compile_commands.json`), `work\` (`libkings_field_d4.a`, host runner, stage artifacts)
-- [`Dev\`](Dev/): [`research.manifest.json`](Dev/research.manifest.json), [`KingsField-PlayStation.code-workspace`](Dev/KingsField-PlayStation.code-workspace), `schemas\`, `scripts\`, `docs\`
-- [`Archive\`](Archive/): `-xr!Corpus -xr!Corpus\*` `-mx=9` `.7z` snapshots
+Clean-room MIPS32 decompilation research, binary format specifications, and portable `.decomp` package for `SLUS-00158`.
 
-## Research Manual Shelf (`Dev\docs\`)
-- [ARCHITECTURE.md](Dev/docs/ARCHITECTURE.md) — Target binaries (`SLUS_001.58`, `OPEN`, `GAME`, `END`), trampoline layout, and subsystem domain graph
-- [SPECIFICATIONS.md](Dev/docs/SPECIFICATIONS.md) — Clean-room LP32 structs (`46`), typedefs (`21`), enums (`3`), `.T`/`FN.D`/`OP` contracts, and D4 report schema
-- [FINDINGS.md](Dev/docs/FINDINGS.md) — Empirical `SLUS-00158` discoveries, Ghidra/LP32 normalization notes, `10/10` parity checks, and `D5`/`S5` horizons
-- [OPERATIONS.md](Dev/docs/OPERATIONS.md) — Reproducible `psx_kf_unpack.py`, `zig cc` D4 build, `clangd 23.1.0`, `decomp_cli.py`, and Stage 3 workflows
+![Version](https://img.shields.io/badge/version-0.2.0--beta-blue?style=flat) ![License](https://img.shields.io/badge/license-MIT-green?style=flat) ![Python](https://img.shields.io/badge/python-3.12%2B-3776AB?style=flat) ![Architecture](https://img.shields.io/badge/arch-MIPS32%20(R3000A)-lightgrey?style=flat)
 
-## Clean-Room & Zero Shipping Binaries Rule
-Zero retail ROMs, ISOs, `.gpr` databases, `Corpus\` files, or shipping binaries exist in Git or `Archive\`. Downstream runnable ports reside in Stage 3 `Tier A` [`KingsFieldRecomp`](../../Personal/KingsFieldRecomp/README.md) (`downstreamProjects`).
+**Decompilation Progress:** `▓▓▓░░░░░░░` **35%** — Mapped `1,757`-function C baseline, full `23`-file disc gate, `6` modular decoders, `96/96` spec fields, and `.decomp` bundle; cohesive zero-warning C rewrite next
+
+</div>
+
+---
+
+## About
+
+> **Beta (Pre-1.0):** *CrownDepths ForsakenIsle (SlateOne) 02 Decomp* (`v0.2.0`) is an active pre-1.0 clean-room research beta targeting `v1.0.0` reference certification and `v2.0.0` byte-exact matching.
+
+This repository documents the binary internals of North American `SLUS-00158` (*CrownDepths ForsakenIsle / SlateOne 02*) using strictly clean-room reverse engineering. It turns raw MIPS32 executables and `/CD/COM/*.T` containers into indexed schemas, typed C headers, modular Python decoders, and documented format specifications—without distributing any copyrighted game code or assets.
+
+The clean-room output is packaged into a self-contained `.decomp` bundle (`CrownDepths-ForsakenIsle-SlateOne-02.decomp`) targeting the `reStation` (`0.2.x`) static recompilation engine and compatible downstream recompilation projects.
+
+## Key Features
+
+- **4-Executable Indexing & Typed ABI Headers:** Maps `1,757` functions (`1,632` game + `125` runtime SDK) and `1,549` globals across `SLUS_001.58`, `OPEN.EXE`, `GAME.EXE`, and `END.EXE`, backed by `46` verified LP32 structs, `21` typedefs, and `3` enums.
+- **Full Disc Gate & 6 Modular Decoders:** Validates all `23` extracted retail disc files (plus optional `258,183,744`-byte `.bin`) via chunked SHA-256 checksums before decoding `FDAT.T` (including the `FDAT[48]` master boot database), `ITEM.T`, `MO.T`, `RTIM.T`, `RTMD.T`, `TALK.T`, `VAB.T` (`.vh`/`.vb`/`.seq`), `CD/FN.D`, `OP/*`, and `BASLUS-00158` saves.
+- **MIPS ELF32 Build & Modular Host Parity:** Organizes all `1,757` functions into `27` cohesive C domain and runtime SDK modules (while preserving raw and structured snapshots locally), compiles `28` ELF32 MIPS objects (`libkings_field_d4.a`), and runs `10` deterministic `x86-windows-gnu` LP32 host parity checks with zero warnings across `Dev/scripts/d4_harness/`.
+- **Offline Synthetic Testing & `.decomp` Packaging:** Executes unit tests, parity builds, and clean-room `.decomp` validation without requiring retail disc media.
+
+## Getting Started
+
+### Prerequisites
+
+- **Python 3.12+** on your `PATH`
+- *Optional:* `zig` and `clangd` if you want to compile ELF32 MIPS objects or inspect C headers locally
+
+### Releases & Downloads
+
+Every release is published on both [GitHub Releases](https://github.com/StreamResearch/CrownDepths-ForsakenIsle-SlateOne-02-Decomp/releases) and the [Google Drive Releases Mirror](https://drive.google.com/drive/folders/12OXcn1JTLc2MSrIypouirI-xwa5hUn4d):
+
+- **`CrownDepths-ForsakenIsle-SlateOne-02.decomp`** — Clean-room `.decomp` package (`41` entries) for `reStation` (`0.2.x`).
+- **`CrownDepths-ForsakenIsle-SlateOne-02-Decomp-v0.2.0.zip`** — Portable clean-room research bundle (schemas, headers, Python decoders, parity harness, and manuals).
+
+### Quick Try (No Disc Required)
+
+Clone the repository and run the synthetic unit tests to verify your environment:
+
+```powershell
+git clone https://github.com/StreamResearch/CrownDepths-ForsakenIsle-SlateOne-02-Decomp.git
+cd CrownDepths-ForsakenIsle-SlateOne-02-Decomp
+python -B -m unittest discover -s Dev/scripts/tests -v
+```
+
+### Unpacking Your Own Disc Copy
+
+If you own a legal North American `SLUS-00158` disc image, point the unpacker at your extracted game directory:
+
+```powershell
+python -B Dev/scripts/psx_kf_unpack.py --data-dir "<path-to-your-disc-files>" --out-dir Corpus/work/extracts/assets --log-dir Dev/logs
+```
+
+> Missing or empty `--data-dir` paths fail closed and exit non-zero without touching disk.
+
+<details>
+<summary>Full verification and developer scripts</summary>
+
+```powershell
+# Offline synthetic unpack, multi-tier materializer, MIPS build, parity harness, and verifier
+python -B Dev/scripts/psx_kf_unpack.py --offline-synthetic --data-dir "$env:TEMP\kf-unpack" --log-dir Dev/logs
+python -B Dev/scripts/materialize_decomp_tiers.py --offline-synthetic --data-dir "$env:TEMP\kf-tiers" --log-dir Dev/logs
+python -B Dev/scripts/build_and_verify_d4.py --offline-synthetic --data-dir "$env:TEMP\kf-d4" --log-dir Dev/logs
+python -B Dev/scripts/verify_track_d4.py --offline-synthetic --data-dir "$env:TEMP\kf-d4" --log-dir Dev/logs
+
+# Export and validate the clean-room .decomp package
+python -B Dev/scripts/export_decomp_bundle.py --verify-cleanroom --log-dir Dev/logs
+```
+
+</details>
+
+## Project Structure
+
+- `Dev/` — Pure-stdlib Python decoders, parity harness, C headers, schemas, and technical manuals
+- `Corpus/` — Local working directory for your own disc files and generated C builds (gitignored; never committed)
+- `Archive/` — Compressed clean-room source snapshots
+- `CrownDepths-ForsakenIsle-SlateOne-02.decomp` — Tracked clean-room package consumed by `reStation`
+
+## Documentation
+
+- [Features](FEATURES.md) — Current capabilities and module index
+- [Roadmap](ROADMAP.md) — Active goals and upcoming milestones
+- [Changelog](CHANGELOG.md) — Release history
+- [Contributing](CONTRIBUTING.md) — How to report issues, run tests, and submit changes
+- [Architecture](Dev/docs/ARCHITECTURE.md) — Boot trampoline, executable layout, and system map
+- [Specifications](Dev/docs/SPECIFICATIONS.md) — Binary formats (`96/96` mapped fields) and clean-room C types
+- [Findings](Dev/docs/FINDINGS.md) — Empirical discoveries on `FDAT[48]`, `.T` packs, `VAB.T`, and LP32 ABI
+- [Operations](Dev/docs/OPERATIONS.md) — CLI workflows, synthetic checks, and bundle export
+
+## License & Legal
+
+Distributed under the **MIT License** ([LICENSE](LICENSE)) for all clean-room Python tooling, JSON schemas, C headers, and documentation in this repository. See [SECURITY.md](SECURITY.md) for clean-room boundaries and vulnerability reporting.
+
+**No Copyrighted Assets:** This repository contains zero game binaries, disc images, audio, textures, console BIOS files, or `.gpr` databases. You must supply your own legally obtained North American `SLUS-00158` disc copy.
+
+*King's Field* is a registered trademark of FromSoftware, Inc. *PlayStation* is a registered trademark of Sony Interactive Entertainment Inc. This independent clean-room research project is not affiliated with, endorsed by, or connected to FromSoftware, Inc. or Sony Interactive Entertainment Inc.
