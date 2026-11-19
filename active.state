@@ -27,7 +27,7 @@
     "isInspecterVerified": true,
     "isTessaSynced": true
   },
-  "notes": "v0.2.0 Beta Public Release published on GitHub (StreamResearch/CrownDepths-ForsakenIsle-SlateOne-02-Decomp) and Google Drive (12OXcn1JTLc2MSrIypouirI-xwa5hUn4d) with Gate 2, Inspecter, Notion, and Discord /post parity. Honest decomp baseline set to D3 (gates.D4.passed: false) while materializing Corpus/tiers/{D1_Raw..D4_FunctionalRewrite}, coalescing all 1,757 functions into 27 cohesive domain/runtime SDK C modules (28 ELF32 MIPS objects + 10/10 zero-warning modular d4_harness/ parity), naming Dev/CrownDepths-ForsakenIsle-SlateOne-02-Decomp.code-workspace, shipping 23-file + .bin SHA-256 gate, 6 container/audio/save decoders (VAB.T .vh fix), 96/96 spec coverage + 3 findings spokes, CrownDepths-ForsakenIsle-SlateOne-02.decomp (reStation 0.2.x), Dev/assets icons, and cleanroom scrub. Next: v0.3.0 (D4_FunctionalRewrite + reSlate) -> v0.4.0 (Q12 GTE + 4-EXE traces) -> v1.0.0 (S5 Gold) -> v2.0.0 (D5_ByteExact).",
+  "notes": "v0.2.0 Beta Public Release published on GitHub (StreamResearch/CrownDepths-ForsakenIsle-SlateOne-02-Decomp) and Google Drive (12OXcn1JTLc2MSrIypouirI-xwa5hUn4d) with Gate 2, Inspecter, Notion, and Discord /post parity. Active 4-axis tier: D3/S4/R2 (P: none, goalDecompTier: D4, goalStudyTier: S5, goalRecompTier: R3; gates.D4.passed: false, d4ParityTier: none) while materializing Corpus/tiers/{D1_Raw..D4_CleanSource}, coalescing all 1,757 functions into 27 cohesive domain/runtime SDK C modules (28 ELF32 MIPS objects + 10/10 zero-warning modular d4_harness/ parity), naming Dev/CrownDepths-ForsakenIsle-SlateOne-02-Decomp.code-workspace, shipping 23-file + .bin SHA-256 gate, 6 container/audio/save decoders (VAB.T .vh fix), 96/96 spec coverage + 3 findings spokes, CrownDepths-ForsakenIsle-SlateOne-02.decomp (reStation 0.2.x), Dev/assets icons, and cleanroom scrub. Next: v0.3.0 (D4_CleanSource / D4a + reSlate) -> v0.4.0 (Q12 GTE + 4-EXE traces) -> v1.0.0 (S5 Gold) -> v2.0.0 (D5_ByteExact).",
   "discordPost": {
     "isEnabled": true,
     "serverName": null,
@@ -38,5 +38,5 @@
     "secretEnvKey": "DISCORD_WEBHOOK_FOUNDATION",
     "autoPostOnRelease": true
   },
-  "updatedAtUtc": "2026-11-18T22:00:00.000Z"
+  "updatedAtUtc": "2026-11-19T03:52:00.000Z"
 }

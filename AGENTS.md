@@ -1,6 +1,6 @@
 # Context: KingsField-PlayStation
 
-- **Tier R (`ps1`, `v0.2.0`):** `D3/S4/R3` (`goalDecompTier: D4`, `goalStudyTier: S5`, target engine `reStation` `0.2.x`). Zero `Builds`/`Installers`/`Releases`; `Corpus` & `Dev/data/` gitignored (`-xr!Corpus\*`, `standalone/` RO).
+- **Tier R (`ps1`, `v0.2.0`):** `D3/S4/R2` (`P: none`, `goalDecompTier: D4`, `goalStudyTier: S5`, `goalRecompTier: R3`, target engine `reStation` `0.2.x`). Zero `Builds`/`Installers`/`Releases`; `Corpus` & `Dev/data/` gitignored (`-xr!Corpus\*`, `standalone/` RO).
 - **Control:** [research.manifest.json](Dev/research.manifest.json) | [CrownDepths-ForsakenIsle-SlateOne-02-Decomp.code-workspace](Dev/CrownDepths-ForsakenIsle-SlateOne-02-Decomp.code-workspace) | Downstream: `KingsFieldRecomp` (`read-only`)
 
 ## 1. Quartet, Security & State
